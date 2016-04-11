@@ -16,19 +16,14 @@ class userGroupRolles_class
 
     protected $user_rolles = array();
 
-    public function setId($id)
-    {
-        $this->id = (int)$id;
-    }
-
     public function getId()
     {
         return $this->id;
     }
 
-    public function setGroupId($group_id)
+    public function setId($id)
     {
-        $this->group_id = (int)$group_id;
+        $this->id = (int)$id;
     }
 
     public function getGroupId()
@@ -36,9 +31,9 @@ class userGroupRolles_class
         return $this->group_id;
     }
 
-    public function setAccessId($access_id)
+    public function setGroupId($group_id)
     {
-        $this->access_id = (int)$access_id;
+        $this->group_id = (int)$group_id;
     }
 
     public function getAccessId()
@@ -46,9 +41,9 @@ class userGroupRolles_class
         return $this->access_id;
     }
 
-    public function setName($name)
+    public function setAccessId($access_id)
     {
-        $this->name = $name;
+        $this->access_id = (int)$access_id;
     }
 
     public function getName()
@@ -56,9 +51,9 @@ class userGroupRolles_class
         return $this->name;
     }
 
-    public function setDescription($description)
+    public function setName($name)
     {
-        $this->description = $description;
+        $this->name = $name;
     }
 
     public function getDescription()
@@ -66,27 +61,9 @@ class userGroupRolles_class
         return $this->description;
     }
 
-    protected function _add($access_ids)
+    public function setDescription($description)
     {
-        global $engine;
-        $query = "INSERT INTO " . $this->table . " (name, description) VALUES ('" . $this->name . "', '" . $this->description . "')";
-        $this->id = $engine->dbase->insertQuery($query);
-        // Prepare REL Query
-        foreach ($access_ids as $key => $val) {
-            $query_rel_add[] = "(" . $val . "," . $this->id . ")";
-        }
-        $query_rel = "INSERT INTO " . $this->rel_table . " (access_id, roll_id) VALUES " . implode(",", $query_rel_add);
-        $res = $engine->dbase->insertQuery($query_rel);
-        return $res;
-    }
-
-    protected function _delete()
-    {
-        global $engine;
-        $query = "DELETE FROM " . $this->table . " WHERE id=" . $this->id;
-        $engine->dbase->insertQuery($query);
-        $query = "DELETE FROM " . $this->rel_table . " WHERE roll_id=" . $this->id;
-        $engine->dbase->insertQuery($query);
+        $this->description = $description;
     }
 
     public function add($access_ids)
@@ -112,6 +89,20 @@ class userGroupRolles_class
         }
     }
 
+    protected function _add($access_ids)
+    {
+        global $engine;
+        $query = "INSERT INTO " . $this->table . " (name, description) VALUES ('" . $this->name . "', '" . $this->description . "')";
+        $this->id = $engine->dbase->insertQuery($query);
+        // Prepare REL Query
+        foreach ($access_ids as $key => $val) {
+            $query_rel_add[] = "(" . $val . "," . $this->id . ")";
+        }
+        $query_rel = "INSERT INTO " . $this->rel_table . " (access_id, roll_id) VALUES " . implode(",", $query_rel_add);
+        $res = $engine->dbase->insertQuery($query_rel);
+        return $res;
+    }
+
     /**
      * Delete
      */
@@ -130,6 +121,15 @@ class userGroupRolles_class
         }
     }
 
+    protected function _delete()
+    {
+        global $engine;
+        $query = "DELETE FROM " . $this->table . " WHERE id=" . $this->id;
+        $engine->dbase->insertQuery($query);
+        $query = "DELETE FROM " . $this->rel_table . " WHERE roll_id=" . $this->id;
+        $engine->dbase->insertQuery($query);
+    }
+
     /**
      * Connect Rolles to groups
      */
@@ -145,14 +145,6 @@ class userGroupRolles_class
         return $res;
     }
 
-    public function getRollesConnectedToGroups($groups_ids)
-    {
-        global $engine;
-        $query = "SELECT * FROM " . $this->rel_table_groups . " WHERE group_id IN (" . implode(",", $group_ids) . ")";
-        $engine->dbase->query($query, false);
-        return $engine->dbase->rows;
-    }
-
     public function getGroupsConnectedToRolles($rolles_ids)
     {
         global $engine;
@@ -161,15 +153,6 @@ class userGroupRolles_class
         return $engine->dbase->rows;
     }
 
-    public function getAccessConnectedToRoles($rolles_ids)
-    {
-        global $engine;
-        $query = "SELECT * FROM " . $this->rel_table . " WHERE roll_id IN (" . implode(",", $rolles_ids) . ")";
-        $engine->dbase->query($query, false);
-        return $engine->dbase->rows;
-    }
-
-    /* Read */
     public function readAccessibles($group_ids)
     {
         // Define access
@@ -200,9 +183,28 @@ class userGroupRolles_class
         }
     }
 
+    public function getRollesConnectedToGroups($groups_ids)
+    {
+        global $engine;
+        $query = "SELECT * FROM " . $this->rel_table_groups . " WHERE group_id IN (" . implode(",", $group_ids) . ")";
+        $engine->dbase->query($query, false);
+        return $engine->dbase->rows;
+    }
+
+    /* Read */
+
+    public function getAccessConnectedToRoles($rolles_ids)
+    {
+        global $engine;
+        $query = "SELECT * FROM " . $this->rel_table . " WHERE roll_id IN (" . implode(",", $rolles_ids) . ")";
+        $engine->dbase->query($query, false);
+        return $engine->dbase->rows;
+    }
+
     /*
         Check if user has access to acction
     */
+
     public function isAccessible($rel_page, $task, $type)
     {
         $found = false;

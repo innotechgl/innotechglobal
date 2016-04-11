@@ -301,58 +301,6 @@ class html2text
     }
 
     /**
-     *  Returns the text, converted from HTML.
-     *
-     * @access public
-     * @return string
-     */
-    public function get_text()
-    {
-        if (!$this->_converted) {
-            $this->_convert();
-        }
-        return $this->text;
-    }
-
-    /**
-     *  Prints the text, converted from HTML.
-     *
-     * @access public
-     * @return void
-     */
-    public function print_text()
-    {
-        print $this->get_text();
-    }
-
-    /**
-     *  Alias to print_text(), operates identically.
-     *
-     * @access public
-     * @return void
-     * @see print_text()
-     */
-    public function p()
-    {
-        print $this->get_text();
-    }
-
-    /**
-     *  Sets the allowed HTML tags to pass through to the resulting text.
-     *
-     *  Tags should be in the form "<p>", with no corresponding closing tag.
-     *
-     * @access public
-     * @return void
-     */
-    public function set_allowed_tags($allowed_tags = '')
-    {
-        if (!empty($allowed_tags)) {
-            $this->allowed_tags = $allowed_tags;
-        }
-    }
-
-    /**
      *  Sets a base URL to handle relative links.
      *
      * @access public
@@ -374,6 +322,31 @@ class html2text
             }
             $this->url = $url;
         }
+    }
+
+    /**
+     *  Prints the text, converted from HTML.
+     *
+     * @access public
+     * @return void
+     */
+    public function print_text()
+    {
+        print $this->get_text();
+    }
+
+    /**
+     *  Returns the text, converted from HTML.
+     *
+     * @access public
+     * @return string
+     */
+    public function get_text()
+    {
+        if (!$this->_converted) {
+            $this->_convert();
+        }
+        return $this->text;
     }
 
     /**
@@ -448,76 +421,6 @@ class html2text
     }
 
     /**
-     *  Helper function called by preg_replace() on link replacement.
-     *
-     *  Maintains an internal list of links to be displayed at the end of the
-     *  text, with numeric indices to the original point in the text they
-     *  appeared. Also makes an effort at identifying and handling absolute
-     *  and relative links.
-     *
-     * @param string $link URL of the link
-     * @param string $display Part of the text to associate number with
-     * @access private
-     * @return string
-     */
-    private function _build_link_list($link, $display, $link_override = null)
-    {
-        $link_method = ($link_override) ? $link_override : $this->_options['do_links'];
-        if ($link_method == 'none')
-            return $display;
-        // Ignored link types
-        if (preg_match('!^(javascript:|mailto:|#)!i', $link)) {
-            return $display;
-        }
-        if (preg_match('!^([a-z][a-z0-9.+-]+:)!i', $link)) {
-            $url = $link;
-        } else {
-            $url = $this->url;
-            if (substr($link, 0, 1) != '/') {
-                $url .= '/';
-            }
-            $url .= "$link";
-        }
-        if ($link_method == 'table') {
-            if (($index = array_search($url, $this->_link_list)) === false) {
-                $index = count($this->_link_list);
-                $this->_link_list[] = $url;
-            }
-            return $display . ' [' . ($index + 1) . ']';
-        } elseif ($link_method == 'nextline') {
-            return $display . "\n[" . $url . ']';
-        } else // link_method defaults to inline
-        {
-            return $display . ' [' . $url . ']';
-        }
-    }
-
-    /**
-     *  Helper function for PRE body conversion.
-     *
-     * @param string HTML content
-     * @access private
-     */
-    private function _convert_pre(&$text)
-    {
-        // get the content of PRE element
-        while (preg_match('/<pre[^>]*>(.*)<\/pre>/ismU', $text, $matches)) {
-            $this->pre_content = $matches[1];
-            // Run our defined tags search-and-replace with callback
-            $this->pre_content = preg_replace_callback($this->callback_search,
-                array($this, '_preg_callback'), $this->pre_content);
-            // convert the content
-            $this->pre_content = sprintf('<div><br>%s<br></div>',
-                preg_replace($this->pre_search, $this->pre_replace, $this->pre_content));
-            // replace the content (use callback because content can contain $0 variable)
-            $text = preg_replace_callback('/<pre[^>]*>.*<\/pre>/ismU',
-                array($this, '_preg_pre_callback'), $text, 1);
-            // free memory
-            $this->pre_content = '';
-        }
-    }
-
-    /**
      *  Helper function for BLOCKQUOTE body conversion.
      *
      * @param string HTML content
@@ -571,6 +474,58 @@ class html2text
     }
 
     /**
+     *  Helper function for PRE body conversion.
+     *
+     * @param string HTML content
+     * @access private
+     */
+    private function _convert_pre(&$text)
+    {
+        // get the content of PRE element
+        while (preg_match('/<pre[^>]*>(.*)<\/pre>/ismU', $text, $matches)) {
+            $this->pre_content = $matches[1];
+            // Run our defined tags search-and-replace with callback
+            $this->pre_content = preg_replace_callback($this->callback_search,
+                array($this, '_preg_callback'), $this->pre_content);
+            // convert the content
+            $this->pre_content = sprintf('<div><br>%s<br></div>',
+                preg_replace($this->pre_search, $this->pre_replace, $this->pre_content));
+            // replace the content (use callback because content can contain $0 variable)
+            $text = preg_replace_callback('/<pre[^>]*>.*<\/pre>/ismU',
+                array($this, '_preg_pre_callback'), $text, 1);
+            // free memory
+            $this->pre_content = '';
+        }
+    }
+
+    /**
+     *  Alias to print_text(), operates identically.
+     *
+     * @access public
+     * @return void
+     * @see print_text()
+     */
+    public function p()
+    {
+        print $this->get_text();
+    }
+
+    /**
+     *  Sets the allowed HTML tags to pass through to the resulting text.
+     *
+     *  Tags should be in the form "<p>", with no corresponding closing tag.
+     *
+     * @access public
+     * @return void
+     */
+    public function set_allowed_tags($allowed_tags = '')
+    {
+        if (!empty($allowed_tags)) {
+            $this->allowed_tags = $allowed_tags;
+        }
+    }
+
+    /**
      *  Callback function for preg_replace_callback use.
      *
      * @param  array PREG matches
@@ -596,17 +551,6 @@ class html2text
                 $url = str_replace(' ', '', $matches[3]);
                 return $this->_build_link_list($url, $matches[5], $link_override);
         }
-    }
-
-    /**
-     *  Callback function for preg_replace_callback use in PRE content handler.
-     *
-     * @param  array PREG matches
-     * @return string
-     */
-    private function _preg_pre_callback($matches)
-    {
-        return $this->pre_content;
     }
 
     /**
@@ -643,5 +587,61 @@ class html2text
             $str = strtoupper($str);
         $str = htmlspecialchars($str, ENT_COMPAT);
         return $str;
+    }
+
+    /**
+     *  Helper function called by preg_replace() on link replacement.
+     *
+     *  Maintains an internal list of links to be displayed at the end of the
+     *  text, with numeric indices to the original point in the text they
+     *  appeared. Also makes an effort at identifying and handling absolute
+     *  and relative links.
+     *
+     * @param string $link URL of the link
+     * @param string $display Part of the text to associate number with
+     * @access private
+     * @return string
+     */
+    private function _build_link_list($link, $display, $link_override = null)
+    {
+        $link_method = ($link_override) ? $link_override : $this->_options['do_links'];
+        if ($link_method == 'none')
+            return $display;
+        // Ignored link types
+        if (preg_match('!^(javascript:|mailto:|#)!i', $link)) {
+            return $display;
+        }
+        if (preg_match('!^([a-z][a-z0-9.+-]+:)!i', $link)) {
+            $url = $link;
+        } else {
+            $url = $this->url;
+            if (substr($link, 0, 1) != '/') {
+                $url .= '/';
+            }
+            $url .= "$link";
+        }
+        if ($link_method == 'table') {
+            if (($index = array_search($url, $this->_link_list)) === false) {
+                $index = count($this->_link_list);
+                $this->_link_list[] = $url;
+            }
+            return $display . ' [' . ($index + 1) . ']';
+        } elseif ($link_method == 'nextline') {
+            return $display . "\n[" . $url . ']';
+        } else // link_method defaults to inline
+        {
+            return $display . ' [' . $url . ']';
+        }
+    }
+
+    /**
+     *  Callback function for preg_replace_callback use in PRE content handler.
+     *
+     * @param  array PREG matches
+     * @return string
+     */
+    private function _preg_pre_callback($matches)
+    {
+        return $this->pre_content;
     }
 }

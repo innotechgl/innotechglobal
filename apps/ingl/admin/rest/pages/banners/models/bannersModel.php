@@ -10,24 +10,6 @@ class bannersModel extends banners_class {
     }
 
     /**
-     * @param bannerObject $photoItem
-     * @return bool
-     */
-    protected function _add(bannerObject $photoItem){
-
-        $query = "INSERT INTO ".$this->table." (`active`,`name`,`title`,`description`,`categorie_id`,`created`,`creator`,`modified`,`modifier`)
-        VALUES ('".$photoItem->getActive()."','".$photoItem->getName()."', '".$photoItem->getTitle()."', '".$photoItem->getDescription()
-            ."','".$photoItem->getCategorieId()."',NOW(),'".$this->engine->users->active_user->get_id()
-            ."', NOW(), '".$this->engine->users->active_user->get_id()."')";
-
-        $res = $this->engine->dbase->insertQuery($query);
-
-        $this->engine->updater->writeUpdateStatusInFile(updater_class::UPDATED, $this->page);
-
-        return $res;
-    }
-
-    /**
      * @param Int $id
      */
     public function _delete($id){
@@ -102,6 +84,17 @@ class bannersModel extends banners_class {
         return $res;
     }
 
+    protected function createTempDir(){
+
+        // Set temp dir
+        $this->tmpDir = _ROOT_.$this->tmpDir."/".rand(0,1250).time().rand(0,1250);
+
+        if (!is_dir($this->tmpDir)) {
+            mkdir($this->tmpDir, 0755, true);
+        }
+
+    }
+
     /**
      * @param Array $photo
      * @param Int $categoryID
@@ -144,15 +137,22 @@ class bannersModel extends banners_class {
         return $photoResult;
     }
 
-    protected function createTempDir(){
+    /**
+     * @param bannerObject $photoItem
+     * @return bool
+     */
+    protected function _add(bannerObject $photoItem){
 
-        // Set temp dir
-        $this->tmpDir = _ROOT_.$this->tmpDir."/".rand(0,1250).time().rand(0,1250);
+        $query = "INSERT INTO ".$this->table." (`active`,`name`,`title`,`description`,`categorie_id`,`created`,`creator`,`modified`,`modifier`)
+        VALUES ('".$photoItem->getActive()."','".$photoItem->getName()."', '".$photoItem->getTitle()."', '".$photoItem->getDescription()
+            ."','".$photoItem->getCategorieId()."',NOW(),'".$this->engine->users->active_user->get_id()
+            ."', NOW(), '".$this->engine->users->active_user->get_id()."')";
 
-        if (!is_dir($this->tmpDir)) {
-            mkdir($this->tmpDir, 0755, true);
-        }
+        $res = $this->engine->dbase->insertQuery($query);
 
+        $this->engine->updater->writeUpdateStatusInFile(updater_class::UPDATED, $this->page);
+
+        return $res;
     }
 
     protected function deleteTempDir(){

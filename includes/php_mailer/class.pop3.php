@@ -31,26 +31,27 @@
 class POP3
 {
     /**
+     * Line break constant
+     */
+    const CRLF = "\r\n";
+    /**
      * The POP3 PHPMailer Version number.
      * @type string
      * @access public
      */
     public $Version = '5.2.7';
-
     /**
      * Default POP3 port number.
      * @type int
      * @access public
      */
     public $POP3_PORT = 110;
-
     /**
      * Default timeout in seconds.
      * @type int
      * @access public
      */
     public $POP3_TIMEOUT = 30;
-
     /**
      * POP3 Carriage Return + Line Feed.
      * @type string
@@ -58,7 +59,6 @@ class POP3
      * @deprecated Use the constant instead
      */
     public $CRLF = "\r\n";
-
     /**
      * Debug display level.
      * Options: 0 = no, 1+ = yes
@@ -66,67 +66,54 @@ class POP3
      * @access public
      */
     public $do_debug = 0;
-
     /**
      * POP3 mail server hostname.
      * @type string
      * @access public
      */
     public $host;
-
     /**
      * POP3 port number.
      * @type int
      * @access public
      */
     public $port;
-
     /**
      * POP3 Timeout Value in seconds.
      * @type int
      * @access public
      */
     public $tval;
-
     /**
      * POP3 username
      * @type string
      * @access public
      */
     public $username;
-
     /**
      * POP3 password.
      * @type string
      * @access public
      */
     public $password;
-
     /**
      * Resource handle for the POP3 connection socket.
      * @type resource
      * @access private
      */
     private $pop_conn;
-
     /**
      * Are we connected?
      * @type bool
      * @access private
      */
     private $connected;
-
     /**
      * Error container.
      * @type array
      * @access private
      */
     private $error;
-
-    /**
-     * Line break constant
-     */
-    const CRLF = "\r\n";
 
     /**
      * Constructor.
@@ -275,6 +262,59 @@ class POP3
     }
 
     /**
+     * Display errors if debug is enabled.
+     * @access private
+     */
+    private function displayErrors()
+    {
+        echo '<pre>';
+        foreach ($this->error as $single_error) {
+            print_r($single_error);
+        }
+        echo '</pre>';
+    }
+
+    /**
+     * Get a response from the POP3 server.
+     * $size is the maximum number of bytes to retrieve
+     * @param integer $size
+     * @return string
+     * @access private
+     */
+    private function getResponse($size = 128)
+    {
+        $r = fgets($this->pop_conn, $size);
+        if ($this->do_debug >= 1) {
+            echo "Server -> Client: $r";
+        }
+        return $r;
+    }
+
+    /**
+     * Checks the POP3 server response.
+     * Looks for for +OK or -ERR.
+     * @param string $string
+     * @return boolean
+     * @access private
+     */
+    private function checkResponse($string)
+    {
+        if (substr($string, 0, 3) !== '+OK') {
+            $this->error = array(
+                'error' => "Server reported an error: $string",
+                'errno' => 0,
+                'errstr' => ''
+            );
+            if ($this->do_debug >= 1) {
+                $this->displayErrors();
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Log in to the POP3 server.
      * Does not support APOP (RFC 2828, 4949).
      * @access public
@@ -311,34 +351,6 @@ class POP3
     }
 
     /**
-     * Disconnect from the POP3 server.
-     * @access public
-     */
-    public function disconnect()
-    {
-        $this->sendString('QUIT');
-        //The QUIT command may cause the daemon to exit, which will kill our connection
-        //So ignore errors here
-        @fclose($this->pop_conn);
-    }
-
-    /**
-     * Get a response from the POP3 server.
-     * $size is the maximum number of bytes to retrieve
-     * @param integer $size
-     * @return string
-     * @access private
-     */
-    private function getResponse($size = 128)
-    {
-        $r = fgets($this->pop_conn, $size);
-        if ($this->do_debug >= 1) {
-            echo "Server -> Client: $r";
-        }
-        return $r;
-    }
-
-    /**
      * Send raw data to the POP3 server.
      * @param string $string
      * @return integer
@@ -356,40 +368,15 @@ class POP3
     }
 
     /**
-     * Checks the POP3 server response.
-     * Looks for for +OK or -ERR.
-     * @param string $string
-     * @return boolean
-     * @access private
+     * Disconnect from the POP3 server.
+     * @access public
      */
-    private function checkResponse($string)
+    public function disconnect()
     {
-        if (substr($string, 0, 3) !== '+OK') {
-            $this->error = array(
-                'error' => "Server reported an error: $string",
-                'errno' => 0,
-                'errstr' => ''
-            );
-            if ($this->do_debug >= 1) {
-                $this->displayErrors();
-            }
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * Display errors if debug is enabled.
-     * @access private
-     */
-    private function displayErrors()
-    {
-        echo '<pre>';
-        foreach ($this->error as $single_error) {
-            print_r($single_error);
-        }
-        echo '</pre>';
+        $this->sendString('QUIT');
+        //The QUIT command may cause the daemon to exit, which will kill our connection
+        //So ignore errors here
+        @fclose($this->pop_conn);
     }
 
     /**

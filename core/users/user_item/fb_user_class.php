@@ -5,6 +5,10 @@ require_once($engine->path . 'core/users/user_item/abstract/user_item_class.php'
 final class fb_user_class extends user_item
 {
 
+    public $table = 'fb_user';
+    public $page = 'fb_user';
+    protected $user_profile_link = 'http://graph.facebook.com/me?access_token=';
+    protected $access_token = '';
     private $name = '';
     private $first_name = '';
     private $last_name = '';
@@ -21,19 +25,14 @@ final class fb_user_class extends user_item
     private $inerested_in = '';
     private $relationship_status = '';
     private $religion = '';
-    private $political = '';
-    private $website = '';
-    private $verified = '';
-    private $update_time = '';
 
     // Set user_profile_link
-    protected $user_profile_link = 'http://graph.facebook.com/me?access_token=';
-
-    protected $access_token = '';
+    private $political = '';
+    private $website = '';
 
     // Set table and page
-    public $table = 'fb_user';
-    public $page = 'fb_user';
+    private $verified = '';
+    private $update_time = '';
 
     // Rel users
     private $rel_table = 'rel_fb_user';
@@ -52,17 +51,17 @@ final class fb_user_class extends user_item
         $engine->load_util('facebook');
     }
 
+    public function get_access_token()
+    {
+        return $this->access_token;
+    }
+
     /**
      * Set access token
      */
     public function set_access_token($access_token)
     {
         $this->access_token = $access_token;
-    }
-
-    public function get_access_token()
-    {
-        return $this->access_token;
     }
 
     /**
@@ -101,12 +100,24 @@ final class fb_user_class extends user_item
         }
     }
 
-    private function set_user_profile_link($link = null)
+    /**
+     * Connect user with FB profile
+     *
+     */
+    public function connect_user($user_id = 0, $fb_id = 0)
     {
-        if ($link !== null) {
-            $this->user_profile_link = $link;
+        global $engine;
+        if (!$this->user_connection_exists($user_id, $fb_id)) {
+            $query = "INSERT INTO " . $this->rel_table . " (user_id, fb_id) VALUES (" . $user_id . "," . $fb_id . ")";
+            $res = $engine->dbase->insertQuery($query);
+            if ($res) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
         }
-        $this->user_profile_link .= $this->access_token;
     }
 
     /**
@@ -125,6 +136,47 @@ final class fb_user_class extends user_item
         }
     }
 
+    /**
+     * Login
+     *
+     */
+    public function login()
+    {
+        global $engine;
+        // Session
+        $uid = $engine->util_facebook->fb->getUser();
+        $me = null;
+        // Session based API call.
+        if ($uid) {
+            try {
+                $uid = $engine->util_facebook->fb->getUser();
+                $me = $engine->util_facebook->fb->api('/me');
+                // Set e-mail
+                $this->set_mail($me['email']);
+                // Set extended data
+                $this->setExtendedData($me);
+            } catch (FacebookApiException $e) {
+                //var_dump($e);
+            }
+        }
+        if ($me) {
+            // Get user id
+            $user_id = $this->get_rel_user_id();
+            if ($user_id > 0) {
+                // Write user as loged in
+                $this->write_loged_in_user();
+                if ($this->write_to_session($user_id, $engine->users->active_user->get_username())) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                // Create user
+                $this->create_user();
+            }
+        }
+    }
+
     private function get_rel_user_id()
     {
         global $engine;
@@ -137,18 +189,16 @@ final class fb_user_class extends user_item
         }
     }
 
-    /**
-     * @param id $fb_id
-     *
-     */
-    private function user_exists()
+    public function write_loged_in_user()
     {
         global $engine;
-        $id = $engine->util_facebook->fb->getUser();
-        // Check user_existance
-        $rel_user = $this->get_array(true, 'COUNT(*) as num_of_users', 'WHERE id=' . $id, 'id', 'asc');
-        // Check user existance
-        if ($rel_user[0]['num_of_users'] > 0) {
+        // Load user as active
+        $engine->users->active_user->load_user($this->get_rel_user_id());
+        //var_dump($engine->users->active_user);
+        // Remove loged user
+        $this->remove_loged_user();
+        $query = "INSERT INTO " . $this->table_loged_in . " (username,id_user,time,last_active,ip, session_id) VALUES ('" . $engine->users->active_user->get_username() . "'," . $engine->users->active_user->get_id() . ",NOW(),NOW(),'" . $_SERVER["REMOTE_ADDR"] . "','" . session_id() . "');";
+        if ($engine->dbase->insertQuery($query)) {
             return true;
         } else {
             return false;
@@ -156,40 +206,14 @@ final class fb_user_class extends user_item
     }
 
     /**
-     * Prepare data
+     * Removes loged in user
      */
-    public function prepare_data()
+    public function remove_loged_user()
     {
         global $engine;
-        // get values
-        $engine->util_facebook->fb->getUser();
-        $me = $engine->util_facebook->fb->api('/me');
-        // set data
-        $this->id = $me['id'];
-        $this->name = @$engine->security->get_val($me['name']);
-        $this->first_name = @$engine->security->get_val($me['first_name']);
-        $this->last_name = @$engine->security->get_val($me['last_name']);
-        $this->link = @$engine->security->get_val($me['link']);
-        $this->username = @$engine->security->get_val($me['user_name']);
-        $this->birthday = @$engine->security->get_val($me['birthday']);
-        $this->home_town_id = @$engine->security->get_val($me['home_town_id']);
-        $this->home_town_name = @$engine->security->get_val($me['home_town_name']);
-        $this->location_id = @$engine->security->get_val($me['location_id']);
-        $this->location_name = @$engine->security->get_val($me['location_name']);
-        $this->bio = @$engine->security->get_val($me['bio']);
-        // set work
-        $this->work = @$engine->security->get_val(array_map(create_function('$key, $value', 'return $key.":".$value." # ";'), array_keys($me['work']), array_values($me['work'])));
-        // set education
-        $this->education = @$engine->security->get_val(array_map(create_function('$key, $value', 'return $key.":".$value." # ";'), array_keys($me['education']), array_values($me['education'])));
-        $this->gender = @$engine->security->get_val($me['gender']);
-        $this->inerested_in = @$engine->security->get_val($me['interested_in']);
-        $this->relationship_status = @$engine->security->get_val($me['relationship_status']);
-        $this->religion = @$engine->security->get_val($me['religion']);
-        $this->political = @$engine->security->get_val($me['political']);
-        $this->website = @$engine->security->get_val($me['website']);
-        $this->verified = @$engine->security->get_val($me['verified']);
-        $this->update_time = @$engine->security->get_val($me['updated_time']);
-        $this->access_token = $engine->util_facebook->fb->getAccessToken();
+        $query = "DELETE FROM " . $this->table_loged_in . " WHERE id_user=" . $engine->users->active_user->get_id() . " LIMIT 1;";
+        $engine->dbase->insertQuery($query);
+        unset($_SESSION['users']);
     }
 
     /**
@@ -247,100 +271,68 @@ final class fb_user_class extends user_item
     }
 
     /**
-     * Connect user with FB profile
-     *
+     * Prepare data
      */
-    public function connect_user($user_id = 0, $fb_id = 0)
+    public function prepare_data()
     {
         global $engine;
-        if (!$this->user_connection_exists($user_id, $fb_id)) {
-            $query = "INSERT INTO " . $this->rel_table . " (user_id, fb_id) VALUES (" . $user_id . "," . $fb_id . ")";
-            $res = $engine->dbase->insertQuery($query);
-            if ($res) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * Login
-     *
-     */
-    public function login()
-    {
-        global $engine;
-        // Session
-        $uid = $engine->util_facebook->fb->getUser();
-        $me = null;
-        // Session based API call.
-        if ($uid) {
-            try {
-                $uid = $engine->util_facebook->fb->getUser();
-                $me = $engine->util_facebook->fb->api('/me');
-                // Set e-mail
-                $this->set_mail($me['email']);
-                // Set extended data
-                $this->setExtendedData($me);
-            } catch (FacebookApiException $e) {
-                //var_dump($e);
-            }
-        }
-        if ($me) {
-            // Get user id
-            $user_id = $this->get_rel_user_id();
-            if ($user_id > 0) {
-                // Write user as loged in
-                $this->write_loged_in_user();
-                if ($this->write_to_session($user_id, $engine->users->active_user->get_username())) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                // Create user
-                $this->create_user();
-            }
-        }
+        // get values
+        $engine->util_facebook->fb->getUser();
+        $me = $engine->util_facebook->fb->api('/me');
+        // set data
+        $this->id = $me['id'];
+        $this->name = @$engine->security->get_val($me['name']);
+        $this->first_name = @$engine->security->get_val($me['first_name']);
+        $this->last_name = @$engine->security->get_val($me['last_name']);
+        $this->link = @$engine->security->get_val($me['link']);
+        $this->username = @$engine->security->get_val($me['user_name']);
+        $this->birthday = @$engine->security->get_val($me['birthday']);
+        $this->home_town_id = @$engine->security->get_val($me['home_town_id']);
+        $this->home_town_name = @$engine->security->get_val($me['home_town_name']);
+        $this->location_id = @$engine->security->get_val($me['location_id']);
+        $this->location_name = @$engine->security->get_val($me['location_name']);
+        $this->bio = @$engine->security->get_val($me['bio']);
+        // set work
+        $this->work = @$engine->security->get_val(array_map(create_function('$key, $value', 'return $key.":".$value." # ";'), array_keys($me['work']), array_values($me['work'])));
+        // set education
+        $this->education = @$engine->security->get_val(array_map(create_function('$key, $value', 'return $key.":".$value." # ";'), array_keys($me['education']), array_values($me['education'])));
+        $this->gender = @$engine->security->get_val($me['gender']);
+        $this->inerested_in = @$engine->security->get_val($me['interested_in']);
+        $this->relationship_status = @$engine->security->get_val($me['relationship_status']);
+        $this->religion = @$engine->security->get_val($me['religion']);
+        $this->political = @$engine->security->get_val($me['political']);
+        $this->website = @$engine->security->get_val($me['website']);
+        $this->verified = @$engine->security->get_val($me['verified']);
+        $this->update_time = @$engine->security->get_val($me['updated_time']);
+        $this->access_token = $engine->util_facebook->fb->getAccessToken();
     }
 
     // Logout
-    public function logout()
-    {
-        // Logout from website
-        $engine->users->logout();
-        // Logout from FB
-        header("Location: " . $engine->util_facebook->getLogoutUrl());
-    }
 
-    public function write_loged_in_user()
+    /**
+     * @param id $fb_id
+     *
+     */
+    private function user_exists()
     {
         global $engine;
-        // Load user as active
-        $engine->users->active_user->load_user($this->get_rel_user_id());
-        //var_dump($engine->users->active_user);
-        // Remove loged user
-        $this->remove_loged_user();
-        $query = "INSERT INTO " . $this->table_loged_in . " (username,id_user,time,last_active,ip, session_id) VALUES ('" . $engine->users->active_user->get_username() . "'," . $engine->users->active_user->get_id() . ",NOW(),NOW(),'" . $_SERVER["REMOTE_ADDR"] . "','" . session_id() . "');";
-        if ($engine->dbase->insertQuery($query)) {
+        $id = $engine->util_facebook->fb->getUser();
+        // Check user_existance
+        $rel_user = $this->get_array(true, 'COUNT(*) as num_of_users', 'WHERE id=' . $id, 'id', 'asc');
+        // Check user existance
+        if ($rel_user[0]['num_of_users'] > 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    /**
-     * Removes loged in user
-     */
-    public function remove_loged_user()
+    public function logout()
     {
-        global $engine;
-        $query = "DELETE FROM " . $this->table_loged_in . " WHERE id_user=" . $engine->users->active_user->get_id() . " LIMIT 1;";
-        $engine->dbase->insertQuery($query);
-        unset($_SESSION['users']);
+        // Logout from website
+        $engine->users->logout();
+        // Logout from FB
+        header("Location: " . $engine->util_facebook->getLogoutUrl());
     }
 
     /**
@@ -364,6 +356,14 @@ final class fb_user_class extends user_item
         } else {
             return array();
         }
+    }
+
+    private function set_user_profile_link($link = null)
+    {
+        if ($link !== null) {
+            $this->user_profile_link = $link;
+        }
+        $this->user_profile_link .= $this->access_token;
     }
 }
 

@@ -10,14 +10,12 @@
 abstract class widget_class
 {
 
+    public $data = array();
     protected $id = 0;
     protected $real_name = '';
     protected $name = '';
     protected $settings = array();
     protected $position = '';
-
-    public $data = array();
-
     protected $view = '';
 
     /**
@@ -35,6 +33,11 @@ abstract class widget_class
         $this->engine =& $engine;
     }
 
+    public function get_view()
+    {
+        return $this->view;
+    }
+
     /**
      * Set widget view
      * @param string $view
@@ -44,11 +47,6 @@ abstract class widget_class
         global $engine;
         $this->view = $engine->security->get_val($view,
             sCMS_security::VAL_STRING);
-    }
-
-    public function get_view()
-    {
-        return $this->view;
     }
 
     /**
@@ -62,17 +60,6 @@ abstract class widget_class
         $this->position = $position;
     }
 
-    /**
-     *
-     * @param string $name
-     * @param string $value
-     */
-    public function __set($name, $value)
-    {
-        $this->data[$name] = $value;
-    }
-
-    // Get runtime variables
     public function __get($name)
     {
         if (array_key_exists($name, $this->data)) {
@@ -85,6 +72,18 @@ abstract class widget_class
             ' on line ' . $trace[0]['line'],
             E_USER_NOTICE);
         return null;
+    }
+
+    // Get runtime variables
+
+    /**
+     *
+     * @param string $name
+     * @param string $value
+     */
+    public function __set($name, $value)
+    {
+        $this->data[$name] = $value;
     }
 
     /**
@@ -108,6 +107,11 @@ abstract class widget_class
         $this->id = $id;
     }
 
+    public function get_real_name()
+    {
+        return $this->real_name;
+    }
+
     /**
      *
      * Set real name of util
@@ -117,11 +121,6 @@ abstract class widget_class
     public function set_real_name($name = '')
     {
         $this->real_name = $name;
-    }
-
-    public function get_real_name()
-    {
-        return $this->real_name;
     }
 
     /**

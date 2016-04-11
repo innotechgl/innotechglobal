@@ -3,8 +3,8 @@ require_once _ROOT_.'utils/googleMaps/objects/googleMapObject.php';
 
 class googleMaps_class extends util_class
 {
-    private $data = array();
     public $table = 'googlemaps';
+    private $data = array();
 
     public function  __construct()
     {
@@ -70,6 +70,29 @@ class googleMaps_class extends util_class
 
     /**
      * @param string $rel_page
+     * @param int $rel_id
+     * @return bool
+     */
+    public function check_existance($rel_page, $rel_id)
+    {
+
+        $rel_page = filter_var($rel_page, FILTER_SANITIZE_STRING);
+        $rel_id = filter_var($rel_id, FILTER_SANITIZE_NUMBER_INT);
+
+        $query = "SELECT COUNT(*) as num_of FROM " . $this->table . " WHERE rel_id=" . $rel_id
+            . " AND rel_page LIKE '" . $rel_page . "';";
+
+        $this->engine->dbase->query($query);
+
+        if ($this->engine->dbase->rows[0]['num_of'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param string $rel_page
      * @param string $rel_id
      * @return bool
      */
@@ -91,29 +114,6 @@ class googleMaps_class extends util_class
                 return false;
             }
         }else {
-            return false;
-        }
-    }
-
-    /**
-     * @param string $rel_page
-     * @param int $rel_id
-     * @return bool
-     */
-    public function check_existance($rel_page, $rel_id)
-    {
-
-        $rel_page = filter_var($rel_page, FILTER_SANITIZE_STRING);
-        $rel_id = filter_var($rel_id, FILTER_SANITIZE_NUMBER_INT);
-
-        $query = "SELECT COUNT(*) as num_of FROM " . $this->table . " WHERE rel_id=" . $rel_id
-            . " AND rel_page LIKE '" . $rel_page . "';";
-
-        $this->engine->dbase->query($query);
-
-        if ($this->engine->dbase->rows[0]['num_of'] > 0) {
-            return true;
-        } else {
             return false;
         }
     }

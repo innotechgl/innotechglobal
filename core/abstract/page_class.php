@@ -8,39 +8,25 @@
 abstract class page_class
 {
 
-    private $id = 0;
-    private $name = '';
-
-    private $created = '';
-    private $creator = 0;
-    private $modifier = 0;
-    private $modified = '';
-
-    protected $table = '';
-
     public $page = '';
     public $page_settings = array();
-    private $page_id = 0; // Unique page ID
-
+    protected $table = '';
     /**
      * @var sCMS_engine
      */
     protected $engine;
+    private $id = 0;
+    private $name = '';
+    private $created = '';
+    private $creator = 0;
+    private $modifier = 0;
+        private $modified = ''; // Unique page ID
+private $page_id = 0;
 
     public function __construct()
     {
         global $engine;
         $this->engine =& $engine;
-    }
-
-    /**
-     * @name Sets page_id
-     * @param int $id
-     * @package sCMS ver 2.0
-     */
-    public function set_page_id($id)
-    {
-        $this->page_id = (int)$id;
     }
 
     /**
@@ -52,6 +38,16 @@ abstract class page_class
     public function get_page_id()
     {
         return $this->page_id;
+    }
+
+    /**
+     * @name Sets page_id
+     * @param int $id
+     * @package sCMS ver 2.0
+     */
+    public function set_page_id($id)
+    {
+        $this->page_id = (int)$id;
     }
 
     public function getFullSettings()
@@ -80,6 +76,41 @@ abstract class page_class
             $xml_settings = $xml->children();
         }
         $this->settings = $xml_settings;
+    }
+
+    /**
+     *
+     * @param boolean $addopt
+     * @param string $what_to_get
+     * @param string $filter_params
+     * @param mixed $order_by
+     * @param string $order_direction
+     * @param string $table
+     * @return array
+     * @global $engine
+     */
+    public function get_array($addopt = true, $what_to_get = '*', $filter_params = '', $order_by = 'id',
+                              $order_direction = 'ASC', $table = '')
+    {
+        global $engine;
+        // Check if we are using default table
+        if ($table == '') {
+            $table = $this->table;
+        }
+        // Check if we have array in $order_by
+        if (is_array($order_by)) {
+            $order_by = implode(", ", $order_by);
+            // empty order direction
+            $order_direction = '';
+        }
+        // Set QUERY
+        $query = "SELECT " . $what_to_get . "
+                  FROM " . $table . " " . $filter_params . "
+                  ORDER BY " . $order_by . " " . $order_direction;
+        // Do Query
+        $engine->dbase->query($query, $addopt, true);
+        // Return rows
+        return $engine->dbase->rows;
     }
 
     /**
@@ -120,41 +151,6 @@ abstract class page_class
             }
             $this->settings['readable'][$val_s['fieldName']] = $value;
         }
-    }
-
-    /**
-     *
-     * @param boolean $addopt
-     * @param string $what_to_get
-     * @param string $filter_params
-     * @param mixed $order_by
-     * @param string $order_direction
-     * @param string $table
-     * @return array
-     * @global $engine
-     */
-    public function get_array($addopt = true, $what_to_get = '*', $filter_params = '', $order_by = 'id',
-                              $order_direction = 'ASC', $table = '')
-    {
-        global $engine;
-        // Check if we are using default table
-        if ($table == '') {
-            $table = $this->table;
-        }
-        // Check if we have array in $order_by
-        if (is_array($order_by)) {
-            $order_by = implode(", ", $order_by);
-            // empty order direction
-            $order_direction = '';
-        }
-        // Set QUERY
-        $query = "SELECT " . $what_to_get . "
-                  FROM " . $table . " " . $filter_params . "
-                  ORDER BY " . $order_by . " " . $order_direction;
-        // Do Query
-        $engine->dbase->query($query, $addopt, true);
-        // Return rows
-        return $engine->dbase->rows;
     }
 
     /**

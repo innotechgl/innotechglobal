@@ -46,58 +46,6 @@ class photos_class extends util_class
         include $engine->path . 'includes/photos/html/form.php';
     }
 
-    private function move_uploaded_images_to_temp($data_name = 'photo')
-    {
-        global $engine;
-        // create temp img file
-        $sessid = session_id();
-        $this->tmp_dir = $this->tmp_dir . $sessid;
-        // Make new dir
-        @mkdir($this->tmp_dir, 0777, true);
-        switch ($data_name) {
-            case "photo":
-                // Check if we have array of files
-                if (!is_array($_FILES[$data_name]['tmp_name'])) {
-                    move_uploaded_file($_FILES[$data_name]['tmp_name'], $this->tmp_dir . "/" . $_FILES[$data_name]['name']);
-                } else {
-                    for ($i = 0; $i < count($_FILES[$data_name]['tmp_name']); $i++) {
-                        if (!move_uploaded_file($_FILES[$data_name]['tmp_name'][$i], $this->tmp_dir . "/" . $_FILES[$data_name]['name'][$i])) {
-                            $engine->log->add_error_log('util_photos', 'OVAJ! >>>>>> ' . $_FILES[$data_name]['tmp_name'][$i]);
-                            $engine->log->add_error_log('util_photos', 'OVDE! >>>>>> ' . $this->tmp_dir . "/" . $_FILES[$data_name]['name'][$i]);
-                        } else {
-                            $engine->log->add_success_log('util_photos', 'SUCCESS');
-                        };
-                    }
-                }
-                break;
-            default:
-                move_uploaded_file($_FILES[$data_name]['tmp_name'], $this->tmp_dir . "/" . $_FILES[$data_name]['name']);
-                break;
-        }
-    }
-
-    private function check_and_unzip()
-    {
-        $archive = new archive('');
-        $files = $this->load_dir($this->tmp_dir);
-        $ext = '';
-        foreach ($files as $key => $val) {
-            $ext_s = explode(".", $val);
-            if (!in_array($ext_s[count($ext_s) - 1], $this->allowed)) {
-                // Remove file
-                unlink($this->tmp_dir . $val);
-            } else {
-                // Check if it's zipped
-                if ($ext_s[count($ext_s) - 1] == 'zip' || $ext_s[count($ext_s) - 1] == 'tar') {
-                    $zipovano = new tar_file($val);
-                    $zipovano->set_options(array('inmemory' => 0, 'basedir' => $this->tmp_dir));
-                    $zipovano->extract_files();
-                    $log[] = 'file: ' . $val;
-                }
-            }
-        }
-    }
-
     public function createResizedImg($size = array(), $prefix = array(), $data_name = 'photo')
     {
         // Move all files to Temp dir
@@ -155,6 +103,36 @@ class photos_class extends util_class
         return $arr_imgs;
     }
 
+    private function move_uploaded_images_to_temp($data_name = 'photo')
+    {
+        global $engine;
+        // create temp img file
+        $sessid = session_id();
+        $this->tmp_dir = $this->tmp_dir . $sessid;
+        // Make new dir
+        @mkdir($this->tmp_dir, 0777, true);
+        switch ($data_name) {
+            case "photo":
+                // Check if we have array of files
+                if (!is_array($_FILES[$data_name]['tmp_name'])) {
+                    move_uploaded_file($_FILES[$data_name]['tmp_name'], $this->tmp_dir . "/" . $_FILES[$data_name]['name']);
+                } else {
+                    for ($i = 0; $i < count($_FILES[$data_name]['tmp_name']); $i++) {
+                        if (!move_uploaded_file($_FILES[$data_name]['tmp_name'][$i], $this->tmp_dir . "/" . $_FILES[$data_name]['name'][$i])) {
+                            $engine->log->add_error_log('util_photos', 'OVAJ! >>>>>> ' . $_FILES[$data_name]['tmp_name'][$i]);
+                            $engine->log->add_error_log('util_photos', 'OVDE! >>>>>> ' . $this->tmp_dir . "/" . $_FILES[$data_name]['name'][$i]);
+                        } else {
+                            $engine->log->add_success_log('util_photos', 'SUCCESS');
+                        };
+                    }
+                }
+                break;
+            default:
+                move_uploaded_file($_FILES[$data_name]['tmp_name'], $this->tmp_dir . "/" . $_FILES[$data_name]['name']);
+                break;
+        }
+    }
+
     public function unzip()
     {
         // Load ZIP class
@@ -170,6 +148,23 @@ class photos_class extends util_class
                 @unlink($this->tmp_dir . "/" . $val);
             }
         }
+    }
+
+    /**
+     *
+     * @param string $path
+     * @return multitype:array
+     */
+    private function load_dir($path)
+    {
+        $files = array();
+        $dirFiles = scandir($path);
+        foreach ($dirFiles as $file) {
+            if ($file != "." && $file != "..") {
+                $files [] = $file;
+            }
+        }
+        return $files;
     }
 
     /**
@@ -290,23 +285,6 @@ class photos_class extends util_class
             }
         }
         return $array;
-    }
-
-    /**
-     *
-     * @param string $path
-     * @return multitype:array
-     */
-    private function load_dir($path)
-    {
-        $files = array();
-        $dirFiles = scandir($path);
-        foreach ($dirFiles as $file) {
-            if ($file != "." && $file != "..") {
-                $files [] = $file;
-            }
-        }
-        return $files;
     }
 
     /**
@@ -467,6 +445,28 @@ class photos_class extends util_class
             $result['imgPath'] = null;
             $result['error'] = 'There is no way to save img.';
             return $result;
+        }
+    }
+
+    private function check_and_unzip()
+    {
+        $archive = new archive('');
+        $files = $this->load_dir($this->tmp_dir);
+        $ext = '';
+        foreach ($files as $key => $val) {
+            $ext_s = explode(".", $val);
+            if (!in_array($ext_s[count($ext_s) - 1], $this->allowed)) {
+                // Remove file
+                unlink($this->tmp_dir . $val);
+            } else {
+                // Check if it's zipped
+                if ($ext_s[count($ext_s) - 1] == 'zip' || $ext_s[count($ext_s) - 1] == 'tar') {
+                    $zipovano = new tar_file($val);
+                    $zipovano->set_options(array('inmemory' => 0, 'basedir' => $this->tmp_dir));
+                    $zipovano->extract_files();
+                    $log[] = 'file: ' . $val;
+                }
+            }
         }
     }
 }

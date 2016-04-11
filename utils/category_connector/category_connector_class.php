@@ -24,26 +24,6 @@ final class category_connector_class extends util_class
         return $engine->dbase->rows;
     }
 
-    /**
-     * @param int $rel_id
-     * @param int $categorie_id
-     * @param string $rel_page
-     * @return boolean
-     *
-     */
-    public function add_new($rel_id, $categorie_id, $rel_page)
-    {
-        global $engine;
-        // Prepare VALS
-        $this->rel_id = (int)$rel_id;
-        $this->categorie_id = (int)$categorie_id;
-        $this->rel_page = (string)$rel_page;
-        // CREATE QUERY
-        $query = 'INSERT INTO ' . $this->table . '(rel_id, categorie_id, rel_page) VALUES (' . $this->rel_id . ', ' . $this->categorie_id . ', "' . $this->rel_page . '");';
-        // INSERT INTO BASE
-        $this->id = $engine->dbase->insertQuery($query);
-    }
-
     public function add($rel_page, $rel_id, $categorie_ids = array())
     {
         // Delete connected galleries for renew
@@ -77,6 +57,26 @@ final class category_connector_class extends util_class
         } else {
             return false;
         }
+    }
+
+    /**
+     * @param int $rel_id
+     * @param int $categorie_id
+     * @param string $rel_page
+     * @return boolean
+     *
+     */
+    public function add_new($rel_id, $categorie_id, $rel_page)
+    {
+        global $engine;
+        // Prepare VALS
+        $this->rel_id = (int)$rel_id;
+        $this->categorie_id = (int)$categorie_id;
+        $this->rel_page = (string)$rel_page;
+        // CREATE QUERY
+        $query = 'INSERT INTO ' . $this->table . '(rel_id, categorie_id, rel_page) VALUES (' . $this->rel_id . ', ' . $this->categorie_id . ', "' . $this->rel_page . '");';
+        // INSERT INTO BASE
+        $this->id = $engine->dbase->insertQuery($query);
     }
 
     /**

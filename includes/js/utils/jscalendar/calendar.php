@@ -67,15 +67,6 @@ class DHTML_Calendar
         return $code;
     }
 
-    function _make_calendar($other_options = array())
-    {
-        $js_options = $this->_make_js_hash(array_merge($this->calendar_options, $other_options));
-        $code = ('<script type="text/javascript">Calendar.setup({' .
-            $js_options .
-            '});</script>');
-        return $code;
-    }
-
     function make_input_field($cal_options = array(), $field_attributes = array())
     {
         $id = $this->_gen_id();
@@ -91,7 +82,24 @@ class DHTML_Calendar
         echo $this->_make_calendar($options);
     }
 
+    function _gen_id()
+    {
+        static $id = 0;
+        return ++$id;
+    }
+
     /// PRIVATE SECTION
+
+    function _make_html_attr($array)
+    {
+        $attrstr = '';
+        reset($array);
+        while (list($key, $val) = each($array)) {
+            $attrstr .= $key . '="' . $val . '" ';
+        }
+        return $attrstr;
+    }
+
     function _field_id($id)
     {
         return 'f-calendar-field-' . $id;
@@ -102,10 +110,13 @@ class DHTML_Calendar
         return 'f-calendar-trigger-' . $id;
     }
 
-    function _gen_id()
+    function _make_calendar($other_options = array())
     {
-        static $id = 0;
-        return ++$id;
+        $js_options = $this->_make_js_hash(array_merge($this->calendar_options, $other_options));
+        $code = ('<script type="text/javascript">Calendar.setup({' .
+            $js_options .
+            '});</script>');
+        return $code;
     }
 
     function _make_js_hash($array)
@@ -121,16 +132,6 @@ class DHTML_Calendar
             $jstr .= '"' . $key . '":' . $val;
         }
         return $jstr;
-    }
-
-    function _make_html_attr($array)
-    {
-        $attrstr = '';
-        reset($array);
-        while (list($key, $val) = each($array)) {
-            $attrstr .= $key . '="' . $val . '" ';
-        }
-        return $attrstr;
     }
 }
 

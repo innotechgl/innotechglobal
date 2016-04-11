@@ -29,19 +29,14 @@ class googleMapObject extends mainObject
         $this->data = array();
     }
 
-    public function setLat($lat)
-    {
-        $this->lat = $lat;
-    }
-
     public function getLat()
     {
         return $this->lat;
     }
 
-    public function setLng($lng)
+    public function setLat($lat)
     {
-        $this->lng = $lng;
+        $this->lat = $lat;
     }
 
     public function getLng()
@@ -49,9 +44,9 @@ class googleMapObject extends mainObject
         return $this->lng;
     }
 
-    public function setTitle($title)
+    public function setLng($lng)
     {
-        $this->title = $title;
+        $this->lng = $lng;
     }
 
     public function getTitle()
@@ -59,9 +54,9 @@ class googleMapObject extends mainObject
         return $this->title;
     }
 
-    public function setZoom($zoom)
+    public function setTitle($title)
     {
-        $this->zoom = $zoom;
+        $this->title = $title;
     }
 
     public function getZoom()
@@ -69,9 +64,9 @@ class googleMapObject extends mainObject
         return $this->zoom;
     }
 
-    public function setDescription($description)
+    public function setZoom($zoom)
     {
-        $this->description = $description;
+        $this->zoom = $zoom;
     }
 
     public function getDescription()
@@ -79,9 +74,9 @@ class googleMapObject extends mainObject
         return $this->description;
     }
 
-    public function setRelPage($relPage)
+    public function setDescription($description)
     {
-        $this->relPage = $relPage;
+        $this->description = $description;
     }
 
     public function getRelPage()
@@ -89,9 +84,9 @@ class googleMapObject extends mainObject
         return $this->relPage;
     }
 
-    public function setRelID($relID)
+    public function setRelPage($relPage)
     {
-        $this->relID = $relID;
+        $this->relPage = $relPage;
     }
 
     public function getRelID()
@@ -99,9 +94,9 @@ class googleMapObject extends mainObject
         return $this->relID;
     }
 
-    public function setURL($url)
+    public function setRelID($relID)
     {
-        $this->url = $url;
+        $this->relID = $relID;
     }
 
     public function getURL()
@@ -109,9 +104,9 @@ class googleMapObject extends mainObject
         return $this->url;
     }
 
-    public function setActive($active)
+    public function setURL($url)
     {
-        $this->active = $active;
+        $this->url = $url;
     }
 
     public function getActive()
@@ -119,21 +114,17 @@ class googleMapObject extends mainObject
         return $this->active;
     }
 
-    public function setIcon($icon){
-        $this->icon = $icon;
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
     public function getIcon(){
         return $this->icon;
     }
 
-
-    /**
-     * @param string $key
-     * @param mixed $val
-     */
-    public function setData($key, $val){
-        $this->data[$key] = $val;
+    public function setIcon($icon){
+        $this->icon = $icon;
     }
 
     /**
@@ -141,6 +132,14 @@ class googleMapObject extends mainObject
      */
     public function getData(){
         return $this->data;
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $val
+     */
+    public function setData($key, $val){
+        $this->data[$key] = $val;
     }
 
     /**

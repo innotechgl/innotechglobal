@@ -25,15 +25,6 @@ class user_item_class extends user_item
     }
 
     // ID
-    public function set_id($id)
-    {
-        $this->id = (int)$id;
-    }
-
-    public function get_id()
-    {
-        return $this->id;
-    }
 
     /**
      * @param String $mail
@@ -75,36 +66,15 @@ class user_item_class extends user_item
     }
 
     /**
-     * Force login
-     *
+     * Clear login attempts
      */
-    public function forceLogin($mail)
+    private function clear_login_attempts()
     {
         global $engine;
-        $this->set_mail($mail);
-        $query = "SELECT COUNT(*) as count, id, username FROM " . $this->table .
-            " WHERE mail LIKE '" . $this->get_mail() . "' AND active=1;";
-        $engine->dbase->query($query);
-        if ($engine->dbase->rows[0]['count'] > 0) {
-            $this->id = $engine->dbase->rows[0]['id'];
-            $this->username = $engine->dbase->rows[0]['username'];
-            $token = $this->createToken();
-            $this->write_loged_in_user($token);
-            $this->write_to_session($this->id, $this->username);
-            $this->clear_login_attempts();
-            return true;
-        } else {
-            // Add new LOGIN attempt
-            $this->add_login_attempt();
-            // Add protect wild login attempts protection
-            $this->protect_wild_login_attempts();
-            return false;
-        }
-    }
-
-    public function logout()
-    {
-        $this->remove_loged_user();
+        $query = "UPDATE user SET login_attempts=0 WHERE username LIKE '" . $this->
+            username . "' LIMIT 1;";
+        $result = $engine->dbase->insertQuery($query);
+        return $result;
     }
 
     /**
@@ -161,6 +131,131 @@ WHERE
         }
     }
 
+    public function set_id($id)
+    {
+        $this->id = (int)$id;
+    }
+
+    public function get_id()
+    {
+        return $this->id;
+    }
+
+    private function add_login_attempt()
+    {
+        global $engine;
+        $query = "UPDATE user SET login_attempts=login_attempts+1 WHERE username LIKE '" .
+            $this->get_username() . "'";
+        $result = $engine->dbase->insertQuery($query);
+        return $result;
+    }
+
+    /**
+     * Protect wild login attempts
+     */
+    private function protect_wild_login_attempts()
+    {
+        global $engine;
+        // Get login attempts
+        if ($this->get_login_attempts($this->get_username())) {
+            $query = "UPDATE user SET active=0
+			WHERE username LIKE
+			'" . $this->username . "' LIMIT 1;";
+            $engine->dbase->insertQuery($query);
+            // Disable IP in .htaccess
+            $engine->security->deny_ip();
+            die();
+        }
+    }
+
+    /**
+     *
+     * @param string $username
+     * @return boolean
+     */
+    private function get_login_attempts($username)
+    {
+        global $engine;
+        $this->set_username($username);
+        $query = "SELECT login_attempts FROM user WHERE username LIKE '" . $this->
+            username . "'";
+        $user = $engine->dbase->query($query);
+        if (count($user) > 0) {
+            if ($user[0]['login_attempts'] >= $this->get_allowed_login_attempts()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /*
+     * @param string $name
+     */
+
+    /**
+     * Force login
+     *
+     */
+    public function forceLogin($mail)
+    {
+        global $engine;
+        $this->set_mail($mail);
+        $query = "SELECT COUNT(*) as count, id, username FROM " . $this->table .
+            " WHERE mail LIKE '" . $this->get_mail() . "' AND active=1;";
+        $engine->dbase->query($query);
+        if ($engine->dbase->rows[0]['count'] > 0) {
+            $this->id = $engine->dbase->rows[0]['id'];
+            $this->username = $engine->dbase->rows[0]['username'];
+            $token = $this->createToken();
+            $this->write_loged_in_user($token);
+            $this->write_to_session($this->id, $this->username);
+            $this->clear_login_attempts();
+            return true;
+        } else {
+            // Add new LOGIN attempt
+            $this->add_login_attempt();
+            // Add protect wild login attempts protection
+            $this->protect_wild_login_attempts();
+            return false;
+        }
+    }
+
+    public function write_loged_in_user()
+    {
+        global $engine;
+        $this->remove_loged_user();
+        $query = "INSERT INTO " . $this->table_loged_in .
+            " (username,id_user,time,last_active,ip, session_id) VALUES ('" . $this->
+            username . "','" . $this->id . "',NOW(),NOW(),'" . $_SERVER["REMOTE_ADDR"] .
+            "','" . session_id() . "');";
+        $_SESSION['users']['id'] = $this->id;
+        if ($engine->dbase->insertQuery($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Removes loged in user
+     */
+    public function remove_loged_user()
+    {
+        global $engine;
+        $query = "DELETE FROM " . $this->table_loged_in . " WHERE id_user=" .
+            (int)$this->get_id() . " LIMIT 1;";
+        $engine->dbase->insertQuery($query);
+        unset($_SESSION['users']);
+    }
+
+    public function logout()
+    {
+        $this->remove_loged_user();
+    }
+
     /**
      * Change password
      */
@@ -208,9 +303,6 @@ WHERE
         return $Randpassword;
     }
 
-    /*
-     * @param string $name
-     */
     public function check_user_name_existance($name = '')
     {
         global $engine;
@@ -348,96 +440,6 @@ WHERE
         } else {
             return false;
         }
-    }
-
-    private function add_login_attempt()
-    {
-        global $engine;
-        $query = "UPDATE user SET login_attempts=login_attempts+1 WHERE username LIKE '" .
-            $this->get_username() . "'";
-        $result = $engine->dbase->insertQuery($query);
-        return $result;
-    }
-
-    /**
-     * Clear login attempts
-     */
-    private function clear_login_attempts()
-    {
-        global $engine;
-        $query = "UPDATE user SET login_attempts=0 WHERE username LIKE '" . $this->
-            username . "' LIMIT 1;";
-        $result = $engine->dbase->insertQuery($query);
-        return $result;
-    }
-
-    /**
-     * Protect wild login attempts
-     */
-    private function protect_wild_login_attempts()
-    {
-        global $engine;
-        // Get login attempts
-        if ($this->get_login_attempts($this->get_username())) {
-            $query = "UPDATE user SET active=0
-			WHERE username LIKE
-			'" . $this->username . "' LIMIT 1;";
-            $engine->dbase->insertQuery($query);
-            // Disable IP in .htaccess
-            $engine->security->deny_ip();
-            die();
-        }
-    }
-
-    /**
-     *
-     * @param string $username
-     * @return boolean
-     */
-    private function get_login_attempts($username)
-    {
-        global $engine;
-        $this->set_username($username);
-        $query = "SELECT login_attempts FROM user WHERE username LIKE '" . $this->
-            username . "'";
-        $user = $engine->dbase->query($query);
-        if (count($user) > 0) {
-            if ($user[0]['login_attempts'] >= $this->get_allowed_login_attempts()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    public function write_loged_in_user()
-    {
-        global $engine;
-        $this->remove_loged_user();
-        $query = "INSERT INTO " . $this->table_loged_in .
-            " (username,id_user,time,last_active,ip, session_id) VALUES ('" . $this->
-            username . "','" . $this->id . "',NOW(),NOW(),'" . $_SERVER["REMOTE_ADDR"] .
-            "','" . session_id() . "');";
-        $_SESSION['users']['id'] = $this->id;
-        if ($engine->dbase->insertQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Removes loged in user
-     */
-    public function remove_loged_user()
-    {
-        global $engine;
-        $query = "DELETE FROM " . $this->table_loged_in . " WHERE id_user=" .
-            (int)$this->get_id() . " LIMIT 1;";
-        $engine->dbase->insertQuery($query);
-        unset($_SESSION['users']);
     }
 
     /**

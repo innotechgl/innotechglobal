@@ -8,20 +8,15 @@ require_once $engine->path . "core/user_groups/classes/user_group_items.php";
 class user_groups
 {
 
-    public $types = array('standard', 'moderator', 'administrator');
-
     const GROUP_TYPE_GUEST = 0;
     const GROUP_TYPE_STANDARD = 1;
     const GROUP_TYPE_MODERATOR = 2;
     const GROUP_TYPE_ADMINISTRATOR = 3;
-
+    public $types = array('standard', 'moderator', 'administrator');
+    public $lang = '';
     protected $engine;
-
     protected $table = 'user_groups';
     protected $table_rel_users_groups = 'rel_user_group';
-
-    public $lang = '';
-
     protected $page = 'user_groups';
     protected $user_groups_array = array();
 
@@ -242,6 +237,36 @@ class user_groups
     }
 
     /**
+     * @param int $userID
+     * @return user_group_items
+     */
+    public function get_groups_related_to_user($userID)
+    {
+        $userGroups = new user_group_items;
+        //$query = "CALL getUserGroups(".(int)$userID.");";
+        $query = "CALL getUserGroups(" . (int)$userID . ");";
+        $this->engine->dbase->callProcedure($query);
+        if (count($this->engine->dbase->rows) > 0) {
+            foreach ($this->engine->dbase->rows as $key => $val) {
+                $userGroup = new user_group_item();
+                $userGroup->setID($val["id"]);
+                $userGroup->setName($val["name"]);
+                $userGroup->set_active($val["active"]);
+                $userGroup->set_type($val["type"]);
+                $userGroups->addGroup($userGroup);
+            }
+        } else {
+            $userGroup = new user_group_item();
+            $userGroup->setID(0);
+            $userGroup->setName("Guest");
+            $userGroup->set_active(1);
+            $userGroup->set_type(0);
+            $userGroups->addGroup($userGroup);
+        }
+        return $userGroups;
+    }
+
+    /**
      *
      * @global <type> $engine
      * @param <type> $group_ids
@@ -271,36 +296,6 @@ class user_groups
         $query = "SELECT id_rel_user, id_rel_group FROM " . $this->table_rel_users_groups . " WHERE id_rel_user IN (" . implode(",", $user_ids) . ")";
         $this->engine->dbase->query($query);
         return $this->engine->dbase->rows;
-    }
-
-    /**
-     * @param int $userID
-     * @return user_group_items
-     */
-    public function get_groups_related_to_user($userID)
-    {
-        $userGroups = new user_group_items;
-        //$query = "CALL getUserGroups(".(int)$userID.");";
-        $query = "CALL getUserGroups(" . (int)$userID . ");";
-        $this->engine->dbase->callProcedure($query);
-        if (count($this->engine->dbase->rows) > 0) {
-            foreach ($this->engine->dbase->rows as $key => $val) {
-                $userGroup = new user_group_item();
-                $userGroup->setID($val["id"]);
-                $userGroup->setName($val["name"]);
-                $userGroup->set_active($val["active"]);
-                $userGroup->set_type($val["type"]);
-                $userGroups->addGroup($userGroup);
-            }
-        } else {
-            $userGroup = new user_group_item();
-            $userGroup->setID(0);
-            $userGroup->setName("Guest");
-            $userGroup->set_active(1);
-            $userGroup->set_type(0);
-            $userGroups->addGroup($userGroup);
-        }
-        return $userGroups;
     }
 
     /**

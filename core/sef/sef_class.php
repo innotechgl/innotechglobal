@@ -6,8 +6,8 @@ Class sef
     public $sef_file = '';
     public $sef_params = array();
     public $sef_request = array("page", "task", "id", "id_menu");
-    private $table = 'sef_pages';
     protected $engine;
+    private $table = 'sef_pages';
 
     public function __construct()
     {
@@ -30,75 +30,6 @@ Class sef
                 $this->nonSefRoute();
                 break;
         }
-    }
-
-    public function readAlias()
-    {
-        $aliases = explode("?", $_SERVER['REQUEST_URI']);
-        $aliases = explode("/", $aliases[0]);
-        $aliases = array_reverse($aliases);
-        $toRemove = array();
-        foreach ($aliases as $key => $val) {
-            if ($val == '') {
-                $toRemove[] = $key;
-            }
-        }
-        foreach ($toRemove as $val) {
-            unset($aliases[$val]);
-        }
-        $arr = array_values($aliases);
-        //print_r($arr);
-        if (!isset($arr[0])) {
-            $arr[0] = '';
-        }
-        return $arr[0];
-    }
-
-    /**
-     * @return
-     */
-    public function readMenuAlias()
-    {
-        $menu_item = null;
-        $lang = $this->engine->settings->general->lang;
-        $aliases = explode("?", $_SERVER['REQUEST_URI']);
-        $aliases = explode("/", $aliases[0]);
-        array_reverse($aliases);
-        $toRemove = array();
-        $url = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['SERVER_NAME'] . $_SERVER["REQUEST_URI"];
-        $parts = explode("/", str_replace($this->engine->settings->general->site, "", $url));
-        if ($this->engine->settings->general->multilingual) {
-            $this->engine->set_lang($parts[0]);
-            unset($parts[0]);
-        }
-        $aliases = $parts;
-        foreach ($aliases as $key => $val) {
-            if ($val == '') {
-                $toRemove[] = $key;
-            }
-        }
-        foreach ($toRemove as $val) {
-            unset($aliases[$val]);
-        }
-        $aliases = array_reverse($aliases);
-        $arr = array_values($aliases);
-
-        if (!isset($arr[0])) {
-            $arr[0] = '';
-        } else {
-            foreach ($arr as $key => $val) {
-                $menuEL = $this->engine->menu->findByAlias($val);
-                if ($menuEL !== false) {
-                    $menu_item = $menuEL;
-                    // if not first element there could be something more to route
-                    if ($key > 0) {
-                        $this->sef_params['route_more'] = 1;
-                    }
-                    break;
-                }
-            }
-        }
-        return $menu_item;
     }
 
     private function sefRoute()
@@ -148,6 +79,28 @@ Class sef
     {
         $security = new sCMS_security();
         $this->sef_params = $security->get_all_vars();
+    }
+
+    public function readAlias()
+    {
+        $aliases = explode("?", $_SERVER['REQUEST_URI']);
+        $aliases = explode("/", $aliases[0]);
+        $aliases = array_reverse($aliases);
+        $toRemove = array();
+        foreach ($aliases as $key => $val) {
+            if ($val == '') {
+                $toRemove[] = $key;
+            }
+        }
+        foreach ($toRemove as $val) {
+            unset($aliases[$val]);
+        }
+        $arr = array_values($aliases);
+        //print_r($arr);
+        if (!isset($arr[0])) {
+            $arr[0] = '';
+        }
+        return $arr[0];
     }
 
     public function constructLink($params = array(), $file = 'index.php', $type = '')
@@ -243,6 +196,53 @@ Class sef
         } else {
             $this->engine->sef->readLink($menu_item['link']);
         }
+    }
+
+    /**
+     * @return
+     */
+    public function readMenuAlias()
+    {
+        $menu_item = null;
+        $lang = $this->engine->settings->general->lang;
+        $aliases = explode("?", $_SERVER['REQUEST_URI']);
+        $aliases = explode("/", $aliases[0]);
+        array_reverse($aliases);
+        $toRemove = array();
+        $url = (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['SERVER_NAME'] . $_SERVER["REQUEST_URI"];
+        $parts = explode("/", str_replace($this->engine->settings->general->site, "", $url));
+        if ($this->engine->settings->general->multilingual) {
+            $this->engine->set_lang($parts[0]);
+            unset($parts[0]);
+        }
+        $aliases = $parts;
+        foreach ($aliases as $key => $val) {
+            if ($val == '') {
+                $toRemove[] = $key;
+            }
+        }
+        foreach ($toRemove as $val) {
+            unset($aliases[$val]);
+        }
+        $aliases = array_reverse($aliases);
+        $arr = array_values($aliases);
+
+        if (!isset($arr[0])) {
+            $arr[0] = '';
+        } else {
+            foreach ($arr as $key => $val) {
+                $menuEL = $this->engine->menu->findByAlias($val);
+                if ($menuEL !== false) {
+                    $menu_item = $menuEL;
+                    // if not first element there could be something more to route
+                    if ($key > 0) {
+                        $this->sef_params['route_more'] = 1;
+                    }
+                    break;
+                }
+            }
+        }
+        return $menu_item;
     }
 
     /**

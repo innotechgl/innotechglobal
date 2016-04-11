@@ -23,10 +23,8 @@ class calendar
     public $calendar_no = 1;
 
     public $div = '';
-
-    private $engine;
-
     public $page = 'calendar';
+    private $engine;
 
     public function  __construct()
     {

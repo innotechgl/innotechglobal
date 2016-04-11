@@ -24,26 +24,6 @@ final class places_connector_class extends util_class
         return $engine->dbase->rows;
     }
 
-    /**
-     * @param int $rel_id
-     * @param int $place_id
-     * @param string $rel_page
-     * @return boolean
-     *
-     */
-    public function add_new($rel_id, $place_id, $rel_page)
-    {
-        global $engine;
-        // Prepare VALS
-        $this->rel_id = (int)$rel_id;
-        $this->place_id = (int)$place_id;
-        $this->rel_page = (string)$rel_page;
-        // CREATE QUERY
-        $query = 'INSERT INTO ' . $this->table . '(rel_id, place_id, rel_page) VALUES (' . $this->rel_id . ', ' . $this->place_id . ', "' . $this->rel_page . '");';
-        // INSERT INTO BASE
-        $this->id = $engine->dbase->insertQuery($query);
-    }
-
     public function add($rel_page, $rel_id, $place_ids = array())
     {
         // Delete connected galleries for renew
@@ -77,6 +57,26 @@ final class places_connector_class extends util_class
         } else {
             return false;
         }
+    }
+
+    /**
+     * @param int $rel_id
+     * @param int $place_id
+     * @param string $rel_page
+     * @return boolean
+     *
+     */
+    public function add_new($rel_id, $place_id, $rel_page)
+    {
+        global $engine;
+        // Prepare VALS
+        $this->rel_id = (int)$rel_id;
+        $this->place_id = (int)$place_id;
+        $this->rel_page = (string)$rel_page;
+        // CREATE QUERY
+        $query = 'INSERT INTO ' . $this->table . '(rel_id, place_id, rel_page) VALUES (' . $this->rel_id . ', ' . $this->place_id . ', "' . $this->rel_page . '");';
+        // INSERT INTO BASE
+        $this->id = $engine->dbase->insertQuery($query);
     }
 
     /**

@@ -2,16 +2,15 @@
 
 class friendship_class extends util_class
 {
-    private $user_one = 0;
-    private $user_two = 0;
-    private $table_requests = '';
-
-    // Consts for user connenctions
     const REQUESTED = 'REQUESTED';
     const CONNECTED = 'CONNECTED';
     const WAITING = 'WAITING';
-    const DISCONECTED = 'DISCONECTED';
 
+    // Consts for user connenctions
+    const DISCONECTED = 'DISCONECTED';
+    private $user_one = 0;
+    private $user_two = 0;
+    private $table_requests = '';
     private $status_types = array('requested', '');
 
     public function __construct()
@@ -53,48 +52,20 @@ class friendship_class extends util_class
     }
 
     /**
-     * Check if users are connected
-     * @param int $id_one
-     * @param int $id_two
-     *
+     * Removes requests
+     * @param int $user_id
      */
-    public function are_conected($id_one, $id_two)
+    public function remove_request($user_id)
     {
         global $engine;
-        $this->user_one = (int)$engine->security->get_val($id_one);
-        $this->user_two = (int)$engine->security->get_val($id_two);
-        $connection = $this->get_array(false, 'COUNT(*) as counted', 'WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ')');
-        return $connection[0]['counted'];
-    }
-
-    /**
-     * Check if users are waiting friendship
-     * @param int $id_one
-     * @param int $id_two
-     *
-     */
-    public function waiting_friendship($id_one, $id_two)
-    {
-        global $engine;
-        $this->user_one = (int)$engine->security->get_val($id_one);
-        $this->user_two = (int)$engine->security->get_val($id_two);
-        $connection = $this->get_array(false, 'COUNT(*) as counted', 'WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ') AND creator=' . $engine->users->get_id(), 'id', 'ASC', $this->table_requests);
-        return $connection[0]['counted'];
-    }
-
-    /**
-     * Check if users are waiting friendship
-     * @param int $id_one
-     * @param int $id_two
-     *
-     */
-    public function requested_friendship($id_one, $id_two)
-    {
-        global $engine;
-        $this->user_one = (int)$engine->security->get_val($id_one);
-        $this->user_two = (int)$engine->security->get_val($id_two);
-        $connection = $this->get_array(false, 'COUNT(*) as counted', 'WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ') AND creator!=' . $engine->users->get_id(), 'id', 'ASC', $this->table_requests);
-        return $connection[0]['counted'];
+        $this->user_one = (int)$engine->users->get_id();
+        $this->user_two = (int)$engine->security->get_val($user_id);
+        $query = 'DELETE FROM ' . $this->table_requests . ' WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ') LIMIT 1;';
+        if ($engine->dbase->insertQuery($query)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -148,23 +119,6 @@ class friendship_class extends util_class
     }
 
     /**
-     * Removes requests
-     * @param int $user_id
-     */
-    public function remove_request($user_id)
-    {
-        global $engine;
-        $this->user_one = (int)$engine->users->get_id();
-        $this->user_two = (int)$engine->security->get_val($user_id);
-        $query = 'DELETE FROM ' . $this->table_requests . ' WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ') LIMIT 1;';
-        if ($engine->dbase->insertQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * Gets status of two users
      * @param int $user_id
      *
@@ -181,6 +135,51 @@ class friendship_class extends util_class
         } else if ($user_id !== $engine->users->get_id()) {
             return self::CONNECTED;
         }
+    }
+
+    /**
+     * Check if users are waiting friendship
+     * @param int $id_one
+     * @param int $id_two
+     *
+     */
+    public function waiting_friendship($id_one, $id_two)
+    {
+        global $engine;
+        $this->user_one = (int)$engine->security->get_val($id_one);
+        $this->user_two = (int)$engine->security->get_val($id_two);
+        $connection = $this->get_array(false, 'COUNT(*) as counted', 'WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ') AND creator=' . $engine->users->get_id(), 'id', 'ASC', $this->table_requests);
+        return $connection[0]['counted'];
+    }
+
+    /**
+     * Check if users are waiting friendship
+     * @param int $id_one
+     * @param int $id_two
+     *
+     */
+    public function requested_friendship($id_one, $id_two)
+    {
+        global $engine;
+        $this->user_one = (int)$engine->security->get_val($id_one);
+        $this->user_two = (int)$engine->security->get_val($id_two);
+        $connection = $this->get_array(false, 'COUNT(*) as counted', 'WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ') AND creator!=' . $engine->users->get_id(), 'id', 'ASC', $this->table_requests);
+        return $connection[0]['counted'];
+    }
+
+    /**
+     * Check if users are connected
+     * @param int $id_one
+     * @param int $id_two
+     *
+     */
+    public function are_conected($id_one, $id_two)
+    {
+        global $engine;
+        $this->user_one = (int)$engine->security->get_val($id_one);
+        $this->user_two = (int)$engine->security->get_val($id_two);
+        $connection = $this->get_array(false, 'COUNT(*) as counted', 'WHERE (user_one=' . $this->user_one . ' AND user_two=' . $this->user_two . ') OR (user_one=' . $this->user_two . ' AND user_two=' . $this->user_one . ')');
+        return $connection[0]['counted'];
     }
 }
 

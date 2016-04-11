@@ -61,32 +61,6 @@ class modelListArticles extends articles_class
     }
 
     /**
-     * @param string $title
-     * @param string $description
-     * @param string $keywords
-     */
-    protected function setOg($title = '', $description='', $keywords = '', $image=''){
-        $this->engine->parser->setOgSiteName($this->engine->settings->general->site);
-        $this->engine->parser->setOgDescription(htmlspecialchars($description));
-        $this->engine->parser->setOgTitle($title);
-        $this->engine->parser->setOgUrl($this->engine->settings->general->site . $_SERVER['REQUEST_URI']);
-        $this->engine->parser->setOgType('article');
-
-        if (trim($image) !== "") {
-            if (strpos($this->engine->settings->general->site,$image)){
-                $this->engine->parser->setOgImage($image);
-            }
-            else {
-                $this->engine->parser->setOgImage($this->engine->settings->general->site.$image);
-            }
-
-        } else {
-            $this->engine->parser->setOgImage($this->engine->settings->general->site
-                ."templates/".$this->engine->settings->general->template."/images/logo.png");
-        }
-    }
-
-    /**
      * @param Int $id
      * @return category_item
      */
@@ -158,5 +132,31 @@ class modelListArticles extends articles_class
 
         return $photos;
 
+    }
+
+    /**
+     * @param string $title
+     * @param string $description
+     * @param string $keywords
+     */
+    protected function setOg($title = '', $description='', $keywords = '', $image=''){
+        $this->engine->parser->setOgSiteName($this->engine->settings->general->site);
+        $this->engine->parser->setOgDescription(htmlspecialchars($description));
+        $this->engine->parser->setOgTitle($title);
+        $this->engine->parser->setOgUrl($this->engine->settings->general->site . $_SERVER['REQUEST_URI']);
+        $this->engine->parser->setOgType('article');
+
+        if (trim($image) !== "") {
+            if (strpos($this->engine->settings->general->site,$image)){
+                $this->engine->parser->setOgImage($image);
+            }
+            else {
+                $this->engine->parser->setOgImage($this->engine->settings->general->site.$image);
+            }
+
+        } else {
+            $this->engine->parser->setOgImage($this->engine->settings->general->site
+                ."templates/".$this->engine->settings->general->template."/images/logo.png");
+        }
     }
 }

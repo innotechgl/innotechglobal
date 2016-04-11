@@ -98,6 +98,16 @@ class rss
         $this->doc->appendChild($image);
     }
 
+    public function add_item()
+    {
+        // Create item
+        $this->item = $this->doc->createElement("item");
+        // Fill item
+        $this->fill_item();
+        // Append item
+        $this->channel->appendChild($this->item);
+    }
+
     public function fill_item()
     {
         $el_title = $this->doc->createElement('title', $this->element_title);
@@ -111,16 +121,6 @@ class rss
         $this->item->appendChild($el_link);
         $this->item->appendChild($el_description);
         $this->item->appendChild($el_pubDate);
-    }
-
-    public function add_item()
-    {
-        // Create item
-        $this->item = $this->doc->createElement("item");
-        // Fill item
-        $this->fill_item();
-        // Append item
-        $this->channel->appendChild($this->item);
     }
 
     public function generate()

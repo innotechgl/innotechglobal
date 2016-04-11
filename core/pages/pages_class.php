@@ -35,6 +35,22 @@ class pages
     }
 
     /**
+     * Load multiple pages
+     * @version 1.0
+     * @example page_class::load_pages("articles","gallery",...);
+     */
+    public function load_pages()
+    {
+        // Get args
+        $arg_list = func_get_args();
+        // Go through pages
+        foreach ($arg_list as $key => $val) {
+            // Load page
+            $this->load_page($val);
+        }
+    }
+
+    /**
      * @param string $name
      */
     public function load_page($name)
@@ -71,22 +87,6 @@ class pages
             }
         } else {
             //echo 'Klasa vec postoji';
-        }
-    }
-
-    /**
-     * Load multiple pages
-     * @version 1.0
-     * @example page_class::load_pages("articles","gallery",...);
-     */
-    public function load_pages()
-    {
-        // Get args
-        $arg_list = func_get_args();
-        // Go through pages
-        foreach ($arg_list as $key => $val) {
-            // Load page
-            $this->load_page($val);
         }
     }
 

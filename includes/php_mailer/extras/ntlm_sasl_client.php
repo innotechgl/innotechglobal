@@ -35,11 +35,46 @@ class ntlm_sasl_client_class
         return (1);
     }
 
-    Function ASCIIToUnicode($ascii)
+    Function Start(&$client, &$message, &$interactions)
     {
-        for ($unicode = "", $a = 0; $a < strlen($ascii); $a++)
-            $unicode .= substr($ascii, $a, 1) . chr(0);
-        return ($unicode);
+        if ($this->state != SASL_NTLM_STATE_START) {
+            $client->error = "NTLM authentication state is not at the start";
+            return (SASL_FAIL);
+        }
+        $this->credentials = array(
+            "user" => "",
+            "password" => "",
+            "realm" => "",
+            "workstation" => ""
+        );
+        $defaults = array();
+        $status = $client->GetCredentials($this->credentials, $defaults, $interactions);
+        if ($status == SASL_CONTINUE)
+            $this->state = SASL_NTLM_STATE_IDENTIFY_DOMAIN;
+        Unset($message);
+        return ($status);
+    }
+
+    Function Step(&$client, $response, &$message, &$interactions)
+    {
+        switch ($this->state) {
+            case SASL_NTLM_STATE_IDENTIFY_DOMAIN:
+                $message = $this->TypeMsg1($this->credentials["realm"], $this->credentials["workstation"]);
+                $this->state = SASL_NTLM_STATE_RESPOND_CHALLENGE;
+                break;
+            case SASL_NTLM_STATE_RESPOND_CHALLENGE:
+                $ntlm_response = $this->NTLMResponse(substr($response, 24, 8), $this->credentials["password"]);
+                $message = $this->TypeMsg3($ntlm_response, $this->credentials["user"], $this->credentials["realm"], $this->credentials["workstation"]);
+                $this->state = SASL_NTLM_STATE_DONE;
+                break;
+            case SASL_NTLM_STATE_DONE:
+                $client->error = "NTLM authentication was finished without success";
+                return (SASL_FAIL);
+            default:
+                $client->error = "invalid NTLM authentication step state";
+                return (SASL_FAIL);
+        }
+        return (SASL_CONTINUE);
     }
 
     Function TypeMsg1($domain, $workstation)
@@ -82,6 +117,13 @@ class ntlm_sasl_client_class
             $response .= $ciphertext;
         }
         return $response;
+    }
+
+    Function ASCIIToUnicode($ascii)
+    {
+        for ($unicode = "", $a = 0; $a < strlen($ascii); $a++)
+            $unicode .= substr($ascii, $a, 1) . chr(0);
+        return ($unicode);
     }
 
     Function TypeMsg3($ntlm_response, $user, $domain, $workstation)
@@ -132,48 +174,6 @@ class ntlm_sasl_client_class
             $lm .
             $ntlm
         );
-    }
-
-    Function Start(&$client, &$message, &$interactions)
-    {
-        if ($this->state != SASL_NTLM_STATE_START) {
-            $client->error = "NTLM authentication state is not at the start";
-            return (SASL_FAIL);
-        }
-        $this->credentials = array(
-            "user" => "",
-            "password" => "",
-            "realm" => "",
-            "workstation" => ""
-        );
-        $defaults = array();
-        $status = $client->GetCredentials($this->credentials, $defaults, $interactions);
-        if ($status == SASL_CONTINUE)
-            $this->state = SASL_NTLM_STATE_IDENTIFY_DOMAIN;
-        Unset($message);
-        return ($status);
-    }
-
-    Function Step(&$client, $response, &$message, &$interactions)
-    {
-        switch ($this->state) {
-            case SASL_NTLM_STATE_IDENTIFY_DOMAIN:
-                $message = $this->TypeMsg1($this->credentials["realm"], $this->credentials["workstation"]);
-                $this->state = SASL_NTLM_STATE_RESPOND_CHALLENGE;
-                break;
-            case SASL_NTLM_STATE_RESPOND_CHALLENGE:
-                $ntlm_response = $this->NTLMResponse(substr($response, 24, 8), $this->credentials["password"]);
-                $message = $this->TypeMsg3($ntlm_response, $this->credentials["user"], $this->credentials["realm"], $this->credentials["workstation"]);
-                $this->state = SASL_NTLM_STATE_DONE;
-                break;
-            case SASL_NTLM_STATE_DONE:
-                $client->error = "NTLM authentication was finished without success";
-                return (SASL_FAIL);
-            default:
-                $client->error = "invalid NTLM authentication step state";
-                return (SASL_FAIL);
-        }
-        return (SASL_CONTINUE);
     }
 }
 

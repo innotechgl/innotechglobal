@@ -62,6 +62,16 @@ class modelArticlePhotosCategory extends article_photo_categories_class{
     }
 
     /**
+     * @param Int $id
+     * @return array
+     */
+    protected function findChildrenCategories($id){
+        $this->categories = $this->get_array(false,"*");
+        $ch = $this->get_all_children($this->categories,$id);
+        return $ch;
+    }
+
+    /**
      * @param array $categories
      * @return array
      */
@@ -96,15 +106,5 @@ class modelArticlePhotosCategory extends article_photo_categories_class{
         }
 
         return $filesToRemove;
-    }
-
-    /**
-     * @param Int $id
-     * @return array
-     */
-    protected function findChildrenCategories($id){
-        $this->categories = $this->get_array(false,"*");
-        $ch = $this->get_all_children($this->categories,$id);
-        return $ch;
     }
 }

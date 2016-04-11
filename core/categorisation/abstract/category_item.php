@@ -64,34 +64,27 @@ class category_item
     protected $meta;
 
     // Id
-    public function set_id($id)
-    {
-        $this->id = (int)$id;
-    }
 
     public function get_id()
     {
         return $this->id;
     }
 
-    // Parent id
-    public function set_parent_id($parent_id)
+    public function set_id($id)
     {
-        $this->parent_id = (int)$parent_id;
+        $this->id = (int)$id;
     }
+
+    // Parent id
 
     public function get_parent_id()
     {
         return $this->parent_id;
     }
 
-    /**
-     *
-     * @param string $name
-     */
-    public function set_name($name)
+    public function set_parent_id($parent_id)
     {
-        $this->name = $name;
+        $this->parent_id = (int)$parent_id;
     }
 
     /**
@@ -105,11 +98,11 @@ class category_item
 
     /**
      *
-     * @param string $description
+     * @param string $name
      */
-    public function set_description($description)
+    public function set_name($name)
     {
-        $this->description = $description;
+        $this->name = $name;
     }
 
     /**
@@ -121,40 +114,41 @@ class category_item
         return $this->description;
     }
 
-    // Name
-    public function set_alias($alias)
+    /**
+     *
+     * @param string $description
+     */
+    public function set_description($description)
     {
-        $this->alias = $alias;
+        $this->description = $description;
     }
+
+    // Name
 
     public function get_alias()
     {
         return $this->alias;
     }
 
-    // Active
-    public function set_active($active)
+    public function set_alias($alias)
     {
-        $this->active = (int)$active;
+        $this->alias = $alias;
     }
+
+    // Active
 
     public function get_active()
     {
         return $this->active;
     }
 
-    public function set_lang($lang){
-        $this->language = $lang;
+    public function set_active($active)
+    {
+        $this->active = (int)$active;
     }
 
     public function get_lang(){
         return $this->language;
-    }
-
-    // Active
-    public function set_no($no)
-    {
-        $this->no = (int)$no;
     }
 
     public function get_no()
@@ -162,11 +156,11 @@ class category_item
         return $this->no;
     }
 
-    // Created
-    public function set_created($created)
+    // Active
+
+    public function set_no($no)
     {
-        global $engine;
-        $this->created = $engine->security->get_val($created, 'date');
+        $this->no = (int)$no;
     }
 
     public function get_created($format = 'Y-m-d h:m:s')
@@ -174,10 +168,12 @@ class category_item
         return date($format, strtotime($this->created));
     }
 
-    // Modified
-    public function set_creator($creator)
+    // Created
+
+    public function set_created($created)
     {
-        $this->creator = (int)$creator;
+        global $engine;
+        $this->created = $engine->security->get_val($created, 'date');
     }
 
     public function get_creator()
@@ -186,10 +182,10 @@ class category_item
     }
 
     // Modified
-    public function set_modified($modified)
+
+    public function set_creator($creator)
     {
-        global $engine;
-        $this->modified = $engine->security->get_val($modified, 'date');
+        $this->creator = (int)$creator;
     }
 
     public function get_modified($format = 'Y-m-d h:m:s')
@@ -198,9 +194,11 @@ class category_item
     }
 
     // Modified
-    public function set_modifier($modifier)
+
+    public function set_modified($modified)
     {
-        $this->modifier = (int)$modifier;
+        global $engine;
+        $this->modified = $engine->security->get_val($modified, 'date');
     }
 
     /**
@@ -212,6 +210,18 @@ class category_item
         return $this->modifier;
     }
 
+    // Modified
+
+    public function set_modifier($modifier)
+    {
+        $this->modifier = (int)$modifier;
+    }
+
+    public function get_options()
+    {
+        return $this->options;
+    }
+
     /**
      *
      * @param array $options
@@ -221,19 +231,14 @@ class category_item
         $this->options = $options;
     }
 
-    public function get_options()
+    public function get_meta()
     {
-        return $this->options;
+        return $this->meta;
     }
 
     public function set_meta($meta)
     {
         $this->meta = $meta;
-    }
-
-    public function get_meta()
-    {
-        return $this->meta;
     }
 
     public function get_option_by_key($key){
@@ -245,7 +250,6 @@ class category_item
         }
 
     }
-
 
     /**
      *
@@ -294,6 +298,15 @@ class category_item
         }
     }
 
+    public function set_lang($lang){
+        $this->language = $lang;
+    }
+
+    public function __toJSON(){
+        $json = json_encode($this->__toArray());
+        return $json;
+    }
+
     public function __toArray(){
         $data['id'] = $this->id;
         $data['active'] = $this->active;
@@ -310,11 +323,6 @@ class category_item
         $data["modifier"] = $this->modifier;
 
         return $data;
-    }
-
-    public function __toJSON(){
-        $json = json_encode($this->__toArray());
-        return $json;
     }
 }
 

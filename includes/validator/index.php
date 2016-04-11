@@ -3,6 +3,7 @@
 class validator
 {
     # Predefined validations
+    public $error_log = array();
     private $validation_types = array(
         "date_sr" => "validate_date",
         "number" => "validate_number",
@@ -12,11 +13,69 @@ class validator
         "maxlength" => "max_length",
         "textonly" => "validate_text_only"
     );
-    public $error_log = array();
     private $checking_field = '';
 
     public function  __construct()
     {
+    }
+
+    public function validate_all($requested_validations = array(), $vars = array())
+    {
+        # Go through requested 
+        foreach ($requested_validations as $key => $val) {
+            # Set checking field
+            $this->checking_field = $key;
+            #echo "Cekiram polje > ".$this->checking_field."<br />";
+            # check if its array
+            if (is_array($val)) {
+                # Go through child array
+                foreach ($val as $key_c => $val_c) {
+                    # if it has more values
+                    if (!is_int($key_c)) {
+                        $func = $this->validation_types[$key_c];
+                        # call function (this must be function with 2 values!)
+                        $this->$func($vars[$key], $val_c);
+                    } else {
+                        # Set function name
+                        $func = $this->validation_types[$val_c];
+                        # call function (this must be function with 2 values!)
+                        #echo 'trazim varijablu: '.$vars[$key]."<br />";
+                        $this->$func($vars[$key]);
+                    }
+                }
+            } # if it's not array
+            else {
+                # Set function name
+                $func = $this->validation_types[$val];
+                # call function (this must be function with 2 values!)
+                #echo 'trazim varijablu: '.$vars[$key]."<br />";
+                $this->$func($vars[$key]);
+            }
+        }
+        # Check number of errors
+        if (count($this->error_log) > 0) {
+            # DEBUG
+            #print_r($this->error_log);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     *
+     * @param string $var_one
+     * @param string $var_two
+     * @return bool
+     */
+    public function compare_vars($var_one, $var_two)
+    {
+        # Check variables
+        if (md5($var_one) == md5($var_two)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -97,65 +156,6 @@ class validator
     {
         if (!preg_match($regex, $val)) {
             $this->error_log[$this->checking_field] = 'greskaaaaa';
-        }
-    }
-
-    public function validate_all($requested_validations = array(), $vars = array())
-    {
-        # Go through requested 
-        foreach ($requested_validations as $key => $val) {
-            # Set checking field
-            $this->checking_field = $key;
-            #echo "Cekiram polje > ".$this->checking_field."<br />";
-            # check if its array
-            if (is_array($val)) {
-                # Go through child array
-                foreach ($val as $key_c => $val_c) {
-                    # if it has more values
-                    if (!is_int($key_c)) {
-                        $func = $this->validation_types[$key_c];
-                        # call function (this must be function with 2 values!)
-                        $this->$func($vars[$key], $val_c);
-                    } else {
-                        # Set function name
-                        $func = $this->validation_types[$val_c];
-                        # call function (this must be function with 2 values!)
-                        #echo 'trazim varijablu: '.$vars[$key]."<br />";
-                        $this->$func($vars[$key]);
-                    }
-                }
-            } # if it's not array
-            else {
-                # Set function name
-                $func = $this->validation_types[$val];
-                # call function (this must be function with 2 values!)
-                #echo 'trazim varijablu: '.$vars[$key]."<br />";
-                $this->$func($vars[$key]);
-            }
-        }
-        # Check number of errors
-        if (count($this->error_log) > 0) {
-            # DEBUG
-            #print_r($this->error_log);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     *
-     * @param string $var_one
-     * @param string $var_two
-     * @return bool
-     */
-    public function compare_vars($var_one, $var_two)
-    {
-        # Check variables
-        if (md5($var_one) == md5($var_two)) {
-            return true;
-        } else {
-            return false;
         }
     }
 }

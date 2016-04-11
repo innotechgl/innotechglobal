@@ -10,21 +10,6 @@ class modelArticlePhotos extends article_photos_class {
     }
 
     /**
-     * @param photoItem_class $photoItem
-     * @return bool
-     */
-    protected function _add(photoItem_class $photoItem){
-        $query = "INSERT INTO ".$this->table." (`name`,`categorie_id`,`created`,`creator`)
-        VALUES ('".$photoItem->getName()."','".$photoItem->getCategorieId().
-            "',NOW(),'".$this->engine->users->active_user->get_id()."')";
-
-        $res = $this->engine->dbase->insertQuery($query);
-        $this->engine->updater->writeUpdateStatusInFile(updater_class::UPDATED, $this->page);
-
-        return $res;
-    }
-
-    /**
      * @param Int $id
      */
     public function _delete($id){
@@ -92,6 +77,17 @@ class modelArticlePhotos extends article_photos_class {
         return $res;
     }
 
+    protected function createTempDir(){
+
+        // Set temp dir
+        $this->tmpDir = _ROOT_.$this->tmpDir."/".rand(0,1250).time().rand(0,1250);
+
+        if (!is_dir($this->tmpDir)) {
+            mkdir($this->tmpDir, 0755, true);
+        }
+
+    }
+
     /**
      * @param Array $photo
      * @param Int $categoryID
@@ -134,15 +130,19 @@ class modelArticlePhotos extends article_photos_class {
         return $photoResult;
     }
 
-    protected function createTempDir(){
+    /**
+     * @param photoItem_class $photoItem
+     * @return bool
+     */
+    protected function _add(photoItem_class $photoItem){
+        $query = "INSERT INTO ".$this->table." (`name`,`categorie_id`,`created`,`creator`)
+        VALUES ('".$photoItem->getName()."','".$photoItem->getCategorieId().
+            "',NOW(),'".$this->engine->users->active_user->get_id()."')";
 
-        // Set temp dir
-        $this->tmpDir = _ROOT_.$this->tmpDir."/".rand(0,1250).time().rand(0,1250);
+        $res = $this->engine->dbase->insertQuery($query);
+        $this->engine->updater->writeUpdateStatusInFile(updater_class::UPDATED, $this->page);
 
-        if (!is_dir($this->tmpDir)) {
-            mkdir($this->tmpDir, 0755, true);
-        }
-
+        return $res;
     }
 
     protected function deleteTempDir(){

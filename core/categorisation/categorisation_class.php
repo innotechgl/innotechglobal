@@ -16,23 +16,23 @@ class categorisation extends page_class
     public $modifier = 0;
     public $image = '';
     public $description = '';
-    protected $currentPath = array();
     public $lang;
     public $alias;
-    // Photo
     public $photo_core;
+    // Photo
     public $dir = '';
     public $sizes = array(46, 200, 470, 4000);
     public $prefixes = array("icon_", "thumb_", "main_", "");
-    // list of all categories
     public $categories = array();
+    // list of all categories
     public $founded_categories = array();
     public $children = array();
     public $parents = array();
-    // Individual settings array
     public $settings = array();
-    // Setup check for duplicates
+    // Individual settings array
     public $check_for_duplicates = false;
+    // Setup check for duplicates
+    protected $currentPath = array();
 
     /**
      *
@@ -42,28 +42,6 @@ class categorisation extends page_class
         parent::__construct();
     }
 
-    /**
-     * @param bool $addopt
-     * @param string $what_to_get
-     * @param string $filter_params
-     * @param string $order_by
-     * @param string $order_direction
-     * @param string $table
-     * @return array
-     */
-    public function get_array($addopt = true, $what_to_get = '*', $filter_params = '', $order_by = 'id', $order_direction = 'ASC', $table = '')
-    {
-        global $engine;
-        $query = "SELECT " . $what_to_get . " 
-                  FROM " . $this->table . " " . $filter_params . "
-                  ORDER BY " . $order_by . " " . $order_direction;
-        $engine->dbase->query($query, $addopt, true);
-        return $engine->dbase->rows;
-    }
-
-    /*
-     * INSERT NEW
-     */
     public function add()
     {
         global $engine;
@@ -119,27 +97,10 @@ class categorisation extends page_class
         }
     }
 
-    /**
-     *
-     * @param string $name
-     */
-    private function check_duplicated($name = '')
-    {
-        global $engine;
-        if ($this->check_for_duplicates === false) {
-            return false;
-        }
-        $array = $this->get_array(false, 'id', 'WHERE parent_id=' . (int)$engine->sef->sef_params['id'] . ' AND name LIKE "' . $name . '"');
-        if (count($array) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /*
-     * UPDATE 
+     * INSERT NEW
      */
+
     public function update()
     {
         global $engine;
@@ -191,9 +152,6 @@ class categorisation extends page_class
         }
     }
 
-    /*
-     * DELETE 
-     */
     public function delete($id = NULL)
     {
 
@@ -221,6 +179,40 @@ class categorisation extends page_class
         }
     }
 
+    /*
+     * UPDATE 
+     */
+
+    /**
+     * @param bool $addopt
+     * @param string $what_to_get
+     * @param string $filter_params
+     * @param string $order_by
+     * @param string $order_direction
+     * @param string $table
+     * @return array
+     */
+    public function get_array($addopt = true, $what_to_get = '*', $filter_params = '', $order_by = 'id', $order_direction = 'ASC', $table = '')
+    {
+        global $engine;
+        $query = "SELECT " . $what_to_get . " 
+                  FROM " . $this->table . " " . $filter_params . "
+                  ORDER BY " . $order_by . " " . $order_direction;
+        $engine->dbase->query($query, $addopt, true);
+        return $engine->dbase->rows;
+    }
+
+    /*
+     * DELETE 
+     */
+
+    public function get_all_children($categories, $id_parent)
+    {
+        $this->children = array();
+        $this->get_children($categories, $id_parent);
+        return $this->children;
+    }
+
     /**
      *
      * @param int $id_parent
@@ -233,13 +225,6 @@ class categorisation extends page_class
                 $this->get_children($collection, $val['id']);
             }
         }
-    }
-
-    public function get_all_children($categories, $id_parent)
-    {
-        $this->children = array();
-        $this->get_children($categories, $id_parent);
-        return $this->children;
     }
 
     public function count_subcategories()
@@ -257,6 +242,31 @@ class categorisation extends page_class
             $subcats[$val['parent_id']]++;
         }
         return $subcats;
+    }
+
+    public function get_path_by_alias($alias)
+    {
+        // Check ID
+        if ($alias == '') {
+            $this->founded_categories[0]['id'] = 0;
+            $this->founded_categories[0]['name'] = "root";
+            $this->founded_categories[0]['parent_id'] = -1;
+            $this->founded_categories[0]['alias'] = '';
+            $this->founded_categories = array_reverse($this->founded_categories);
+            return null;
+        }
+        foreach ($this->categories as $key => $val) {
+            if ($val['alias'] == $alias) {
+                // Add to array
+                $this->founded_categories[$val['id']]['id'] = $val['id'];
+                $this->founded_categories[$val['id']]['name'] = $val['name'];
+                $this->founded_categories[$val['id']]['parent_id'] = $val['parent_id'];
+                $this->founded_categories[$val['id']]['alias'] = $val['alias'];
+                $this->founded_categories[$val['id']]['link'] = $val['link'];
+                break;
+            }
+        }
+        @$this->get_path($val['parent_id']);
     }
 
     public function get_path($id)
@@ -287,31 +297,6 @@ class categorisation extends page_class
             }
         }
         $this->get_path($val['parent_id']);
-    }
-
-    public function get_path_by_alias($alias)
-    {
-        // Check ID
-        if ($alias == '') {
-            $this->founded_categories[0]['id'] = 0;
-            $this->founded_categories[0]['name'] = "root";
-            $this->founded_categories[0]['parent_id'] = -1;
-            $this->founded_categories[0]['alias'] = '';
-            $this->founded_categories = array_reverse($this->founded_categories);
-            return null;
-        }
-        foreach ($this->categories as $key => $val) {
-            if ($val['alias'] == $alias) {
-                // Add to array
-                $this->founded_categories[$val['id']]['id'] = $val['id'];
-                $this->founded_categories[$val['id']]['name'] = $val['name'];
-                $this->founded_categories[$val['id']]['parent_id'] = $val['parent_id'];
-                $this->founded_categories[$val['id']]['alias'] = $val['alias'];
-                $this->founded_categories[$val['id']]['link'] = $val['link'];
-                break;
-            }
-        }
-        @$this->get_path($val['parent_id']);
     }
 
     public function get_founded_categories()
@@ -407,16 +392,6 @@ class categorisation extends page_class
         $this->subcat_generator($arr, $subcats, $parent_id);
     }
 
-    public function load($id)
-    {
-        $item = $this->get_array(false, '*', 'WHERE id=' . (int)$id);
-        if (count($item) > 0) {
-            return $item[0];
-        } else {
-            return false;
-        }
-    }
-
     /**
      * Sredjujemo podkategorije
      * @param array $niz
@@ -471,6 +446,16 @@ class categorisation extends page_class
                     // echo 'nije: '.$parent_id."<br />";
                 }
             }
+        }
+    }
+
+    public function load($id)
+    {
+        $item = $this->get_array(false, '*', 'WHERE id=' . (int)$id);
+        if (count($item) > 0) {
+            return $item[0];
+        } else {
+            return false;
         }
     }
 
@@ -689,20 +674,20 @@ class categorisation extends page_class
 
     /**
      *
-     * @param array $array
-     */
-    public function setCurrentPath($array)
-    {
-        $this->currentPath = $array;
-    }
-
-    /**
-     *
      * @return multitype:array
      */
     public function getCurrentPath()
     {
         return $this->currentPath;
+    }
+
+    /**
+     *
+     * @param array $array
+     */
+    public function setCurrentPath($array)
+    {
+        $this->currentPath = $array;
     }
 
     /**
@@ -720,6 +705,24 @@ class categorisation extends page_class
             }
         }
         return $found;
+    }
+
+    /**
+     *
+     * @param string $name
+     */
+    private function check_duplicated($name = '')
+    {
+        global $engine;
+        if ($this->check_for_duplicates === false) {
+            return false;
+        }
+        $array = $this->get_array(false, 'id', 'WHERE parent_id=' . (int)$engine->sef->sef_params['id'] . ' AND name LIKE "' . $name . '"');
+        if (count($array) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

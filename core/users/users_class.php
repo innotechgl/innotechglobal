@@ -27,6 +27,21 @@ class users_class extends page_class
     }
 
     /**
+     * @param string $email
+     * @return bool
+     */
+    protected function checkEmailExistence($email){
+        $query = "SELECT id FROM ".$this->table." WHERE email='".$email."' LIMIT 0,1;";
+        $this->engine->dbase->query($query);
+        if (count($this->engine->dbase->rows)>0){
+            return $this->engine->dbase->rows[0]['id'];
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
      * @param user $user
      * @return array
      */
@@ -45,27 +60,47 @@ class users_class extends page_class
     }
 
     /**
+     * @param int $size
+     * @param int $power
+     * @return string
+     */
+    protected function generatePassword($size = 9, $power = 0)
+    {
+        $vowels = 'aeuy';
+        $randconstant = 'bdghjmnpqrstvz';
+        if ($power & 1) {
+            $randconstant .= 'BDGHJLMNPQRSTVWXZ';
+        }
+        if ($power & 2) {
+            $vowels .= "AEUY";
+        }
+        if ($power & 4) {
+            $randconstant .= '23456789';
+        }
+        if ($power & 8) {
+            $randconstant .= '@#$%';
+        }
+        $Randpassword = '';
+        $alt = time() % 2;
+        for ($i = 0; $i < $size; $i++) {
+            if ($alt == 1) {
+                $Randpassword .= $randconstant[(rand() % strlen($randconstant))];
+                $alt = 0;
+            } else {
+                $Randpassword .= $vowels[(rand() % strlen($vowels))];
+                $alt = 1;
+            }
+        }
+        return $Randpassword;
+    }
+
+    /**
      * @param $password
      * @param $salt
      * @return string
      */
     public function hashPassword($password,$salt){
         return sha1($password . $salt);
-    }
-
-    /**
-     * @param string $email
-     * @return bool
-     */
-    protected function checkEmailExistence($email){
-        $query = "SELECT id FROM ".$this->table." WHERE email='".$email."' LIMIT 0,1;";
-        $this->engine->dbase->query($query);
-        if (count($this->engine->dbase->rows)>0){
-            return $this->engine->dbase->rows[0]['id'];
-        }
-        else {
-            return false;
-        }
     }
 
     /**
@@ -81,21 +116,6 @@ class users_class extends page_class
 
         $res = $this->engine->dbase->insertQuery($query);
         return $res;
-    }
-
-    /**
-     * @param string $username
-     * @return bool
-     */
-    protected function checkUsernameExistence($username){
-        $query = "SELECT id FROM ".$this->table." WHERE username='".$username."' LIMIT 0,1;";
-        $this->engine->dbase->query($query);
-        if (count($this->engine->dbase->rows)>0){
-            return $this->engine->dbase->rows[0]['id'];
-        }
-        else {
-            return false;
-        }
     }
 
     /**
@@ -116,6 +136,21 @@ class users_class extends page_class
 
     public function logout(){
 
+    }
+
+    /**
+     * @param string $username
+     * @return bool
+     */
+    protected function checkUsernameExistence($username){
+        $query = "SELECT id FROM ".$this->table." WHERE username='".$username."' LIMIT 0,1;";
+        $this->engine->dbase->query($query);
+        if (count($this->engine->dbase->rows)>0){
+            return $this->engine->dbase->rows[0]['id'];
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -164,41 +199,6 @@ class users_class extends page_class
         $query = "DELETE FROM ".$this->tableLogedIn." WHERE id_user=".(int)$userID;
         $res = $this->engine->dbase->insertQuery($query);
         return $res;
-    }
-
-    /**
-     * @param int $size
-     * @param int $power
-     * @return string
-     */
-    protected function generatePassword($size = 9, $power = 0)
-    {
-        $vowels = 'aeuy';
-        $randconstant = 'bdghjmnpqrstvz';
-        if ($power & 1) {
-            $randconstant .= 'BDGHJLMNPQRSTVWXZ';
-        }
-        if ($power & 2) {
-            $vowels .= "AEUY";
-        }
-        if ($power & 4) {
-            $randconstant .= '23456789';
-        }
-        if ($power & 8) {
-            $randconstant .= '@#$%';
-        }
-        $Randpassword = '';
-        $alt = time() % 2;
-        for ($i = 0; $i < $size; $i++) {
-            if ($alt == 1) {
-                $Randpassword .= $randconstant[(rand() % strlen($randconstant))];
-                $alt = 0;
-            } else {
-                $Randpassword .= $vowels[(rand() % strlen($vowels))];
-                $alt = 1;
-            }
-        }
-        return $Randpassword;
     }
 
     protected function generateToken(){

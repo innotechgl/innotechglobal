@@ -3,45 +3,79 @@
 class user_group_item
 {
 
-    /**
-     * @var int
-     */
-    protected $id;
-
-    /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @var int
-     */
-    protected $active;
-
-    /**
-     * @var int
-     */
-    protected $level;
-
-    /**
-     * @var string
-     */
-    protected $type;
-
-    /**
-     * @var array
-     */
-    protected $members;
-
     const USER_GROUP_TYPE_SUPER_ADMIN = "USER_GROUP_TYPE_SUPER_ADMIN";
     const USER_GROUP_TYPE_ADMIN = "USER_GROUP_TYPE_ADMIN";
     const USER_GROUP_TYPE_MODERATOR = "USER_GROUP_TYPE_MODERATOR";
     const USER_GROUP_TYPE_USER = "USER_GROUP_TYPE_USER";
     const USER_GROUP_TYPE_GUEST = "USER_GROUP_TYPE_GUEST";
+    /**
+     * @var int
+     */
+    protected $id;
+    /**
+     * @var string
+     */
+    protected $name;
+    /**
+     * @var int
+     */
+    protected $active;
+    /**
+     * @var int
+     */
+    protected $level;
+    /**
+     * @var string
+     */
+    protected $type;
+    /**
+     * @var array
+     */
+    protected $members;
 
     public function __construct()
     {
         $this->type = self::USER_GROUP_TYPE_GUEST;
+    }
+
+    /**
+     * @return int
+     */
+    public function getID()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setID($id)
+    {
+        $this->id = (int)$id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get type
+     */
+    public function get_type()
+    {
+        return $this->type;
     }
 
     /**
@@ -72,46 +106,6 @@ class user_group_item
                 break;
         }
         return true;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setID($id)
-    {
-        $this->id = (int)$id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getID()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * Get type
-     */
-    public function get_type()
-    {
-        return $this->type;
     }
 
     /**

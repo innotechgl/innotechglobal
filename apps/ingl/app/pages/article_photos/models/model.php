@@ -10,11 +10,6 @@ class modelArticlePhotos extends article_photos_class {
         $this->dir = "/var/www/scms/apps/granice/"."media/images/article_photos/";
     }
 
-    protected function convertImageToBase64($url){
-        $encoded_data = base64_encode(file_get_contents($url));
-        return $encoded_data;
-    }
-
     /**
      * @param DateTime $sinceDate
      * @return array
@@ -46,5 +41,10 @@ class modelArticlePhotos extends article_photos_class {
     public function loadDeleted(DateTime $sinceDate){
         $data = $this->engine->updater->loadDeleted($this->page,$sinceDate);
         return $data;
+    }
+
+    protected function convertImageToBase64($url){
+        $encoded_data = base64_encode(file_get_contents($url));
+        return $encoded_data;
     }
 }

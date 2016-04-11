@@ -16,14 +16,14 @@ class router
     {
     }
 
-    public function setSefEnabled($enabled = 0)
-    {
-        $this->sefEnabled = (int)$enabled;
-    }
-
     public function getSefEnabled()
     {
         return $this->sefEnabled;
+    }
+
+    public function setSefEnabled($enabled = 0)
+    {
+        $this->sefEnabled = (int)$enabled;
     }
 
     public function getSefRoute()

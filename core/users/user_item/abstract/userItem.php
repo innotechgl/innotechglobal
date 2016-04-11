@@ -42,6 +42,13 @@ class user
     protected $data;
 
     /**
+     * @return int
+     */
+    public function getID(){
+        return $this->id;
+    }
+
+    /**
      * @param int  $id
      */
     public function setID($id){
@@ -49,10 +56,10 @@ class user
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getID(){
-        return $this->id;
+    public function getEmail(){
+        return $this->email;
     }
 
     /**
@@ -65,8 +72,8 @@ class user
     /**
      * @return string
      */
-    public function getEmail(){
-        return $this->email;
+    public function getUsername(){
+        return $this->username;
     }
 
     /**
@@ -79,8 +86,8 @@ class user
     /**
      * @return string
      */
-    public function getUsername(){
-        return $this->username;
+    public function getSalt(){
+        return $this->salt;
     }
 
     /**
@@ -88,21 +95,6 @@ class user
      */
     public function setSalt($salt){
         $this->salt = $salt;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSalt(){
-        return $this->salt;
-    }
-
-    /**
-     * @param int $creator
-     */
-    public function setCreator($creator)
-    {
-        $this->creator = (int)$creator;
     }
 
     /**
@@ -114,11 +106,11 @@ class user
     }
 
     /**
-     * @param DateTime $created
+     * @param int $creator
      */
-    public function setCreated(DateTime $created)
+    public function setCreator($creator)
     {
-        $this->created = $created;
+        $this->creator = (int)$creator;
     }
 
     /**
@@ -130,11 +122,11 @@ class user
     }
 
     /**
-     * @param int $modifier
+     * @param DateTime $created
      */
-    public function setModifier($modifier)
+    public function setCreated(DateTime $created)
     {
-        $this->modifier = (int)$modifier;
+        $this->created = $created;
     }
 
     /**
@@ -146,11 +138,11 @@ class user
     }
 
     /**
-     * @param DateTime $modified
+     * @param int $modifier
      */
-    public function setModified(DateTime $modified)
+    public function setModifier($modifier)
     {
-        $this->modified = $modified;
+        $this->modifier = (int)$modifier;
     }
 
     /**
@@ -162,10 +154,11 @@ class user
     }
 
     /**
-     * @param array $data
+     * @param DateTime $modified
      */
-    public function setData(array $data){
-        $this->data = $data;
+    public function setModified(DateTime $modified)
+    {
+        $this->modified = $modified;
     }
 
     /**
@@ -173,6 +166,13 @@ class user
      */
     public function getData(){
         return $this->data;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setData(array $data){
+        $this->data = $data;
     }
 
     /**

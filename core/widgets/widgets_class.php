@@ -28,17 +28,68 @@ class widgets
     protected $positions;
     protected $engine;
 
-    /**
-     *
-     * @param string $name
-     * @param string $value
-     */
-    public function __set($name, $value)
+    public function __construct()
     {
-        $this->data[$name] = $value;
+        global $engine;
+        $this->engine =& $engine;
+        // INCLUDE LANGUAGE PACK
+        include_once $this->engine->path . 'language/core/' . $this->page . '/'
+            . $this->page . '_lat.php';
+        $this->lang = new widgets_language();
+        $this->get_predefined_positions();
+        //var_dump($this->positions);
     }
 
     // Get runtime variables
+
+    /**
+     *
+     * @global object $engine
+     * @param string $type
+     */
+    public function get_predefined_positions($type = 'standard')
+    {
+        $getFrom = array();
+
+        switch ($type) {
+            case "mobile":
+                $getFrom = $this->engine->settings->mobilePositions->position;
+                $template = $this->engine->settings->general->mobileTemplate;
+                break;
+            case "admin":
+                $getFrom = $this->engine->settings->adminPositions->position;
+                $template = $this->engine->settings->general->adminTemplate;
+                break;
+            default:
+            case 'standard':
+                if (isset($this->engine->settings->positions)) {
+                    $getFrom = $this->engine->settings->positions->position;
+                }
+                $template = $this->engine->settings->general->template;
+                break;
+        }
+
+        $template_custom_settings_files = _APP_DIR_ . "templates/" .
+            $template . "/settings/settings.xml";
+
+        if (file_exists($template_custom_settings_files)) {
+            $xml = simplexml_load_file($template_custom_settings_files);
+
+            $i = 0;
+            foreach ($xml->positions->position as $tagName => $position) {
+                $this->positions['positions'][$i]['position'] = (string)$position[0];
+                $this->positions['positions'][$i]['name'] = (string)$position->attributes()->name;
+                $this->positions['positions'][$i]['description'] = (string)$position->attributes()->description;
+                $this->positions['positions'][$i]['available_in'] = explode(",", (string)$position->attributes()->available_in);
+                $i++;
+            }
+        } else {
+            foreach ($getFrom as $key => $val) {
+                $this->positions['positions'][] = $val;
+            }
+        }
+    }
+
     public function __get($name)
     {
         if (array_key_exists($name, $this->data)) {
@@ -53,16 +104,14 @@ class widgets
         return null;
     }
 
-    public function __construct()
+    /**
+     *
+     * @param string $name
+     * @param string $value
+     */
+    public function __set($name, $value)
     {
-        global $engine;
-        $this->engine =& $engine;
-        // INCLUDE LANGUAGE PACK
-        include_once $this->engine->path . 'language/core/' . $this->page . '/'
-            . $this->page . '_lat.php';
-        $this->lang = new widgets_language();
-        $this->get_predefined_positions();
-        //var_dump($this->positions);
+        $this->data[$name] = $value;
     }
 
     /**
@@ -72,31 +121,6 @@ class widgets
     public function get_positions()
     {
         return $this->positions;
-    }
-
-    /**
-     * @name  Get array of widgets
-     *
-     */
-    public function get_widgets($addopt = true, $what_to_get = '*',
-                                $filter_params = '', $order_by = 'id', $order_direction = 'ASC')
-    {
-        global $engine;
-        $query = "SELECT " . $what_to_get . " FROM " . $this->table .
-            " " . $filter_params . " ORDER BY " . $order_by . " "
-            . $order_direction;
-        $engine->dbase->query($query, $addopt, true);
-        return $engine->dbase->rows;
-    }
-
-    public function get_array_rel($addopt = true, $what_to_get = '*',
-                                  $filter_params = '', $order_by = 'id', $order_direction = 'ASC')
-    {
-        global $engine;
-        $query = "SELECT " . $what_to_get . " FROM rel_widgets_menus "
-            . $filter_params . " ORDER BY " . $order_by . " " . $order_direction;
-        $engine->dbase->query($query, $addopt, true);
-        return $engine->dbase->rows;
     }
 
     public function sort($position = '', $ids = array())
@@ -296,6 +320,16 @@ class widgets
         return $html;
     }
 
+    public function get_array_rel($addopt = true, $what_to_get = '*',
+                                  $filter_params = '', $order_by = 'id', $order_direction = 'ASC')
+    {
+        global $engine;
+        $query = "SELECT " . $what_to_get . " FROM rel_widgets_menus "
+            . $filter_params . " ORDER BY " . $order_by . " " . $order_direction;
+        $engine->dbase->query($query, $addopt, true);
+        return $engine->dbase->rows;
+    }
+
     /**
      * Load & place widget on the wrigth position
      *
@@ -333,6 +367,51 @@ class widgets
         $this->widgets_list[$i]->prepare_me();
         // Place widget
         $this->widgets_list[$i]->place_me();
+    }
+
+    /**
+     * @param Int $id
+     * @return bool
+     */
+    public function update($id)
+    {
+        global $engine;
+        # Get settings
+        $this->get_settings($id);
+        # get vals
+        $requested = array("name", "active", "position");
+        foreach ($this->settings['default'] as $key => $val) {
+            # Add requested
+            $requested[] = $val['name'];
+        }
+        # vals
+        $vals = $engine->security->get_vals($requested);
+        # Setup query
+        $items = array();
+        foreach ($this->settings['default'] as $key => $val) {
+            # add item
+            if (is_array($vals[$val['name']])) {
+                $items[] = $val['name'] . ":" . str_replace(array(";", ":"),
+                        array(">>>", "|||"), implode(",", $vals[$val['name']]));
+            } else {
+                $items[] = $val['name'] . ":" . str_replace(array(";", ":"),
+                        array(">>>", "|||"), $vals[$val['name']]);
+            }
+        }
+        # set query part
+        $query_part = $engine->security->get_val(implode(";", $items));
+        # set query
+        $query = "UPDATE $this->table SET name='" . $vals['name'] . "',
+            active='" . $vals['active'] . "',  position='" . $vals['position']
+            . "', options='" . $query_part . "' WHERE id=" . $id .
+            " LIMIT 1;";
+        echo $query;
+        $result = $engine->dbase->insertQuery($query);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -412,48 +491,18 @@ class widgets
     }
 
     /**
-     * @param Int $id
-     * @return bool
+     * @name  Get array of widgets
+     *
      */
-    public function update($id)
+    public function get_widgets($addopt = true, $what_to_get = '*',
+                                $filter_params = '', $order_by = 'id', $order_direction = 'ASC')
     {
         global $engine;
-        # Get settings
-        $this->get_settings($id);
-        # get vals
-        $requested = array("name", "active", "position");
-        foreach ($this->settings['default'] as $key => $val) {
-            # Add requested
-            $requested[] = $val['name'];
-        }
-        # vals
-        $vals = $engine->security->get_vals($requested);
-        # Setup query
-        $items = array();
-        foreach ($this->settings['default'] as $key => $val) {
-            # add item
-            if (is_array($vals[$val['name']])) {
-                $items[] = $val['name'] . ":" . str_replace(array(";", ":"),
-                        array(">>>", "|||"), implode(",", $vals[$val['name']]));
-            } else {
-                $items[] = $val['name'] . ":" . str_replace(array(";", ":"),
-                        array(">>>", "|||"), $vals[$val['name']]);
-            }
-        }
-        # set query part
-        $query_part = $engine->security->get_val(implode(";", $items));
-        # set query
-        $query = "UPDATE $this->table SET name='" . $vals['name'] . "',
-            active='" . $vals['active'] . "',  position='" . $vals['position']
-            . "', options='" . $query_part . "' WHERE id=" . $id .
-            " LIMIT 1;";
-        echo $query;
-        $result = $engine->dbase->insertQuery($query);
-        if ($result) {
-            return true;
-        } else {
-            return false;
-        }
+        $query = "SELECT " . $what_to_get . " FROM " . $this->table .
+            " " . $filter_params . " ORDER BY " . $order_by . " "
+            . $order_direction;
+        $engine->dbase->query($query, $addopt, true);
+        return $engine->dbase->rows;
     }
 
     public function copy($id)
@@ -559,54 +608,6 @@ class widgets
             }
         }
         return $found;
-    }
-
-    /**
-     *
-     * @global object $engine
-     * @param string $type
-     */
-    public function get_predefined_positions($type = 'standard')
-    {
-        $getFrom = array();
-
-        switch ($type) {
-            case "mobile":
-                $getFrom = $this->engine->settings->mobilePositions->position;
-                $template = $this->engine->settings->general->mobileTemplate;
-                break;
-            case "admin":
-                $getFrom = $this->engine->settings->adminPositions->position;
-                $template = $this->engine->settings->general->adminTemplate;
-                break;
-            default:
-            case 'standard':
-                if (isset($this->engine->settings->positions)) {
-                    $getFrom = $this->engine->settings->positions->position;
-                }
-                $template = $this->engine->settings->general->template;
-                break;
-        }
-
-        $template_custom_settings_files = _APP_DIR_ . "templates/" .
-            $template . "/settings/settings.xml";
-
-        if (file_exists($template_custom_settings_files)) {
-            $xml = simplexml_load_file($template_custom_settings_files);
-
-            $i = 0;
-            foreach ($xml->positions->position as $tagName => $position) {
-                $this->positions['positions'][$i]['position'] = (string)$position[0];
-                $this->positions['positions'][$i]['name'] = (string)$position->attributes()->name;
-                $this->positions['positions'][$i]['description'] = (string)$position->attributes()->description;
-                $this->positions['positions'][$i]['available_in'] = explode(",", (string)$position->attributes()->available_in);
-                $i++;
-            }
-        } else {
-            foreach ($getFrom as $key => $val) {
-                $this->positions['positions'][] = $val;
-            }
-        }
     }
 }
 

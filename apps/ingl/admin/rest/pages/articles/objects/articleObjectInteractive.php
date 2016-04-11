@@ -12,13 +12,6 @@ class articleObjectInteractive extends articleObject {
     }
 
     /**
-     * @param array $texts
-     */
-    public function setText($texts){
-        $this->text = $texts;
-    }
-
-    /**
      * @param Array $vals
      */
     public function fillMe($vals)
@@ -67,6 +60,13 @@ class articleObjectInteractive extends articleObject {
             $this->setData($vals["options"]);
         }
 
+    }
+
+    /**
+     * @param array $texts
+     */
+    public function setText($texts){
+        $this->text = $texts;
     }
 
 }

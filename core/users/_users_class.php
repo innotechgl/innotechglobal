@@ -16,16 +16,15 @@ class users
     public $lang;
     public $page = 'users';
     //public $loged_in_user = null;
-    protected $allowed_login_attempts = 10;
-    protected $users = array();
-    protected $default_user_group;
     public $table = 'user';
     public $table_loged_in = 'user_loged_in';
-
     /**
      * @var user_item_class
      */
     public $active_user;
+    protected $allowed_login_attempts = 10;
+    protected $users = array();
+    protected $default_user_group;
     protected $engine;
 
     public function __construct()
@@ -57,35 +56,13 @@ class users
         }
     }
 
-    /**
-     *
-     * @param int $number
-     */
-    public function set_allowed_login_attempts($number)
+    public function get_id()
     {
-        $this->allowed_login_attempts = (int)$number;
-    }
-
-    /**
-     *
-     * @return int
-     */
-    public function get_allowed_login_attempts()
-    {
-        return $this->allowed_login_attempts;
-    }
-
-    /**
-     * @name  Get array of users
-     * @return array
-     */
-    public function get_users($what_to_get = '*', $filter_params = '', $order_by = 'id', $order_direction = 'ASC')
-    {
-        global $engine;
-        $query = "SELECT " . $what_to_get . " FROM " . $this->table . " " . $filter_params . " ORDER BY " . $order_by . " " . $order_direction;
-        echo $query;
-        $engine->dbase->query($query, true, true);
-        return $engine->dbase->rows;
+        if (isset($_SESSION['users'])) {
+            return $_SESSION['users']['id'];
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -106,71 +83,6 @@ class users
     }
 
     /**
-     * LOCKINGS
-     *
-     */
-    /**
-     * Add login attempt
-     */
-    private function add_login_attempt()
-    {
-        global $engine;
-        $query = "UPDATE " . $this->table . " SET login_attempts=login_attempts+1 WHERE username LIKE '" . $this->get_username() . "'";
-        $result = $engine->dbase->insertQuery($query);
-        return $result;
-    }
-
-    /**
-     * Clear login attempts
-     */
-    private function clear_login_attempts()
-    {
-        global $engine;
-        $query = "UPDATE " . $this->table . " SET login_attempts=0 WHERE username LIKE '" . $this->username . "' LIMIT 1;";
-        $result = $engine->dbase->insertQuery($query);
-        return $result;
-    }
-
-    /**
-     *
-     * @param string $username
-     * @return boolean
-     */
-    private function get_login_attempts($username)
-    {
-        $this->set_username($username);
-        $user = $this->get_users('login_attempts', 'WHERE username LIKE "' . $this->username . '"');
-        echo $user[0]['login_attempts'];
-        if (count($user) > 0) {
-            if ($user[0]['login_attempts'] >= $this->get_allowed_login_attempts()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Protect wild login attempts
-     */
-    private function protect_wild_login_attempts()
-    {
-        global $engine;
-        // Get login attempts
-        if ($this->get_login_attempts($this->get_username())) {
-            $query = "UPDATE " . $this->table . " SET active=0 
-                WHERE username LIKE 
-                '" . $this->username . "' LIMIT 1;";
-            $engine->dbase->insertQuery($query);
-            // Disable IP in .htaccess
-            $engine->security->deny_ip();
-            die();
-        }
-    }
-
-    /**
      * @param String $mail
      * @param String $password
      * @return bool
@@ -185,6 +97,21 @@ class users
             return false;
         }
     }
+
+    /**
+     * @return string
+     */
+    public function createToken()
+    {
+        $token = $this->engine->users->active_user->generate_key();
+        $_SESSION[$token]['user_id'] = $this->engine->users->active_user->get_id();
+        return $token;
+    }
+
+    /**
+     * LOCKINGS
+     *
+     */
 
     protected function write_loged_in_user($token)
     {
@@ -203,13 +130,19 @@ class users
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function createToken()
+    public function remove_loged_user()
     {
-        $token = $this->engine->users->active_user->generate_key();
-        $_SESSION[$token]['user_id'] = $this->engine->users->active_user->get_id();
-        return $token;
+        global $engine;
+
+        $query = "DELETE FROM " . $this->table_loged_in . " WHERE id_user='" . $this->get_id() . "' LIMIT 1;";
+       /* if ($engine->dbase->insertQuery($query)) {
+            $this->remove_session();
+            return true;
+        } else {
+            return false;
+        }*/
     }
 
     public function destroyToken($token)
@@ -241,34 +174,9 @@ class users
         return $engine->dbase->rows;
     }
 
-    /**
-     * @return bool
-     */
-    public function remove_loged_user()
-    {
-        global $engine;
-
-        $query = "DELETE FROM " . $this->table_loged_in . " WHERE id_user='" . $this->get_id() . "' LIMIT 1;";
-       /* if ($engine->dbase->insertQuery($query)) {
-            $this->remove_session();
-            return true;
-        } else {
-            return false;
-        }*/
-    }
-
     public function remove_session()
     {
         unset($_SESSION['users']);
-    }
-
-    public function get_id()
-    {
-        if (isset($_SESSION['users'])) {
-            return $_SESSION['users']['id'];
-        } else {
-            return 0;
-        }
     }
 
     public function logout()
@@ -311,6 +219,19 @@ class users
         }
         // return users
         return $users_array;
+    }
+
+    /**
+     * @name  Get array of users
+     * @return array
+     */
+    public function get_users($what_to_get = '*', $filter_params = '', $order_by = 'id', $order_direction = 'ASC')
+    {
+        global $engine;
+        $query = "SELECT " . $what_to_get . " FROM " . $this->table . " " . $filter_params . " ORDER BY " . $order_by . " " . $order_direction;
+        echo $query;
+        $engine->dbase->query($query, true, true);
+        return $engine->dbase->rows;
     }
 
     /**
@@ -384,6 +305,85 @@ class users
         } else {
             return false;
         }
+    }
+
+    /**
+     * Add login attempt
+     */
+    private function add_login_attempt()
+    {
+        global $engine;
+        $query = "UPDATE " . $this->table . " SET login_attempts=login_attempts+1 WHERE username LIKE '" . $this->get_username() . "'";
+        $result = $engine->dbase->insertQuery($query);
+        return $result;
+    }
+
+    /**
+     * Clear login attempts
+     */
+    private function clear_login_attempts()
+    {
+        global $engine;
+        $query = "UPDATE " . $this->table . " SET login_attempts=0 WHERE username LIKE '" . $this->username . "' LIMIT 1;";
+        $result = $engine->dbase->insertQuery($query);
+        return $result;
+    }
+
+    /**
+     * Protect wild login attempts
+     */
+    private function protect_wild_login_attempts()
+    {
+        global $engine;
+        // Get login attempts
+        if ($this->get_login_attempts($this->get_username())) {
+            $query = "UPDATE " . $this->table . " SET active=0 
+                WHERE username LIKE 
+                '" . $this->username . "' LIMIT 1;";
+            $engine->dbase->insertQuery($query);
+            // Disable IP in .htaccess
+            $engine->security->deny_ip();
+            die();
+        }
+    }
+
+    /**
+     *
+     * @param string $username
+     * @return boolean
+     */
+    private function get_login_attempts($username)
+    {
+        $this->set_username($username);
+        $user = $this->get_users('login_attempts', 'WHERE username LIKE "' . $this->username . '"');
+        echo $user[0]['login_attempts'];
+        if (count($user) > 0) {
+            if ($user[0]['login_attempts'] >= $this->get_allowed_login_attempts()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     *
+     * @return int
+     */
+    public function get_allowed_login_attempts()
+    {
+        return $this->allowed_login_attempts;
+    }
+
+    /**
+     *
+     * @param int $number
+     */
+    public function set_allowed_login_attempts($number)
+    {
+        $this->allowed_login_attempts = (int)$number;
     }
 }
 

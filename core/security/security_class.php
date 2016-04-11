@@ -8,27 +8,23 @@
 class sCMS_security
 {
 
-    public $writing;
-    public $recording;
-    public $vars;
-
-    private $table_groups_component = 'group_page_xref';
-
-    private $table_user_component = 'user_page_xref';
-    private $table_user_content = 'ownership';
-
-    protected $engine;
-    public $lang;
-
-    protected $page = 'security';
-
-    // SET CONST
     const VAL_STRING = 'STRING';
     const VAL_INT = 'INT';
     const VAL_HTML = 'HTML';
     const VAL_MAIL = 'MAIL';
     const INVALID = 'invalid';
     const VALID = 'valid';
+    public $writing;
+    public $recording;
+    public $vars;
+
+    // SET CONST
+    public $lang;
+    protected $engine;
+    protected $page = 'security';
+    private $table_groups_component = 'group_page_xref';
+    private $table_user_component = 'user_page_xref';
+    private $table_user_content = 'ownership';
 
     public function __construct()
     {
@@ -37,55 +33,6 @@ class sCMS_security
         include_once $this->engine->path . 'core/language/language_class.php';
         include_once $this->engine->path . 'language/core/security/security_lat.php';
         $this->lang = new security_language();
-    }
-
-    /**
-     * @name Get secured value from variable
-     * @param mixed $val
-     * @param string $type
-     * @param string $default
-     * @return mixed
-     */
-    public function get_val($val, $type = '', $default = '')
-    {
-        if ($val == '') {
-            $val = $default;
-        } else {
-            $val = $this->check_it($val, $type);
-        }
-        return $val;
-    }
-
-    /**
-     * @name Get secured variables from $_POST, $_GET, $_SESSION...
-     * @example $val = sCMS_security::get_vals(array("post1"=>"expected type of value","post2"=>"expected type of value"));
-     */
-    public function get_vals($requested_vals = array(), $type = 'post')
-                    {
-                        $arr = array();
-                        switch (strtolower($type)) {
-                            case 'get':
-                                $var = $_GET;
-                                break;
-                            case 'post':
-                                $var = $_POST;
-                                break;
-                        }
-                        foreach ($requested_vals as $key => $val) {
-                            if (isset($var[$val])) {
-                                // Check if it is an array
-                                if (is_array($var[$val])) {
-                                    foreach ($var[$val] as $key_two => $val_two) {
-                                        $arr[$val][] = $this->check_it($val_two, $key_two);
-                                    }
-                } else {
-                    $arr[$val] = $this->check_it($var[$val]);
-                }
-            } else {
-                $arr[$val] = NULL;
-            }
-        }
-        return $arr;
     }
 
     /**
@@ -147,6 +94,16 @@ class sCMS_security
         return $arr;
     }
 
+    public function check_file($file_name = '', $allowed = array())
+    {
+        $ext = explode(".", $file_name);
+        if (in_array($ext[count($ext) - 1], $allowed)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      *
      * @param string $name
@@ -164,16 +121,6 @@ class sCMS_security
             }
         }
         return $type;
-    }
-
-    public function check_file($file_name = '', $allowed = array())
-    {
-        $ext = explode(".", $file_name);
-        if (in_array($ext[count($ext) - 1], $allowed)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -292,6 +239,55 @@ class sCMS_security
             $this->engine->dbase->insertQuery($query_insert);
         }
         return true;
+    }
+
+    /**
+     * @name Get secured variables from $_POST, $_GET, $_SESSION...
+     * @example $val = sCMS_security::get_vals(array("post1"=>"expected type of value","post2"=>"expected type of value"));
+     */
+    public function get_vals($requested_vals = array(), $type = 'post')
+                    {
+                        $arr = array();
+                        switch (strtolower($type)) {
+                            case 'get':
+                                $var = $_GET;
+                                break;
+                            case 'post':
+                                $var = $_POST;
+                                break;
+                        }
+                        foreach ($requested_vals as $key => $val) {
+                            if (isset($var[$val])) {
+                                // Check if it is an array
+                                if (is_array($var[$val])) {
+                                    foreach ($var[$val] as $key_two => $val_two) {
+                                        $arr[$val][] = $this->check_it($val_two, $key_two);
+                                    }
+                } else {
+                    $arr[$val] = $this->check_it($var[$val]);
+                }
+            } else {
+                $arr[$val] = NULL;
+            }
+        }
+        return $arr;
+    }
+
+    /**
+     * @name Get secured value from variable
+     * @param mixed $val
+     * @param string $type
+     * @param string $default
+     * @return mixed
+     */
+    public function get_val($val, $type = '', $default = '')
+    {
+        if ($val == '') {
+            $val = $default;
+        } else {
+            $val = $this->check_it($val, $type);
+        }
+        return $val;
     }
 
     /**

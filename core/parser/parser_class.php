@@ -7,6 +7,9 @@ class parser
 {
 
     // Standard variables
+    const dataTypeHTML = "";
+    const dataTypeXML = "xml";
+    const dataTypeJSON = "json";
     public $title = '';
     public $description = '';
     public $keywords = '';
@@ -14,25 +17,20 @@ class parser
     public $content = '';
     public $icon = '';
     public $server = '';
-    public $scripts = array();
-    protected $styles = array();
-
-    protected $lastModified = 0;
 
     // Open graph variables
+    public $scripts = array();
+    protected $styles = array();
+    protected $lastModified = 0;
     protected $ogTitle = '';
     protected $ogDescription = '';
     protected $ogType = '';
     protected $ogImage = '';
-    protected $ogSiteName = '';
-    protected $ogUrl = '';
-
-    protected $engine;
 
     // Parse types
-    const dataTypeHTML = "";
-    const dataTypeXML = "xml";
-    const dataTypeJSON = "json";
+    protected $ogSiteName = '';
+    protected $ogUrl = '';
+    protected $engine;
 
     public function __construct()
     {
@@ -55,14 +53,19 @@ class parser
         $this->lastModified = time();
     }
 
-    public function setLastModified($timestamp)
+    public function setOgSiteName($siteName)
     {
-        $this->lastModified = $timestamp;
+        $this->ogSiteName = $siteName;
     }
 
     public function getLastModified()
     {
         return $this->lastModified;
+    }
+
+    public function setLastModified($timestamp)
+    {
+        $this->lastModified = $timestamp;
     }
 
     public function addStyle($path, $media = "screen")
@@ -72,9 +75,9 @@ class parser
         $this->styles[$i]['media'] = $media;
     }
 
-    public function setOgSiteName($siteName)
+    public function getOgTitle()
     {
-        $this->ogSiteName = $siteName;
+        return $this->ogTitle;
     }
 
     public function setOgTitle($title)
@@ -82,9 +85,9 @@ class parser
         $this->ogTitle = $title;
     }
 
-    public function getOgTitle()
+    public function getOgDescription()
     {
-        return $this->ogTitle;
+        return $this->ogDescription;
     }
 
     public function setOgDescription($description)
@@ -92,9 +95,9 @@ class parser
         $this->ogDescription = $description;
     }
 
-    public function getOgDescription()
+    public function getOgImage()
     {
-        return $this->ogDescription;
+        return $this->ogImage;
     }
 
     public function setOgImage($imageUrl)
@@ -102,9 +105,9 @@ class parser
         $this->ogImage = $imageUrl;
     }
 
-    public function getOgImage()
+    public function getOgType()
     {
-        return $this->ogImage;
+        return $this->ogType;
     }
 
     public function setOgType($type)
@@ -112,19 +115,14 @@ class parser
         $this->ogType = $type;
     }
 
-    public function getOgType()
+    public function getOgUrl()
     {
-        return $this->ogType;
+        return $this->ogUrl;
     }
 
     public function setOgUrl($url)
     {
         $this->ogUrl = $url;
-    }
-
-    public function getOgUrl()
-    {
-        return $this->ogUrl;
     }
 
     public function createHead()

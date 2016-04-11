@@ -68,10 +68,6 @@ class cache
         $this->cache_dir = $engine->path . $this->cache_dir;
     }
 
-    public function setCacheDir($cacheDIR){
-        $this->cache_dir = $cacheDIR;
-    }
-
     /**
      *
      * @param int $id
@@ -132,6 +128,10 @@ class cache
         return $this->cache_dir;
     }
 
+    public function setCacheDir($cacheDIR){
+        $this->cache_dir = $cacheDIR;
+    }
+
     /**
      * Add cache
      *
@@ -158,6 +158,15 @@ class cache
         fclose($f);
         // Change chmod
         @chmod($filename, 0500);
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function calculateName()
+    {
+        return md5($this->id . $this->name);
     }
 
     /**
@@ -210,15 +219,6 @@ class cache
             chmod($cacheName, 0775);
             unlink($cacheName);
         }
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function calculateName()
-    {
-        return md5($this->id . $this->name);
     }
 
     public function __destruct()

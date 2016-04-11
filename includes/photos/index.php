@@ -9,9 +9,6 @@ class photos
     public $dir = 'media/images/';
     public $compression = 70;
     public $default_size = 500;
-
-    private $engine;
-
     public $mime_types = array(
         // images
         '' => '',
@@ -28,6 +25,7 @@ class photos
         'svgz' => 'image/svg+xml',
         'swf' => 'application/x-shockwave-flash'
     );
+    private $engine;
 
     public function __construct($path = '')
     {
@@ -40,39 +38,6 @@ class photos
     {
         global $engine;
         include $engine->path . 'includes/photos/html/form.php';
-    }
-
-    private function move_uploaded_images_to_temp()
-    {
-        // create temp img file
-        $sessid = session_id();
-        $this->tmp_dir = $this->tmp_dir . $sessid;
-        @mkdir($this->tmp_dir, 0777, true);
-        for ($i = 0; $i < count($_FILES['photo']); $i++) {
-            @move_uploaded_file($_FILES['photo']['tmp_name'][$i], $this->tmp_dir . "/" . $_FILES['photo']['name'][$i]);
-        }
-    }
-
-    private function check_and_unzip()
-    {
-        $archive = new archive('');
-        $files = $this->load_dir($this->tmp_dir);
-        $ext = '';
-        foreach ($files as $key => $val) {
-            $ext_s = explode(".", $val);
-            if (!in_array($ext_s[count($ext_s) - 1], $this->allowed)) {
-                // Remove file
-                unlink($this->tmp_dir . $val);
-            } else {
-                // Check if it's zipped
-                if ($ext_s[count($ext_s) - 1] == 'zip' || $ext_s[count($ext_s) - 1] == 'tar') {
-                    $zipovano = new tar_file($val);
-                    $zipovano->set_options(array('inmemory' => 0, 'basedir' => $this->tmp_dir));
-                    $zipovano->extract_files();
-                    $log[] = 'file: ' . $val;
-                }
-            }
-        }
     }
 
     public function createResizedImg($size = array(), $prefix = array())
@@ -128,6 +93,17 @@ class photos
         return $arr_imgs;
     }
 
+    private function move_uploaded_images_to_temp()
+    {
+        // create temp img file
+        $sessid = session_id();
+        $this->tmp_dir = $this->tmp_dir . $sessid;
+        @mkdir($this->tmp_dir, 0777, true);
+        for ($i = 0; $i < count($_FILES['photo']); $i++) {
+            @move_uploaded_file($_FILES['photo']['tmp_name'][$i], $this->tmp_dir . "/" . $_FILES['photo']['name'][$i]);
+        }
+    }
+
     public function unzip()
     {
         // Load ZIP class
@@ -143,6 +119,19 @@ class photos
                 unlink($this->tmp_dir . "/" . $val);
             }
         }
+    }
+
+    private function load_dir($path)
+    {
+        $files = array();
+        $dh = opendir($path);
+        while (($file = readdir($dh)) !== false) {
+            if ($file != "." && $file != "..") {
+                $files [] = $file;
+            }
+        }
+        closedir($dh);
+        return $files;
     }
 
     /**
@@ -253,17 +242,26 @@ class photos
         return $array;
     }
 
-    private function load_dir($path)
+    private function check_and_unzip()
     {
-        $files = array();
-        $dh = opendir($path);
-        while (($file = readdir($dh)) !== false) {
-            if ($file != "." && $file != "..") {
-                $files [] = $file;
+        $archive = new archive('');
+        $files = $this->load_dir($this->tmp_dir);
+        $ext = '';
+        foreach ($files as $key => $val) {
+            $ext_s = explode(".", $val);
+            if (!in_array($ext_s[count($ext_s) - 1], $this->allowed)) {
+                // Remove file
+                unlink($this->tmp_dir . $val);
+            } else {
+                // Check if it's zipped
+                if ($ext_s[count($ext_s) - 1] == 'zip' || $ext_s[count($ext_s) - 1] == 'tar') {
+                    $zipovano = new tar_file($val);
+                    $zipovano->set_options(array('inmemory' => 0, 'basedir' => $this->tmp_dir));
+                    $zipovano->extract_files();
+                    $log[] = 'file: ' . $val;
+                }
             }
         }
-        closedir($dh);
-        return $files;
     }
 }
 
