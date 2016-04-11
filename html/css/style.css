@@ -1,0 +1,86 @@
+li
+{
+	list-style-type: none;
+}
+.nav-menu
+{
+	height: 80px;
+	width: 100%;
+	background: #333333;
+	margin-bottom: 15px;
+	border: 4px solid #60727A;
+}
+
+.nav-text
+{
+	float: right;
+	text-decoration: none;
+	font-size: 23px;
+	color: white;
+	margin-right: 5%;
+	padding-top: 18px!important;
+
+}
+
+.nav-text:hover
+{
+	text-decoration: none!important;
+	background: #333333!important;
+	color: white;
+
+
+}
+.nav-text:visited
+{
+	text-decoration: none!important;
+	background: #333333!important;
+	color: white;
+
+
+}
+.nav-menu > img
+{
+	margin: 15px 15px;
+}
+.mainbaner
+{	height:100px;
+	margin: 10px 50px;
+	border: 2px solid black;
+}
+.baner-margin
+{
+	margin-bottom: 15px;
+	height: 150px;
+	width: 100%;
+}
+.provera
+{
+	height: 20px;
+	background: black;
+}
+body
+{
+	background: #333333;
+	color: #fff;
+}
+.list-group > li
+{
+	background: #333333;
+	list-style-type: none!important;
+	border: 0!important;
+}s
+.hr
+{
+	border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+@media screen and(min-width: 991px)
+{
+	.col-md-3 > li
+	{
+		margin: 0 auto;
+		background: white!important;
+	}
+}
