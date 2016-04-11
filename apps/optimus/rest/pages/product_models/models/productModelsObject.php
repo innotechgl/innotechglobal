@@ -20,43 +20,43 @@ class productModelsObject extends mainObject
         parent::__construct();
     }
 
-    public function setTitle($title){
-        $this->Title = $title;
-    }
-
     public function getTitle(){
         return $this->Title;
     }
 
-    public function setDescription($Description){
-        $this->Description = $Description;
+    public function setTitle($title){
+        $this->Title = $title;
     }
 
     public function getDescription(){
         return $this->Description;
     }
 
-    public function setHasIMEI($HasIMEI){
-        $this->HasIMEI = $HasIMEI;
+    public function setDescription($Description){
+        $this->Description = $Description;
     }
 
     public function getHasIMEI(){
         return $this->HasIMEI;
     }
 
-    public function setDoubleIMEI($DoubleIMEI){
-        $this->DoubleIMEI = $DoubleIMEI;
+    public function setHasIMEI($HasIMEI){
+        $this->HasIMEI = $HasIMEI;
     }
 
     public function getDoubleIMEI(){
         return $this->DoubleIMEI;
     }
 
-    public function setGroupID($GroupID){
-        $this-> GroupID = $GroupID;
+    public function setDoubleIMEI($DoubleIMEI){
+        $this->DoubleIMEI = $DoubleIMEI;
     }
 
     public function getGroupID(){
         return $this->GroupID;
+    }
+
+    public function setGroupID($GroupID){
+        $this-> GroupID = $GroupID;
     }
 }

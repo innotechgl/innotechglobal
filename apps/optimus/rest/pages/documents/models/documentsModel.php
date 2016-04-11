@@ -43,6 +43,10 @@ class documentsModel extends page_class
         $categoryID = $this->_adddocumentCategory($data);
     }
 
+    private function checkData(array $data){
+        return true;
+    }
+
     /**
      * @param documentsObject $documents
      * @return mixed
@@ -53,21 +57,9 @@ class documentsModel extends page_class
         return $id;
     }
 
-    /**
-     * @param $data
-     * @return bool
-     */
-    protected function _adddocumentsCategory($data){
-        $res = $this->documentCategory->add($data);
-        return $res;
-    }
-
     /*
      * @todo add validation
      */
-    private function checkData(array $data){
-        return true;
-    }
 
     /**
      * @param array $data
@@ -117,7 +109,6 @@ class documentsModel extends page_class
         $this->_delete($id);
     }
 
-
     /**
      * @param int $id
      * @return bool
@@ -128,6 +119,15 @@ class documentsModel extends page_class
 
         $res = $this->engine->dbase->insertQuery($query);
 
+        return $res;
+    }
+
+    /**
+     * @param $data
+     * @return bool
+     */
+    protected function _adddocumentsCategory($data){
+        $res = $this->documentCategory->add($data);
         return $res;
     }
 

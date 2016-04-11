@@ -39,6 +39,10 @@ class customerOrderFieldsModel extends page_class
         $customer_id = $this->_addCustomerID($data);
     }
 
+    private function checkData(array $data){
+        return true;
+    }
+
     /**
      * $@param customerOrderFieldssObject $customerOrderFields
      * @return mixed
@@ -49,21 +53,9 @@ class customerOrderFieldsModel extends page_class
         return $id;
     }
 
-    /**
-     * @param $data
-     * @return bool
-     */
-    protected function _addOrderID($data){
-        $res = $this->order_id->add($data);
-        return $res;
-    }
-
     /*
      * @todo add validation
      */
-    private function checkData(array $data){
-        return true;
-    }
 
     /**
      * @param array $data
@@ -114,7 +106,6 @@ class customerOrderFieldsModel extends page_class
         $this->_delete($id);
     }
 
-
     /**
      * @param int $id
      * @return bool
@@ -125,6 +116,15 @@ class customerOrderFieldsModel extends page_class
 
         $res = $this->engine->dbase->insertQuery($query);
 
+        return $res;
+    }
+
+    /**
+     * @param $data
+     * @return bool
+     */
+    protected function _addOrderID($data){
+        $res = $this->order_id->add($data);
         return $res;
     }
 

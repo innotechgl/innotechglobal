@@ -24,6 +24,13 @@ class places extends mainObject
     protected $stateID;
 
     /**
+     * @return Int
+     */
+    public function getParentID(){
+        return $this->parentID;
+    }
+
+    /**
      * @param Int $parentID
      */
     public function setParentID($parentID){
@@ -33,8 +40,8 @@ class places extends mainObject
     /**
      * @return Int
      */
-    public function getParentID(){
-        return $this->parentID;
+    public function getStateID(){
+        return $this->stateID;
     }
 
     /**
@@ -45,10 +52,10 @@ class places extends mainObject
     }
 
     /**
-     * @return Int
+     * @return String
      */
-    public function getStateID(){
-        return $this->stateID;
+    public function getTitle(){
+        return $this->title;
     }
 
     /**
@@ -61,23 +68,15 @@ class places extends mainObject
     /**
      * @return String
      */
-    public function getTitle(){
-        return $this->title;
+    public function getCode(){
+        return $this->code;
     }
-
 
     /**
      * @param String $code
      */
     public function setCode($code){
         $this->code = $code;
-    }
-
-    /**
-     * @return String
-     */
-    public function getCode(){
-        return $this->code;
     }
 
     /**

@@ -15,6 +15,12 @@ class imeis extends mainObject
      */
     protected $productID;
 
+    /**
+     * @return Int
+     */
+    public function getImeiOne(){
+        return $this->imeiOne;
+    }
 
     /**
      * @param Int $imeiOne
@@ -26,8 +32,8 @@ class imeis extends mainObject
     /**
      * @return Int
      */
-    public function getImeiOne(){
-        return $this->imeiOne;
+    public function getImeiTwo(){
+        return $this->imeiTwo;
     }
 
     /**
@@ -40,8 +46,8 @@ class imeis extends mainObject
     /**
      * @return Int
      */
-    public function getImeiTwo(){
-        return $this->imeiTwo;
+    public function getProductID(){
+        return $this->productID;
     }
 
     /**
@@ -49,13 +55,6 @@ class imeis extends mainObject
      */
     public function setProductID($productID){
         $this->productID = (int)$productID;
-    }
-
-    /**
-     * @return Int
-     */
-    public function getProductID(){
-        return $this->productID;
     }
 
     /**

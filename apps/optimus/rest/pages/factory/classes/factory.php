@@ -24,13 +24,6 @@ class factory extends mainObject
     protected $stateID;
 
     /**
-     * @param Int $parentID
-     */
-    public function setParentID($parentID){
-        $this->parentID = (int)$parentID;
-    }
-
-    /**
      * @return Int
      */
     public function getParentID(){
@@ -38,10 +31,10 @@ class factory extends mainObject
     }
 
     /**
-     * @param Int $stateID
+     * @param Int $parentID
      */
-    public function setStateID($stateID){
-        $this->stateID = (int)$stateID;
+    public function setParentID($parentID){
+        $this->parentID = (int)$parentID;
     }
 
     /**
@@ -52,10 +45,10 @@ class factory extends mainObject
     }
 
     /**
-     * @param String $title
+     * @param Int $stateID
      */
-    public function setTitle($title){
-        $this->title = $title;
+    public function setStateID($stateID){
+        $this->stateID = (int)$stateID;
     }
 
     /**
@@ -65,12 +58,11 @@ class factory extends mainObject
         return $this->title;
     }
 
-
     /**
-     * @param Int $code
+     * @param String $title
      */
-    public function setCode($code){
-        $this->code = (int)$code;
+    public function setTitle($title){
+        $this->title = $title;
     }
 
     /**
@@ -78,6 +70,13 @@ class factory extends mainObject
      */
     public function getCode(){
         return $this->code;
+    }
+
+    /**
+     * @param Int $code
+     */
+    public function setCode($code){
+        $this->code = (int)$code;
     }
 
     /**

@@ -23,6 +23,9 @@
 
 class person extends mainObject
 {
+    const GENDER_UNKNOWN = 0;
+    const GENDER_MALE = 1;
+    const GENDER_FEMALE = 2;
     /**
      * @var String
      */
@@ -39,8 +42,6 @@ class person extends mainObject
      * @var DateTime
      */
     protected $dateOfBirth;
-
-
     /**
      * @var int
      */
@@ -53,7 +54,6 @@ class person extends mainObject
      * @var int
      */
     protected $birthYear;
-
     /**
      * @var int
      */
@@ -62,20 +62,23 @@ class person extends mainObject
      * @var int
      */
     protected $gender;
-
     /**
      * @var Array
      */
     protected $data;
 
-    const GENDER_UNKNOWN = 0;
-    const GENDER_MALE = 1;
-    const GENDER_FEMALE = 2;
-
     public function __construct(){
         parent::__construct();
         $this->dateOfBirth = new DateTime("1.1.1876.");
         $this->data = array();
+    }
+
+    /**
+     * @return String
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
     }
 
     /**
@@ -89,9 +92,9 @@ class person extends mainObject
     /**
      * @return String
      */
-    public function getFirstName()
+    public function getLastName()
     {
-        return $this->firstName;
+        return $this->lastName;
     }
 
     /**
@@ -105,9 +108,9 @@ class person extends mainObject
     /**
      * @return String
      */
-    public function getLastName()
+    public function getEmail()
     {
-        return $this->lastName;
+        return $this->email;
     }
 
     /**
@@ -119,11 +122,11 @@ class person extends mainObject
     }
 
     /**
-     * @return String
+     * @return DateTime
      */
-    public function getEmail()
+    public function getDateOfBirth()
     {
-        return $this->email;
+        return $this->dateOfBirth;
     }
 
     /**
@@ -135,11 +138,10 @@ class person extends mainObject
     }
 
     /**
-     * @return DateTime
+     * @return int
      */
-    public function getDateOfBirth()
-    {
-        return $this->dateOfBirth;
+    public function getBirthDay(){
+        return  $this->birthDay;
     }
 
     /**
@@ -152,8 +154,8 @@ class person extends mainObject
     /**
      * @return int
      */
-    public function getBirthDay(){
-        return  $this->birthDay;
+    public function getBirthMonth(){
+        return  $this->birthMonth;
     }
 
     /**
@@ -166,8 +168,8 @@ class person extends mainObject
     /**
      * @return int
      */
-    public function getBirthMonth(){
-        return  $this->birthMonth;
+    public function getBirthYear(){
+        return  $this->birthYear;
     }
 
     /**
@@ -180,8 +182,9 @@ class person extends mainObject
     /**
      * @return int
      */
-    public function getBirthYear(){
-        return  $this->birthYear;
+    public function getStateID()
+    {
+        return $this->stateID;
     }
 
     /**
@@ -195,9 +198,9 @@ class person extends mainObject
     /**
      * @return int
      */
-    public function getStateID()
+    public function getGender()
     {
-        return $this->stateID;
+        return $this->gender;
     }
 
     /**
@@ -209,11 +212,11 @@ class person extends mainObject
     }
 
     /**
-     * @return int
+     * @param str|int $key
+     * @return mixed
      */
-    public function getGender()
-    {
-        return $this->gender;
+    public function getData($key){
+        return $this->data[$key];
     }
 
     /**
@@ -222,14 +225,6 @@ class person extends mainObject
      */
     public function setData($key,$val){
         $this->data[$key] = $val;
-    }
-
-    /**
-     * @param str|int $key
-     * @return mixed
-     */
-    public function getData($key){
-        return $this->data[$key];
     }
 
     public function fillMe($vals){

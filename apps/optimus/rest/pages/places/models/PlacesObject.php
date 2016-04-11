@@ -19,35 +19,35 @@ class placesObject extends mainObject
         parent::__construct();
     }
 
-    public function setParentID($parent_id){
-        $this->ParentID = $parent_id;
-    }
-
     public function getParentID(){
         return $this->ParentID;
     }
 
-    public function setTitle($Title){
-        $this->Title = $Title;
+    public function setParentID($parent_id){
+        $this->ParentID = $parent_id;
     }
 
     public function getTitle(){
         return $this->Title;
     }
 
-    public function setPostalCode($PostalCode){
-        $this->PostalCode = $PostalCode;
+    public function setTitle($Title){
+        $this->Title = $Title;
     }
 
     public function getPostalCode(){
         return $this->PostalCode;
     }
 
-    public function setStateID($StateID){
-        $this->StateID = $StateID;
+    public function setPostalCode($PostalCode){
+        $this->PostalCode = $PostalCode;
     }
 
     public function getStateID(){
         return $this->StateID;
+    }
+
+    public function setStateID($StateID){
+        $this->StateID = $StateID;
     }
 }

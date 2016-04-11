@@ -12,27 +12,27 @@ class imeiObject extends mainObject
         parent::__construct();
     }
 
-    public function setIMEIOne($IMEIOne){
-        $this->IMEIOne = $IMEIOne;
-    }
-
     public function getIMEIOne(){
         return $this->IMEIOne;
     }
 
-    public function setIMEITwo($IMEITwo){
-        $this->IMEITwo = $IMEITwo;
+    public function setIMEIOne($IMEIOne){
+        $this->IMEIOne = $IMEIOne;
     }
 
     public function getIMEITwo(){
         return $this->IMEITwo;
     }
 
-    public function setProductID($ProductID){
-        $this->ProductID = $ProductID;
+    public function setIMEITwo($IMEITwo){
+        $this->IMEITwo = $IMEITwo;
     }
 
     public function getProductID(){
         return $this->ProductID;
+    }
+
+    public function setProductID($ProductID){
+        $this->ProductID = $ProductID;
     }
 }

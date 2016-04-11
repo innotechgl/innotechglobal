@@ -29,12 +29,12 @@ class productModelsModel extends page_class
         $this->_add($productModels);
     }
 
-    protected function _add(productsObject $productModels){
-
-    }
-
     private function checkData(array $data){
         return true;
+    }
+
+    protected function _add(productsObject $productModels){
+
     }
 
     public function update(array $data)

@@ -13,28 +13,27 @@ class productGroupsObject extends mainObject
         parent::__construct();
     }
 
-
-    public function setName($name){
-        $this->name = $name;
-    }
-
     public function getName(){
         return $this->name;
     }
 
-    public function setDescription($description){
-        $this->description = $description;
+    public function setName($name){
+        $this->name = $name;
     }
 
     public function getDescription(){
         return $this->description;
     }
 
-    public function setParentID($ParentID){
-        $this->ParentID = $ParentID;
+    public function setDescription($description){
+        $this->description = $description;
     }
 
     public function getParentID(){
         return $this->ParentID;
+    }
+
+    public function setParentID($ParentID){
+        $this->ParentID = $ParentID;
     }
 }

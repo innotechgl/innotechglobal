@@ -36,15 +36,13 @@ class documentsCategoryModel
         $this->_add($documentsCategory);
     }
 
-    protected function _add(documentsCategoryObject $documentsCategoryObject){
-
-    }
-
     private function checkData(array $data){
         return true;
     }
 
+    protected function _add(documentsCategoryObject $documentsCategoryObject){
 
+    }
 
     public function update(array $data)
     {

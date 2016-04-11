@@ -41,6 +41,10 @@ class productsModel extends page_class
         $imeiID = $this->_addIMEI($data);
     }
 
+    private function checkData(array $data){
+        return true;
+    }
+
     /**
      * @param productsObject $product
      * @return mixed
@@ -51,6 +55,10 @@ class productsModel extends page_class
         return $id;
     }
 
+    /*
+     * @todo add validation
+     */
+
     /**
      * @param $data
      * @return bool
@@ -58,13 +66,6 @@ class productsModel extends page_class
     protected function _addIMEI($data){
         $res = $this->imeis->add($data);
         return $res;
-    }
-
-    /*
-     * @todo add validation
-     */
-    private function checkData(array $data){
-        return true;
     }
 
     /**

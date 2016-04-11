@@ -46,6 +46,11 @@ class customerOrdersModel extends page_class
         $customer_id = $this->_addCustomerID($data);
     }
 
+    private function checkData(array $data)
+    {
+        return true;
+    }
+
     /**
      * @param customerOrdersObject $customerOrders
      * @return mixed
@@ -57,6 +62,10 @@ class customerOrdersModel extends page_class
         return $id;
     }
 
+    /*
+     * @todo add validation
+     */
+
     /**
      * @param $data
      * @return bool
@@ -65,14 +74,6 @@ class customerOrdersModel extends page_class
     {
         $res = $this->customer_id->add($data);
         return $res;
-    }
-
-    /*
-     * @todo add validation
-     */
-    private function checkData(array $data)
-    {
-        return true;
     }
 
     /**

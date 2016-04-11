@@ -12,6 +12,13 @@ class documents extends mainObject
     protected $fileName;
 
     /**
+     * @return String
+     */
+    public function getTitle(){
+        return $this->title;
+    }
+
+    /**
      * @param String $title
      */
     public function setTitle($title){
@@ -21,8 +28,8 @@ class documents extends mainObject
     /**
      * @return String
      */
-    public function getTitle(){
-        return $this->title;
+    public function getFileName(){
+        return $this->fileName;
     }
 
     /**
@@ -30,13 +37,6 @@ class documents extends mainObject
      */
     public function setFileName($fileName){
         $this->fileName = $fileName;
-    }
-
-    /**
-     * @return String
-     */
-    public function getFileName(){
-        return $this->fileName;
     }
 
     /**

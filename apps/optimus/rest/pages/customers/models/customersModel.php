@@ -35,12 +35,12 @@ class customersModel extends page_class
         $this->_add($customers);
     }
 
-    protected function _add(customersObject $customersModels){
-
-    }
-
     private function checkData(array $data){
         return true;
+    }
+
+    protected function _add(customersObject $customersModels){
+
     }
 
     public function update(array $data)
