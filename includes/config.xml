@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <db>
+        <server>localhost</server>
+        <user>root</user>
+        <pass>tuborg1981</pass>
+        <port>3306</port>
+        <database>scms</database>
+    </db>
+    <general>
+        <site>www.hostelmetropolis.rs</site>
+        <server>/</server>
+        <locked>0</locked>
+        <securityAlarm>1</securityAlarm>
+        <adminTemplate>merkat</adminTemplate>
+        <template>metropolis</template>
+        <mobileTemplate>mobile</mobileTemplate>
+        <title>Metropolis hostel</title>
+        <description>Metropolis hostel</description>
+        <keywords>Metropolis hostel, hostel, belgrade, Beograd, srbija, Serbia, hostels, belgrade hostel, hostel
+            Beograd, city center, centar, cheap, rooms, apartman, apartment, accommodation, jeftin, jeftine, sobe,
+            smeštaj, smestaj, booking, travel, makedonska, makedonska street
+        </keywords>
+        <robots>noindex, nofollow</robots>
+        <icon>media/icon.gif</icon>
+        <sef>true</sef>
+        <limit>20</limit>
+        <protectCode>hdwyy17698321hdsgfgt93e</protectCode>
+        <lang>eng</lang>
+    </general>
+    <date>
+        <format>d.m.Y.</format>
+    </date>
+    <log>
+        <allowed>0</allowed>
+        <allowed>1</allowed>
+    </log>
+    <adminPositions>
+        <position>home</position>
+        <position>right</position>
+        <position>menu</position>
+        <position>admin_home</position>
+        <position>add_photo</position>
+    </adminPositions>
+    <positions>
+        <position>top_menu</position>
+    </positions>
+    <mail>
+        <fromMail>office@metropolishostel.rs</fromMail>
+        <fromName>Metropolis hostel</fromName>
+    </mail>
+    <scripts>
+        <js>includes/js/framework/mootools/1.4.3/mootools-core-1.4.3-full-compat.js</js>
+        <js>includes/js/framework/mootools/1.4.3/mootools-more-1.4.0.1.js</js>
+        <js>includes/js/editors/tiny_mce/tiny_mce.js</js>
+    </scripts>
+    <user_groups>
+        <default>6</default>
+    </user_groups>
+    <googleMaps>
+        <myLocation>
+            <lat>
+                44.8156434
+            </lat>
+            <lng>
+                20.4631392
+            </lng>
+        </myLocation>
+        <myLocationIcon>
+            /templates/metropolis/images/gmap_icon.png
+        </myLocationIcon>
+    </googleMaps>
+    <rss>
+        <header>
+            <title></title>
+            <link></link>
+            <description></description>
+            <language>sr</language>
+            <copyright></copyright>
+            <ttl>10</ttl>
+            <imageTitle></imageTitle>
+            <imageLink></imageLink>
+            <imageUrl></imageUrl>
+            <imageWidth></imageWidth>
+            <imageHeight></imageHeight>
+            <imageDescription></imageDescription>
+        </header>
+    </rss>
+    <fb>
+        <appID></appID>
+    </fb>
+</data>
