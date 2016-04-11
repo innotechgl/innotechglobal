@@ -1,0 +1,6 @@
+﻿<ul >
+    <li ng-repeat="cat in categories" id="{{cat.id}}">
+        <a ng-click="selectCategory(cat)" ng-class="{'text-danger' : categorySelected.id==cat.id }">{{cat.name}} </a>
+        <div ng-include="'pages/videoGallery/includes/dropOptions.html'" onload="categories = cat.children; rootCat = false;"></div>
+    </li>
+</ul>

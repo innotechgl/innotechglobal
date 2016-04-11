@@ -1,0 +1,4 @@
+﻿<li ng-repeat="cat in categoriesNested" ng-hide="checkParentID(cat.id)">
+        <a ng-click="selectParent(cat)">{{cat.name}}</a>
+        <ul ng-include="'pages/menu/includes/dropCategories.html'" onload="categoriesNested = cat.children" ></ul>
+</li>

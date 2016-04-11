@@ -1,0 +1,78 @@
+﻿<div>
+    <form name="formWidget" ng-submit="formWidget.$valid && save()">
+        <div class="row">
+            <div class="col col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Widgets <small>Add</small></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Select Widget</label>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    {{selectedWidget.name}}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector">
+                                    <li ng-repeat="widget in allAvailableWidgets">
+                                        <a ng-click="setSelectedWidget(widget)">{{widget.name}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" ng-model="name" />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" ng-model="active" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Active</button>
+                        </div>
+                        <div class="form-group" ng-repeat="option in selectedWidget.options.option" ng-include="loadField(option)"></div>
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                <button class="btn btn-primary">Save</button>
+                                <button ng-click="showMenus()" class="btn btn-default">Cancel</button>
+                            </div>
+                        </div><!-- .row -->
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Visible in</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-include="'pages/widgets/form/includes/menuSelect.html'"></div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Position</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{selectedPosition.name}} (<small>{{selectedPosition.description}}</small>)
+                                <span class="caret"></span>
+                            </button>
+                            
+                            <ul class="dropdown-menu" aria-labelledby="categorySelector">
+                                <li ng-repeat="position in positions">
+                                    <a ng-click="selectPosition(position)">
+                                        <strong>{{position.name}}</strong>
+                                        <p>{{position.description}}</p>
+                                        <small class="label-default label">{{position.position}}</small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .row -->
+        
+    </form>
+
+</div><!-- .article -->

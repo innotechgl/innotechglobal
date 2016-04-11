@@ -1,0 +1,66 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Menu <small>List</small></h4>
+    </div>
+    <div class="panel-body">
+        <div class="menus">
+            <div ng-include="'pages/menu/includes/commands.html'"></div>
+            <div ng-hide="sorting">
+                <ol class="breadcrumb">
+                    <li><a href="#/pages/menu/list/0"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li ng-repeat="(k,v) in path"><a href="#/pages/menu/list/{{v.id}}">{{v.name}}</a></li>
+                    <li><span class="active">{{allMenus[findMenuByID(parentMenuID)].name}}</span></li>
+                </ol>
+                <table class="table small table-hover">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th ng-click="setOrderBy('no')">No</th>
+                            <th ng-click="setOrderBy('id')">ID</th>
+                            <th ng-click="setOrderBy('name')">Name</th>
+                            <th># Of child menus</th>
+                            <th ng-click="setOrderBy('link')">Link</th>
+                            <th ng-click="setOrderBy('alias')">Alias</th>
+                            <th ng-click="setOrderBy('active')">Active</th>
+                            <th>Commands</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key,menu) in menus | orderBy:orderedBy" ng-class="{'info':(menu.active==1 && $root.showColors==1)}">
+                            <td><input type="checkbox" value="menu.id" /></td>
+                            <td>{{menu.no}}</td>
+                            <td>{{menu.id}}</td>
+                            <td><a ng-click="changeParentID(menu.id)">{{menu.name}}</a></td>
+                            <td>{{countChildMenus(menu.id)}}</td>
+                            <td>{{menu.link}}</td>
+                            <td>{{menu.alias}}</td>
+                            <td>
+                                <a ng-show="menu.active==1" ng-click="deactivate(menu.id);"><span class="glyphicon glyphicon-ok"></span></a>
+                                <a ng-show="menu.active==0" ng-click="activate(menu.id);"><span class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                            <td>
+                                <a ng-href="#/pages/menu/edit/{{menu.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a class="btn btn-default" ng-click="delete(menu.id)"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="button-group" role="group">
+                    <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                </div>
+            </div>
+            <div ng-show="sorting">
+                <div class="form-group sortable-options">
+                    <ul ui:sortable ng:model="menus" class="list-group">
+                        <li ng-repeat="menu in menus| orderBy: 'no'" class="list-group-item">
+                            {{menu.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-default" ng-click="saveSort()">Save sort</button>
+                </div><!-- .btn-group -->
+            </div><!-- .sorting -->
+        </div>
+        </div>
+</div>

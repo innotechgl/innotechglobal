@@ -1,0 +1,8 @@
+﻿<ul>
+    <li ng-repeat="cat in categorisedMenus" id="{{cat.id}}" class="checkbox">
+        <label>
+            <input type="checkbox" ng-model="menuSelect[(cat.id).toString()]" ng-click="menuSelectClicked(menuSelect,cat.id)" /> {{cat.name}}
+        </label>
+        <div ng-include="'pages/widgets/form/includes/menuSelect.html'" onload="categorisedMenus = cat.children"></div>
+    </li>
+</ul>

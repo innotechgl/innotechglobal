@@ -1,0 +1,10 @@
+﻿<div class="form-group" class="checkbox">
+    <label>{{title}}</label>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            {{categorySelected.name}}
+            <span class="caret"></span>
+        </button>
+        <div ng-include="'pages/videoGallery/includes/dropOptions.html'"  class="dropdown-menu scrollable-menu" ng-class="{'dropdown-menu':rootCat, 'scrollable-menu':rootCat}" aria-labelledby="categorySelector"></div>
+    </div>
+</div><!-- .form-group -->

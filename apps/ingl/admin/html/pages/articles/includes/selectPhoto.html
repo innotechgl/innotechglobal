@@ -1,0 +1,26 @@
+﻿<div class="article-select-photo">
+    <h5>{{option.title}}</h5>
+    <button type="button" class="btn btn-primary" ng-click="addPhoto()"><span class="glyphicon glyphicon-plus"></span> add photo</button>
+    <div class="photos">
+        <div class="photo" ng-repeat="i in selected track by $index">
+            <div class="row">
+                <div class="col col-md-4">
+                    <button type="button" class="btn btn-default btn-xs" ng-click="remove($index)"><span class="glyphicon glyphicon-remove"></span></button>
+                    <img src="{{i}}" style="max-width:100%; height:auto;" />
+                    
+                </div>
+                <div class="col col-md-8">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="" ng-model="i" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="selectPhoto($index)"><span class="glyphicon glyphicon-picture"></span> Select photo</button>
+                            </span>
+                        </div>
+                    </div><!-- .form-group -->
+                </div>
+            </div><!-- .row -->
+
+        </div>
+    </div>
+</div>

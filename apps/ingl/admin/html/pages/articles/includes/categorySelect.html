@@ -1,0 +1,8 @@
+﻿<ul>
+    <li ng-repeat="cat in categoriesNested" id="{{cat.id}}">
+        <a ng-click="selectCategory(cat)" ng-class="{'text-danger' : categorySelected.id==cat.id }">{{cat.name}} </a>
+        <span class="btn btn-xs" ng-click="editCategory(cat);"><span class="glyphicon glyphicon-edit"></span></span>
+        <span class="btn btn-xs" ng-click="deleteCategory(cat.id);"><span class="glyphicon glyphicon-remove"></span></span>
+        <div ng-include="'pages/articles/includes/categorySelect.html'" onload="categoriesNested = cat.children"></div>
+    </li>
+</ul>

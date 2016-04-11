@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <options>
+        <option>
+            <title>Show date</title>
+            <name>show_date</name>
+            <fieldType>checkbox</fieldType>
+            <selectOption>true</selectOption>
+            <selectOption>false</selectOption>
+            <defaultValue>false</defaultValue>
+        </option>
+        <option>
+            <title>Show category title</title>
+            <name>show_category_title</name>
+            <fieldType>checkbox</fieldType>
+            <selectOption>true</selectOption>
+            <selectOption>false</selectOption>
+            <defaultValue>true</defaultValue>
+        </option>
+        <option>
+            <title>Show article title</title>
+            <name>show_article_title</name>
+            <fieldType>checkbox</fieldType>
+            <selectOption>true</selectOption>
+            <selectOption>false</selectOption>
+            <defaultValue>true</defaultValue>
+        </option>
+        <option>
+            <title>Show related articles</title>
+            <name>show_reated</name>
+            <fieldType>checkbox</fieldType>
+            <selectOption>true</selectOption>
+            <selectOption>false</selectOption>
+            <defaultValue>false</defaultValue>
+        </option>
+        <option>
+            <title>Use template list view</title>
+            <name>use_template_list_view</name>
+            <fieldType>drop</fieldType>
+            <selectOption>list-products</selectOption>
+            <selectOption>default</selectOption>
+            <defaultValue>default</defaultValue>
+        </option>
+        <option>
+            <title>Use template article view</title>
+            <name>use_template_view</name>
+            <fieldType>drop</fieldType>
+            <selectOption>view-proizvod</selectOption>
+            <selectOption>view</selectOption>
+            <defaultValue>view</defaultValue>
+        </option>
+        <option>
+            <title>Order by</title>
+            <name>order_by</name>
+            <fieldType>drop</fieldType>
+            <selectOption>id</selectOption>
+            <selectOption>title</selectOption>
+            <selectOption>date</selectOption>
+            <selectOption>no</selectOption>
+            <selectOption>created</selectOption>
+            <defaultValue>id</defaultValue>
+        </option>
+        <option>
+            <title>Order Direction</title>
+            <name>order_direction</name>
+            <fieldType>drop</fieldType>
+            <selectOption>asc</selectOption>
+            <selectOption>desc</selectOption>
+            <defaultValue>desc</defaultValue>
+        </option>
+    </options>
+</root>

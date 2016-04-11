@@ -1,0 +1,614 @@
+
+.container {
+    width: 721px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 147px;
+    z-index: 20000;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#657983+0,c33156+50,75154a+100&0.81+0,0.81+100 */
+    background: -moz-linear-gradient(-45deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf657983', endColorstr='#cf75154a', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+header .logo {
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+    width: 146px;
+    height: 86px;
+    position: absolute;
+    top: 31%;
+    left: 45%;
+    right: 50%;
+}
+
+header .main-menu {
+    position: relative;
+    top: 60%;
+    transform: translateX(-50%);
+    left: 50%;
+
+}
+
+header .main-menu ul {
+    padding: 0;
+    margin: 0;
+    /* width: 100%; */
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    height: 42px;
+}
+
+header .main-menu ul li:last-of-type:after {
+    content: ".";
+    clear: both;
+    visibility: hidden;
+    display: block;
+    line-height: 0;
+}
+
+header ul li a {
+    display: block;
+    color: #fff;
+    border: solid 1px transparent;
+
+    list-style: none;
+    font-size: 24px;
+    font-weight: 200;
+    text-decoration: none;
+    padding: 5px;
+
+    padding-left: 13px;
+    padding-right: 13px;
+
+    transition: all ease-in 0.2s;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+.pages .page .big-logo {
+    display: block;
+    position: absolute;
+    top: 41%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    background-image: url(../images/big-logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 462px;
+    height: 409px;
+    z-index: 100;
+}
+
+.pages .page.home .titles {
+    position: absolute;
+    /* right: -130px; */
+    bottom: 66px;
+    width: 300px;
+    left: 59%;
+    transform: translateX(-50%);
+}
+
+.page.home.who-are-we .top .slogan {
+    position: absolute;
+    bottom: 63px;
+    font-size: 24px;
+    color: #fff;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    margin: auto;
+    left: 55px;
+}
+
+.page.home-services-and-products {
+    background-image: url(../images/abstract.jpg);
+    overflow: hidden;
+    height: 900px;
+}
+
+.page.home-services-and-products .container {
+    position: absolute;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.page.home-services-and-products h2 {
+    font-size: 72px;
+    color: #fff;
+    text-align: center;
+    font-family: "FuturaPTCond-ExtraBold", arial;
+    top: 0px;
+}
+
+.page.home-services-and-products h2 span.light {
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    color: #fdafbd;
+}
+
+.page.home-services-and-products .service-list ul li {
+    float: left;
+    width: 200px;
+    margin-right: 100px;
+    margin-left: 37px;
+    list-style: none;
+    height: 357px;
+}
+
+.page.home-services-and-products .service-list ul li a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    box-sizing: content-box;
+}
+
+.page.home-services-and-products .service-list ul li:last-of-type {
+    margin-right: 0;
+}
+
+.service-list ul:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    clear: both;
+}
+
+.page.home-services-and-products .service-list ul li a span.image-back {
+    display: block;
+    height: 200px;
+    background-color: rgba(108, 73, 89, .5);
+    margin-bottom: 36px;
+    border-radius: 50%;
+}
+
+.page.home-services-and-products .service-list ul li a span.image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    z-index: 200;
+    top: 0%;
+    left: 0%;
+}
+
+.page.home-meet-the-team {
+    height: auto;
+    padding-top: 47px;
+    padding-bottom: 510px;
+}
+
+.page.home-meet-the-team h2 {
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    color: #731349;
+    text-transform: uppercase;
+    font-size: 52px;
+    left: 37%;
+    right: 30%;
+    font-weight: 100;
+}
+
+.page.home-meet-the-team .team ul {
+    padding: 0;
+    margin: 0;
+}
+
+.page.home-meet-the-team .team ul li {
+    float: left;
+    display: block;
+    width: 240px;
+    height: 235px;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.page.home-meet-the-team .team ul li a {
+    display: block;
+    width: 240px;
+    height: 235px;
+}
+
+.page.home-meet-the-team .team ul li:last-of-type:after {
+    content: " ";
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+.page.home-meet-the-team .team ul li a div.anime-team{
+    opacity: .6;
+    height:70px;
+    bottom: 0;
+    position: absolute;
+}
+.page.home-meet-the-team .team ul li a:hover div.anime-team {
+    opacity: 0;
+}
+
+.page.home-meet-the-team .team ul li a span.photo {
+    position: absolute;
+    width: 240px;
+    height: 235px;
+    background-image: url(../images/profiles/01.jpg);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+}
+
+.page.home-meet-the-team .team ul li a span.name {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: 35px;
+    height: 35px;
+    line-height: 35px;
+    top: auto;
+    color: #fff;
+    font-size: 24px;
+    padding-left: 10px;
+    opacity: 1;
+}
+
+.page.home-meet-the-team .team ul li a span.position {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: auto;
+    bottom: 0px;
+    height:35px;
+    line-height: 35px;
+    color: #fff;
+    font-size: 16px;
+    opacity: 1;
+    padding-left: 10px;
+}
+
+.page.home-meet-the-team .team ul li a.ognjen-grba span.photo {
+    background-image: url(../images/profiles/ognjen.jpg);
+}
+
+.page.home-portfolio {
+    background-image: url(../images/abstract2.jpg);
+    overflow: hidden;
+    height: 100%;
+    padding-bottom: 100px;
+
+}
+
+.page.home-portfolio .container {
+    color: #fff;
+    font-size: 39px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+.page.home-portfolio h2 {
+    padding: 2px;
+    margin-bottom: 5px;
+    font-weight: 100;
+
+}
+
+.page.home-portfolio .projects ul {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px
+}
+
+.page.home-portfolio .projects ul li {
+    float: left;
+    display: block;
+    width: 360px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.page.home-portfolio .projects ul li a {
+    display: block;
+    width: 360px;
+    height: 300px;
+}
+
+.page.home-portfolio .projects ul li:last-of-type:after {
+    content: " ";
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+
+.page.home-portfolio .projects ul li a span.photo {
+    position: absolute;
+    width: 360px;
+    height: 300px;
+
+    background-size: cover;
+}
+
+.page.home-get-in-touch {
+    background-color: #657983;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    height: 1000px;
+}
+
+.page.home-get-in-touch .container {
+    overflow: hidden;
+}
+
+.page.home-get-in-touch h2 {
+    font-size: 50px;
+    letter-spacing: 4px;
+    color: #b6d4e3;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    margin-top: 44px;
+    font-weight: 100;
+}
+
+.page.home-get-in-touch h3 {
+    color: #fff;
+    font-size: 32px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    text-transform: uppercase;
+
+    padding-left: 0px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    letter-spacing: 3px;
+    font-weight: 100;
+    left: 45%;
+}
+
+.page.home-get-in-touch .form-touch {
+    top: 20px;
+}
+
+.page.home-get-in-touch .form-touch p {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    letter-spacing: 1px;
+    margin-top: 0px;
+    font-weight: 100;
+    border: 0px;
+    width: 355px;
+
+}
+
+.page.home-get-in-touch .form-touch input {
+    display: block;
+    color: #ffffff;
+    border: 1px;
+    background-color: #8fa8b5;
+    padding-top: auto;
+    padding-bottom: auto;
+    padding-left: 15px;
+    padding-right: auto;
+    margin: 7px;
+    position: relative;
+    right: 15px;
+    font-style: italic;
+    width: 350px;
+    height: 40px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.page.home-get-in-touch .form-touch ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch textarea {
+    display: block;
+    color: #ffffff;
+    border: 10px;
+    background-color: #8fa8b5;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 70px;
+    padding-left: 7.5px;
+    padding-right: auto;
+    font-style: italic;
+    width: 342px;
+    height: 130px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    font-size: 14px;
+
+}
+
+.page.home-get-in-touch .form-touch button {
+    display: block;
+    color: #ffffff;
+    background-color: #657983;
+    position: relative;
+    top: 23px;
+    padding: 2px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-color: #fff;
+    border: solid 1px;
+    font-size: 27px;
+    outline: 3px;
+    text-transform: uppercase;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+
+}
+
+.page.home-get-in-touch .form-work {
+    top: 85.5px;
+}
+
+.page.home-get-in-touch .form-work input {
+    display: block;
+    color: #8a8989;
+    border: 1px;
+    background-color: #c2c2c2;
+    padding-top: auto;
+    padding-bottom: auto;
+    padding-left: 15px;
+    padding-right: auto;
+    margin: 7px;
+    margin-top: 0px;
+    position: relative;
+    right: 15px;
+    font-style: italic;
+    width: 445px;
+    height: 40px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    left: 40%;
+}
+
+.page.home-get-in-touch .form-work ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #657983;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #657983;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #8a8989;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #8a8989;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+    color: #8a8989;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work textarea {
+    display: block;
+    color: #8a8989;
+    border: 10px;
+    background-color: #c2c2c2;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 70px;
+    padding-left: 7.5px;
+    padding-right: auto;
+    width: 437px;
+    height: 130px;
+    font-style: italic;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    font-size: 14px;
+    left: 42.5%;
+}
+
+.page.home-get-in-touch .form-work button {
+    display: block;
+    color: #ffffff;
+    background-color: #657983;
+    position: relative;
+    top: 23px;
+    padding: 2px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-color: #fff;
+    border: solid 1px;
+    font-size: 27px;
+    outline: 3px;
+    text-transform: uppercase;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    left: 42%;
+
+}
+
+.page.home-get-in-touch .map {
+    display: block;
+    background-image: url(../images/map.png);
+    height: 300px;
+    width: 720px;
+
+    left: 0px;
+    top: 100px;
+
+}
+
+.page.home-get-in-touch .row-address {
+    color: #ffffff;
+    margin-top: 35px;
+    font-weight: normal;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 14px;
+    left: -40px;
+    padding: 40px;
+    bottom: 10px;
+    top: 40px;
+
+}
+
+.page.home-get-in-touch .row-address .col {
+
+    font-weight: normal;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 14px;
+
+}
+
+.page.home-get-in-touch .row-address .col a {
+    left: 0px;
+    color: #ffffff;
+    font-weight: normal;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 14px;
+    left: 302px;
+}
+
+.tablet-full {
+    display: block;
+    width: 100%;
+    float: none;
+    clear: both;
+}
+
+.tablet-full .form-touch,
+.tablet-full .form-work {
+    float: left;
+    width: 40%;
+
+}

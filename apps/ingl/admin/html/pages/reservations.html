@@ -1,0 +1,149 @@
+<div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+              <div class="panel-heading">Moj smeštaj</div>
+              <div class="panel-body">
+                <ul>
+                    <li ng-repeat="(key,val) in accommodations">
+                        <a ng-click="getMyReservations(val.id)">{{val.title}}</a>
+                    </li>
+                </ul>
+              </div>
+            </div><!-- .panel -->
+        </div>
+        <div class="col-md-10" ng-show="(activeAccommodationID > 0)">
+            <div class="panel panel-default">
+              <div class="panel-heading">Kalendar</div>
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-md-4">
+                      <calendar selected="day"></calendar>
+                     </div>
+                      <div class="col-md-8">
+                          <form class="form-inline" ng-controller="Datepicker">
+                              <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                         <label for="from">Od:</label>
+                                    <p class="input-group">
+                                    
+                                      <input type="date" class="form-control" datepicker-popup ng-model="fromDate" is-open="opened"  max-date="{{toDate}}" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" name="from" ng-change="setDateFrom()" />
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event,'from')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                    </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                    <label for="to">Do:</label>
+                                    <p class="input-group">
+                                        
+                                      <input type="date" class="form-control" datepicker-popup ng-model="toDate" is-open="opened" min-date="{{fromDate}}" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" name="to" ng-change="setDateTo()" />
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event,'to')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+                                    </p>
+                                        </div>
+                                </div>
+                            </div>
+                              <button type="button" class="btn btn-primary" ng-click="unlock(fromDate,toDate,activeAccommodationID)">Otključaj</button>
+                              <button type="button" class="btn btn-primary" ng-click="lock(fromDate,toDate,activeAccommodationID)">Zaključaj</button>
+                          </form>
+                      </div>
+                </div><!-- .row -->
+                  
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">Rezervacije</div>
+              <div class="panel-body">
+                  <table class="table small">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Kreirano</th>
+                              <th>Od</th>
+                              <th>Do</th>
+                              <th>Broj osoba</th>
+                              <th>Kontakt osoba</th>
+                              <th>E-mail</th>
+                              <th>Odobreno</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="(key,val) in reservations" ng-class="{'info':val.confirmed==1}">
+                              <td>{{val.id}}</td>
+                              <td>{{val.created}}</td>
+                              <td>{{val.start_date}}</td>
+                              <td>{{val.end_date}}</td>
+                              <td>{{val.num_persons}}</td>
+                              <td>{{val.info.name}}</td>
+                              <td><a ng-click="sendEmail(val.info.mail)">{{val.info.mail}}</a></td>
+                              <td>
+                                  <a ng-show="val.confirmed==1" ng-click="rejectPanel(key);"><span class="glyphicon glyphicon-ok"></span></a>
+                                  <a ng-show="val.confirmed==0" ng-click="confirmPanel(key);"><span class="glyphicon glyphicon-remove"></span></a>
+                              </td>
+                          </tr>
+                      </tbody>
+                      <tfoot></tfoot>
+                  </table>
+              </div>
+            </div><!-- .panel -->
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="approveTpl">
+        <div class="modal-header">
+            <h3 class="modal-title">Potvrda rezervacije</h3>
+        </div>
+        <div class="modal-body">
+          <table class="table small">
+                      <thead>
+                          <tr>
+                              <th>ID</th><td>{{reservation.id}}</td></tr>
+                              <tr><th>Kreirano</th><td>{{reservation.created}}</td></tr>
+                              <tr><th>Od</th><td>{{reservation.start_date}}</td></tr>
+                              <tr><th>Do</th><td>{{reservation.end_date}}</td></tr>
+                              <tr><th>Broj osoba</th><td>{{reservation.num_persons}}</td></tr>
+                              <tr><th>Kontakt osoba</th><td>{{reservation.info.name}}</td></tr>
+                              <tr><th>E-mail</th><td><a ng-click="sendEmail(reservation.info.mail)">{{reservation.info.mail}}</a></td></tr>
+                          <tr><th>Zaključaj kalendar za dati period?</th><td><button class="btn btn-primary" ng-model="form.lockCalendar" ng-init="0" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Zaključaj</button></td></tr>
+                          
+                      </thead>
+                      <tfoot></tfoot>
+                  </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Potvrdi</button>
+            <button class="btn btn-warning" ng-click="cancel()">Odustani</button>
+        </div>
+</script>
+<script type="text/ng-template" id="rejectTpl">
+        <div class="modal-header">
+            <h3 class="modal-title">Otkaz rezervacije</h3>
+        </div>
+        <div class="modal-body">
+            <table class="table small">
+                      <thead>
+                          <tr>
+                              <th>ID</th><td>{{reservation.id}}</td></tr>
+                              <tr><th>Kreirano</th><td>{{reservation.created}}</td></tr>
+                              <tr><th>Od</th><td>{{reservation.start_date}}</td></tr>
+                              <tr><th>Do</th><td>{{reservation.end_date}}</td></tr>
+                              <tr><th>Broj osoba</th><td>{{reservation.num_persons}}</td></tr>
+                              <tr><th>Kontakt osoba</th><td>{{reservation.info.name}}</td></tr>
+                              <tr><th>E-mail</th><td><a ng-click="sendEmail(reservation.info.mail)">{{reservation.info.mail}}</a></td></tr>
+                          <tr><th>Otključaj kalendar za dati period?</th><td><button class="btn btn-primary" ng-model="form.lockCalendar" ng-init="0" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Otključaj</button></td></tr>
+                          
+                      </thead>
+                      <tfoot></tfoot>
+                  </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</script>

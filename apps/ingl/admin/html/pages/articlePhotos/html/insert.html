@@ -1,0 +1,11 @@
+﻿<div class="form-group" ng-click="$event.stopPropagation()">
+    {{insertPopover.imageName}}
+    <label>Size</label>
+    <div ng-repeat="(v,k) in insertPopover.sizes track by $index">
+        <label><input type="radio" ng-model="insertPhoto.prefix" value="{{k}}" name="prefix" /> {{v}}</label></div>
+</div>
+<div class="form-group">
+    <button type="button" class="btn btn-primary btn-xs" ng-model="insertPhoto.clickable" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Clickable</button>
+</div>
+<hr />
+<button type="button" class="btn btn-primary" ng-click="insertPhotoReturn()">Insert</button>

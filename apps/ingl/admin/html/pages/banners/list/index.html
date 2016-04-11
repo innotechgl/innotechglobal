@@ -1,0 +1,94 @@
+﻿<div class="row">
+    <div class="col col-md-8">
+        <div class="banners">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h4>Banners <small>List</small></h4>
+                        </div>
+                        <div class="col col-md-5">
+                            <input type="text" class="form-control" ng-model="search" placeholder="Search banners..." popover-placement="bottom" popover-template="'pages/articles/includes/searchResult.html'" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div ng-include="'pages/banners/includes/commands.html'"></div>
+                    <div ng-hide="sorting">
+                        <ol class="breadcrumb">
+                            <li><a ng-click="selectCategory({id: 0, name: ''})"><span class=" glyphicon glyphicon-home"></span></a></li>
+                            <li ng-repeat="(k,v) in path"><a ng-click="selectCategory(v)">{{v.name}}</a></li>
+                            <li><span class="active">{{categorySelected.name}}</span></li>
+                            <li>
+                                <button type="button" class="btn btn-xs"
+                                        popover-template="'pages/articlePhotos/html/addsubcategory.html'"
+                                        popover-title="Title"
+                                        popover-toggle="isOpen"
+                                        popover-placement="bottom">
+                                    <span class="glyphicon glyphicon-plus"></span> Add subcategory
+                                </button>
+                            </li>
+                        </ol>
+                        <div>
+
+                            <div class="upload-photos" upload-banner-photos photos-for-upload="photosForUpload" uploaded-photos="uploadedPhotos" upload-url="uploadURL"></div><!-- .upload-photos -->
+                        </div>
+                        <hr />
+                        <div class="photos">
+                            <div class="photo row" ng-repeat="(k,v) in photos | filter: {categorie_id:categorySelected.id} | orderBy: 'no'" ng-class="{inactive:(v.active == 0)}" ng-class-even="'even'" ng-class-odd="'odd'">
+                                <div class="col col-md-1">
+                                    <input type="checkbox" />
+                                </div>
+                                <div class="col col-md-3">
+                                    <span class="image" style="background-image:url('{{getPhotoURL(v, 'thumb_')}}')"></span>
+                                </div>
+                                <div class="col col-md-6">
+                                    <strong class="help-block">{{v.no}} {{v.title}}</strong>
+                                    <small class="help-block">{{v.description}}</small>
+                                </div>
+                                <div class="col col-md-2">
+                                    <button class="btn btn-default btn-xs" ng-click="edit(v.id)"> Edit</button>
+                                    <button class="btn btn-default btn-xs" ng-click="activate(v.id)" ng-show="(v.active == 0)"> Activate</button>
+                                    <button class="btn btn-default btn-xs" ng-click="deactivate(v.id)" ng-show="(v.active == 1)"> Deactivate</button>
+                                    <button class="btn btn-default btn-xs" ng-click="deletePhoto(v.id)"> Delete</button>
+                                </div>
+                            </div>
+                        </div><!-- .photos -->
+
+                        <div class="panel-footer">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-trash"></span> Delete selected</button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-share-alt"></span> Move to category</button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-ok"></span> Activate</button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-remove"></span> Deactivate</button>
+                            </div><!-- button-group -->
+                        </div><!-- .panel-footer -->
+                    </div>
+                    <div ng-show="sorting">
+                        <div class="form-group sortable-options">
+                            <ul ui:sortable ng:model="photos" class="list-group">
+                                <li ng-repeat="banner in photos  | filter: {categorie_id:categorySelected.id} | orderBy: 'no'" class="list-group-item">
+                                    <span class="image" style="background-image:url('{{getPhotoURL(banner, 'thumb_')}}'); width:100px; height:100px; display:block; background-size:contain; background-color:#ccc; background-repeat:no-repeat;"></span>
+                                    <span>{{banner.title}} <small>{{banner.name}}</small></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-default" ng-click="saveSort()">Save sort</button>
+                        </div><!-- .btn-group -->
+                    </div><!-- .sorting -->
+                </div><!-- .panel-body -->
+            </div><!-- .panel -->
+        </div><!-- .banners -->
+    </div><!-- .col8 -->
+    <div class="col col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5>Categories</h5>
+            </div>
+            <div class="panel-body">
+                <div class="category-select" ng-include="'includes/html/categorySelect.html'"></div>
+            </div>
+        </div>
+    </div><!-- .col4 -->
+</div><!-- .row -->

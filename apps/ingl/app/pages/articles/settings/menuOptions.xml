@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tasks>
+        <task>
+            <name>list</name>
+            <availableViews>
+                <view>list</view>
+                <view>list-products</view>
+                <view>list-recepti</view>
+            </availableViews>
+            <fields>
+                <field>
+                    <label lang="sr">Kategorija članaka</label>
+                    <label lang="en">Article category</label>
+                    <fieldName>id</fieldName>
+                    <fieldType>drop-hierarchical-single</fieldType>
+                    <autoLoad>true</autoLoad>
+                    <urlData>page=articles&amp;task=getAllArticleCategories</urlData>
+                </field>
+            </fields>
+        </task>
+        <task>
+            <name>view</name>
+            <availableViews>
+                <view>view</view>
+                <view>view-product</view>
+                <view>view-recepti</view>
+            </availableViews>
+            <fields>
+                <field>
+                    <label lang="sr">Kategorija članaka</label>
+                    <label lang="en">Article category</label>
+                    <fieldName>categorie_id</fieldName>
+                    <required>true</required>
+                    <fieldType>drop-hierarchical-single</fieldType>
+                    <autoLoad>true</autoLoad>
+                    <onChange>
+                        <load>id</load>
+                    </onChange>
+                    <urlData>page=articles&amp;task=getAllArticleCategories</urlData>
+                </field>
+                <field>
+                    <label lang="sr">Članak</label>
+                    <label lang="en">Članak</label>
+                    <fieldName>id</fieldName>
+                    <required>true</required>
+                    <fieldType>drop</fieldType>
+                    <autoLoad>false</autoLoad>
+                    <urlData>page=articles&amp;task=getAllForMenuCreator</urlData>
+                </field>
+            </fields>
+        </task>
+    </tasks>
+</root>

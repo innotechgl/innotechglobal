@@ -1,0 +1,4 @@
+﻿            <li ng-repeat="cat in categoriesNested">
+                <a ng-click="selectCategory(cat)">{{cat.name}} <span class="btn btn-xs"><span class="glyphicon glyphicon-edit"></span></span><span class="btn btn-xs" ng-click="deleteCategory(cat.id);"><span class="glyphicon glyphicon-remove"></span></span></a>
+                <ul ng-include="'includes/html/insideCategorySelect.html'"></ul>
+            </li>

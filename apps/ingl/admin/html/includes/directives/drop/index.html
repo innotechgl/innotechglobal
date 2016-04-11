@@ -1,0 +1,15 @@
+﻿<div class="form-group" class="checkbox">
+    <label>{{title}}</label>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            {{opt}}
+            <span class="caret"></span>
+        </button>
+        {{options}}
+        <ul class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector">
+            <li ng-repeat="(k,v) in dropOptions">
+                <a ng-click="selectOption(k)">{{v}}</a>
+            </li>
+        </ul>
+    </div>
+</div><!-- .form-group -->

@@ -1,0 +1,6 @@
+﻿<div class="form-group">
+    <label for="{{option.fieldName}}">{{option.name}}</label>
+    <select name="{{option.fieldName}}" id="{{option.fieldName}}" ng-model="menuForm.options[option.fieldName]" class="form-control">
+        <option ng-repeat="(k,v) in option.fieldOptions.fieldOption" value="{{v}}">{{v}}</option>
+    </select>
+</div>

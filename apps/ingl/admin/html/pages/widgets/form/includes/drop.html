@@ -1,0 +1,13 @@
+﻿<label>{{option.title}}</label>
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        {{widgetForm[option.name]}}
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector">
+        <li ng-repeat="dropOption in option.selectOption track by $index">
+            <a ng-click="setSelectedOption(option.name, dropOption)">{{dropOption}}</a>
+        </li>
+    </ul>
+    <input type="hidden" ng-model="widgetForm[option.name]" />
+</div>

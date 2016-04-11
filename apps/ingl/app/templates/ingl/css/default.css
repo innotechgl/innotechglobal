@@ -1,0 +1,1172 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-size: 14px;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+   /* transform: translate3d(0, 0, 1px);
+    -moz-transform: translate3d(0, 0, 1px);*/
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.col {
+    float: left;
+}
+
+.row.two-col .col {
+    width: 45%;
+    margin-left: 10%;
+}
+
+.row.two-col .col:first-of-type {
+    margin-left: 0%;
+}
+
+.row.two-col .col:last-of-type:after {
+    /*content:".";
+    clear:both;
+    visibility:hidden;
+    display:block;*/
+}
+
+.row:after {
+    content: ".";
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0;
+}
+
+a#move-next {
+    background-image: url(../images/arrow.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+    transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+
+}
+
+a#move-next:hover {
+    opacity: .7;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 20000;
+    transform: translate3d(0, 0, 1px);
+    transition: all ease 0.3s;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#657983+0,c33156+50,75154a+100&0.81+0,0.81+100 */
+    background: -moz-linear-gradient(-45deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf657983', endColorstr='#cf75154a', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+header.full-color {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#657983+0,c33156+50,75154a+100&0.81+0,0.81+100 */
+    background: -moz-linear-gradient(-45deg, rgba(101, 121, 131, 1) 0%, rgba(195, 49, 86, 1) 50%, rgba(117, 21, 74, 1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(101, 121, 131, 1) 0%, rgba(195, 49, 86, 1) 50%, rgba(117, 21, 74, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(101, 121, 131, 1) 0%, rgba(195, 49, 86, 1) 50%, rgba(117, 21, 74, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf657983', endColorstr='#cf75154a', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+.trans {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#657983+0,c33156+50,75154a+100&0.81+0,0.81+100 */
+    background: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf657983', endColorstr='#cf75154a', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+header .logo {
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+    width: 146px;
+    height: 86px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+header .main-menu {
+    position: absolute;
+    top: 58%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+header .main-menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+header .main-menu ul li {
+    list-style: none;
+    float: left;
+}
+
+header .main-menu ul li a {
+    display: block;
+    color: #fff;
+    border: solid 1px transparent;
+
+    list-style: none;
+    font-size: 24px;
+    font-weight: 200;
+    text-decoration: none;
+
+    text-transform: uppercase;
+    padding: 5px;
+
+    padding-left: 13px;
+    padding-right: 13px;
+
+    transition: all ease-in 0.2s;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+header.black .main-menu ul li a {
+    color: #798b94;
+
+}
+
+header .main-menu ul li a:hover {
+    border: solid 1px #fff;
+}
+
+header.black .main-menu ul li a:hover {
+    border: solid 1px #798b94;
+}
+
+header.black .logo {
+    background-image: url(../images/logo-color.png);
+}
+
+.pages-container {
+    overflow: hidden;
+}
+
+.pages {
+    transition: all ease-in-out 1.3s;
+    -webkit-transition: all ease-in-out 1.3s;
+    -moz-transition: all ease-in-out 1.3s;
+    -ms-transition: all ease-in-out 1.3s;
+    -o-transition: all ease-in-out 1.3s;
+
+    transform: translate3d(0, 0, 1px);
+
+    -moz-transform: translate3d(0, 0, 1px);
+}
+
+.pages .page {
+    width: 100%;
+    height: 800px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.pages .page .big-logo {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    background-image: url(../images/big-logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 462px;
+    height: 409px;
+    z-index: 100;
+}
+
+.pages .page .banners .banner {
+    width: 100%;
+    height: 1080px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.pages .page.home .gradient {
+    /*position:absolute;
+    top:0;
+    width:100%;
+    height:112px;
+    */
+}
+
+.pages .page.home .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pages .page.home .titles {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    bottom: 120px;
+    width: 300px;
+}
+
+.pages .page.home .titles .title {
+    display: block;
+    font-weight: normal;
+    font-size: 65px;
+    font-family: "FuturaPTCond-ExtraBold", arial;
+    line-height: 65px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    text-transform: uppercase;
+
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+
+    -moz-backface-visibility: hidden;
+    -moz-perspective: 1000;
+    -moz-transform-origin: left top;
+}
+
+.pages .page.home .titles .title:hover {
+    font-size: 80px;
+}
+
+.pages .page.home .titles .title.active {
+    font-size: 100px;
+}
+
+.pages .page .banners .banner {
+    opacity: 0;
+    transition: all ease 0.8s;
+}
+
+.pages .page .banners .banner:nth-of-type(1) {
+    opacity: 1;
+    background-image: url(../images/banners/build.jpg);
+}
+
+.pages .page .banners .banner:nth-of-type(2) {
+    background-image: url(../images/banners/connect.jpg);
+}
+
+.pages .page .banners .banner:nth-of-type(3) {
+    background-image: url(../images/banners/interact.jpg);
+}
+
+.pages .page .banners .banner:nth-of-type(4) {
+    background-image: url(../images/banners/advise.jpg);
+}
+
+.page.home.who-are-we {
+    height: auto;
+}
+
+.page.home.who-are-we .top {
+    height: 640px;
+    background-image: url(../images/who-we-are.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page.home.who-are-we .top .slogan {
+    position: absolute;
+    bottom: 63px;
+    font-size: 24px;
+    color: #fff;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+.page.home.who-are-we .top .slogan .top-slogan {
+    line-height: 62px;
+    font-size: 62px;
+}
+
+.page.home.who-are-we .top .slogan .bottom-slogan {
+    line-height: 112px;
+    font-size: 112px;
+    letter-spacing: -2px;
+}
+
+.page.home.who-are-we .top .slogan .small-slogan {
+    font-size: 40px;
+    display: block;
+    text-align: center;
+}
+
+.page.home.who-are-we .top .slogan .highlite {
+    color: #92bbcf;
+}
+
+.page.home.who-are-we .bottom {
+    height: 430px;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 24px;
+    padding-top: 75px;
+    margin-bottom: 122px;
+}
+
+.page.home.who-are-we .bottom p {
+    padding: 0;
+    margin: 0;
+}
+
+.page.home-services-and-products {
+    background-image: url(../images/abstract.jpg);
+
+    overflow: hidden;
+    height: 700px;
+}
+
+.page.home-services-and-products .container {
+    position: absolute;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.page.home-services-and-products h2 {
+    font-size: 72px;
+    color: #fff;
+    text-align: center;
+    font-family: "FuturaPTCond-ExtraBold", arial;
+}
+
+.page.home-services-and-products h2 span.light {
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    color: #fdafbd;
+}
+
+.page.home-services-and-products .service-list ul li {
+    float: left;
+    width: 200px;
+    margin-right: 40px;
+    list-style: none;
+    height: 357px;
+}
+
+.page.home-services-and-products .service-list ul li a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    box-sizing: content-box;
+}
+
+.page.home-services-and-products .service-list ul li:last-of-type {
+    margin-right: 0;
+}
+
+.service-list ul:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    clear: both;
+}
+
+.page.home-services-and-products .service-list ul li a span.image-back {
+    display: block;
+    height: 200px;
+    background-color: rgba(108, 73, 89, .5);
+    margin-bottom: 36px;
+    border-radius: 50%;
+}
+
+.page.home-services-and-products .service-list ul li a span.image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    z-index: 200;
+    top: 0%;
+    left: 0%;
+}
+
+.page.home-services-and-products .service-list ul li a.build span.image {
+    background-image: url(../images/build-icon.png);
+}
+
+.page.home-services-and-products .service-list ul li a.interact span.image {
+    background-image: url(../images/interact-icon.png);
+}
+
+.page.home-services-and-products .service-list ul li a.connect span.image {
+    background-image: url(../images/connect-icon.png);
+}
+
+.page.home-services-and-products .service-list ul li a.advise span.image {
+    background-image: url(../images/advise-icon.png);
+}
+
+.page.home-services-and-products .service-list ul li a span.c {
+    z-index: 100;
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: solid 3px transparent;
+    -moz-transition: all ease-in 0.5s;
+    -webkit-transition: all ease-in 0.5s;
+    -ms-transition: all ease-in 0.5s;
+    transition: all ease-in 0.5s;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -moz-backface-visibility: hidden;
+    -moz-perspective: 1000;
+    -o-backface-visibility: hidden;
+    -o-perspective: 1000;
+    -ms-backface-visibility: hidden;
+    -ms-perspective: 1000;
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
+.page.home-services-and-products .service-list ul li a:hover span.c {
+    box-shadow: #fff 0 0 0px;
+}
+
+.page.home-services-and-products .service-list ul li a:hover span.c:nth-of-type(1) {
+    z-index: 100;
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.home-services-and-products .service-list ul li a:hover span.c:nth-of-type(2) {
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.home-services-and-products .service-list ul li a:hover span.c:nth-of-type(3) {
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.home-services-and-products .service-list ul li a:hover span.c:nth-of-type(4) {
+    transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.home-services-and-products .service-list ul li a span.title {
+    font-family: "FuturaPTCond-ExtraBold", arial;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.page.home-services-and-products .service-list ul li a:hover span.title {
+    -moz-transform: translate3d(0, -10px, 1);
+    -ms-transform: translate3d(0, -10px, 1);
+    -o-transform: translate3d(0, -10px, 1);
+    -webkit-transform: translate3d(0, -10px, 1);
+    transform: translate3d(0, -10px, 1);
+}
+
+.page.home-meet-the-team {
+    height: auto;
+    padding-top: 47px;
+    padding-bottom: 510px;
+}
+
+.page.home-meet-the-team h2 {
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    color: #731349;
+    text-transform: uppercase;
+    font-size: 39px;
+}
+
+.page.home-meet-the-team .team ul {
+    padding: 0;
+    margin: 0;
+}
+
+.page.home-meet-the-team .team ul li {
+    float: left;
+    display: block;
+    width: 320px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.page.home-meet-the-team .team ul li a {
+    display: block;
+    width: 320px;
+    height: 300px;
+}
+
+.page.home-meet-the-team .team ul li:last-of-type:after {
+    content: " ";
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+
+.page.home-meet-the-team .team ul li a span.photo {
+    position: absolute;
+    width: 320px;
+    height: 300px;
+    background-image: url(../images/profiles/01.jpg);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+}
+
+.page.home-meet-the-team .team ul li a:hover span.name,
+.page.home-meet-the-team .team ul li a:hover span.position {
+    opacity: 1;
+}
+
+.page.home-meet-the-team .team ul li a div.anime-team {
+    background-color: #6a1343;
+    opacity: 0;
+    transition: all ease 0.6s;
+    width: 100%;
+    height: 100%;
+}
+
+.page.home-meet-the-team .team ul li a:hover div.anime-team {
+    opacity: 0.6;
+}
+
+.page.home-meet-the-team .team ul li a span.name {
+    position: absolute;
+    width: 100%;
+    left: 19px;
+    top: 19px;
+    color: #fff;
+    font-size: 24px;
+    opacity: 0;
+    transition: all ease 0.6s;
+}
+
+.page.home-meet-the-team .team ul li a span.position {
+    position: absolute;
+    width: 100%;
+    left: 19px;
+    top: 46px;
+    color: #fff;
+    font-size: 16px;
+    opacity: 0;
+    transition: all ease 0.6s;
+}
+
+.page.home-meet-the-team .team ul li a.ognjen-grba span.photo {
+    background-image: url(../images/profiles/ognjen.jpg);
+}
+
+.page.home-portfolio {
+    background-image: url(../images/abstract2.jpg);
+    overflow: hidden;
+    height: 100%;
+    padding-bottom: 100px;
+}
+
+.page.home-portfolio .container {
+    color: #fff;
+    font-size: 39px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+.page.home-portfolio h2 {
+    padding: 2px;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+
+.page.home-portfolio .projects ul {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px
+}
+
+.page.home-portfolio .projects ul li {
+    float: left;
+    display: block;
+    width: 480px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.page.home-portfolio .projects ul li a {
+    display: block;
+    width: 480px;
+    height: 400px;
+}
+
+.page.home-portfolio .projects ul li:last-of-type:after {
+    content: " ";
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+
+.page.home-portfolio .projects ul li a span.photo {
+    position: absolute;
+    width: 480px;
+    height: 400px;
+    background-image: url(../images/project1.jpg);
+    background-repeat: no-repeat;
+
+    background-size: cover;
+}
+
+.page.home-portfolio .projects ul li a div.anime-project {
+    background-color: #6a1343;
+    opacity: 0;
+    transition: all ease 0.6s;
+    width: 100%;
+    height: 100%;
+}
+
+.page.home-portfolio .projects ul li a:hover div.anime-project {
+    opacity: 0.9;
+}
+
+
+.page.home-portfolio .projects ul li a span.project {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 45%;
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    opacity: 0;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    transition: all ease 0.6s;
+}
+
+.page.home-portfolio .projects ul li a span.projectname {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 53%;
+    display: block;
+    color: #fff;
+    font-size: 52px;
+    text-align: center;
+    line-height: 40px;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    opacity: 0;
+    transition: all ease 0.6s;
+}
+
+.page.home-portfolio .projects ul li:hover a span.project,
+.page.home-portfolio .projects ul li:hover a span.projectname {
+    opacity: 1;
+}
+
+.page.home-get-in-touch {
+    background-color: #657983;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    height: 1050px;
+}
+
+.page.home-get-in-touch .container {
+    overflow: hidden;
+    height: 100%;
+}
+
+.page.home-get-in-touch h2 {
+    font-size: 65px;
+    letter-spacing: 4px;
+    color: #b6d4e3;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    margin-top: 44px;
+    font-weight: 100;
+}
+
+.page.home-get-in-touch p {
+    margin-top: 0px;
+}
+
+.page.home-get-in-touch h3 {
+    color: #fff;
+    font-size: 44px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    text-transform: uppercase;
+    padding-top: 15px;
+    margin-top: 45px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    letter-spacing: 6px;
+    font-weight: 100;
+}
+
+.page.home-get-in-touch .form-touch p {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    letter-spacing: 0px;
+    width: 460px;
+}
+
+.page.home-get-in-touch .form-touch input {
+    display: block;
+    color: #ffffff;
+    border: 1px;
+    background-color: #8fa8b5;
+    padding-top: auto;
+    padding-bottom: auto;
+    padding-left: 15px;
+    padding-right: auto;
+    margin: 7px;
+    position: relative;
+    right: 15px;
+    font-style: italic;
+    width: 445px;
+    height: 40px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.page.home-get-in-touch .form-touch ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-touch textarea {
+    display: block;
+    color: #ffffff;
+    border: 10px;
+    background-color: #8fa8b5;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 70px;
+    padding-left: 7.5px;
+    padding-right: auto;
+    font-style: italic;
+    width: 437px;
+    height: 130px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    font-size: 14px;
+
+}
+
+.page.home-get-in-touch .form-touch button {
+    display: block;
+    color: #ffffff;
+    background-color: #657983;
+    position: relative;
+    top: 23px;
+    padding: 2px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-color: #fff;
+    border: solid 1px;
+    font-size: 27px;
+    outline: 3px;
+    text-transform: uppercase;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+
+}
+
+.page.home-get-in-touch .form-work input {
+    display: block;
+    color: #8a8989;
+    border: 1px;
+    background-color: #c2c2c2;
+    padding-top: auto;
+    padding-bottom: auto;
+    padding-left: 15px;
+    padding-right: auto;
+    margin: 7px;
+    margin-top: 0px;
+    position: relative;
+    right: 15px;
+    font-style: italic;
+    width: 445px;
+    height: 40px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #657983;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #657983;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #8a8989;
+    opacity: 1;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #8a8989;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work :placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+    color: #8a8989;
+    letter-spacing: 2px;
+}
+
+.page.home-get-in-touch .form-work textarea {
+    display: block;
+    color: #8a8989;
+    border: 10px;
+    background-color: #c2c2c2;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 70px;
+    padding-left: 7.5px;
+    padding-right: auto;
+    width: 437px;
+    height: 130px;
+    font-style: italic;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    font-size: 14px;
+
+}
+
+.page.home-get-in-touch .form-work button {
+    display: block;
+    color: #ffffff;
+    background-color: #657983;
+    position: relative;
+    top: 23px;
+    padding: 2px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-color: #fff;
+    border: solid 1px;
+    font-size: 27px;
+    outline: 3px;
+    text-transform: uppercase;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+
+}
+
+.page.home-get-in-touch .map {
+    display: block;
+    height: 940px;
+    width: 485px;
+    margin-right: 15px;
+    left: 20px;
+}
+
+.page.home-get-in-touch .row-address {
+    color: #ffffff;
+    margin-top: 35px;
+    font-weight: normal;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 14px;
+    left: 18px;
+    bottom: 10px;
+}
+
+.page.home-get-in-touch .row-address .col {
+    padding-right: 35px;
+    font-weight: normal;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.page.home-get-in-touch .row-address .col a {
+    left: 80%;
+    color: #ffffff;
+    font-weight: normal;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+
+    height: 54px;
+    line-height: 54px;
+}
+
+/* SECOND HTML STARTS HERE ( services.html ) */
+
+.page.service-services-products {
+    background-image: url(../images/banner3.jpg);
+    overflow: hidden;
+    height: 620px;
+}
+
+.page.service-services-products .container {
+    position: absolute;
+    height: auto;
+    top: 68%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+}
+
+.page.service-services-products h2 {
+    font-size: 117px;
+    color: #fff;
+    text-align: center;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    font-weight: 100;
+    bottom: 45px;
+}
+
+.page.service-services-products .service-list {
+    margin-bottom: 100px;
+    margin-top: 112px;
+}
+
+.page.service-services-products .service-list ul {
+    margin: 0;
+    padding: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+}
+
+.page.service-services-products .service-list ul li {
+    float: left;
+    width: 130px;
+    height: 130px;
+    margin-right: 10px;
+    list-style: none;
+    /*height:357px;*
+
+    /*top: 150px;*/
+
+}
+
+.page.service-services-products .service-list ul li a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    box-sizing: content-box;
+}
+
+.page.service-services-products .service-list ul li:last-of-type {
+    margin-right: 0;
+}
+
+.page.service-services-products .service-list ul li a span.image-back {
+    display: block;
+    height: 130px;
+    width: 130px;
+    background-color: rgba(73, 35, 62, .5);
+    /*margin-bottom:36px;*/
+    border-radius: 50%;
+
+}
+
+.page.service-services-products .service-list ul li a span.image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    z-index: 200;
+    transform: translate(-50%, -50%);
+    top: 30%;
+    left: 50%;
+
+}
+
+.page.service-services-products .service-list ul li a.build span.image {
+    background-image: url(../images/build-icon.png);
+
+}
+
+.page.service-services-products .service-list ul li a.interact span.image {
+    background-image: url(../images/interact-icon.png);
+}
+
+.page.service-services-products .service-list ul li a.connect span.image {
+    background-image: url(../images/connect-icon.png);
+}
+
+.page.service-services-products .service-list ul li a.advise span.image {
+    background-image: url(../images/advise-icon.png);
+}
+
+.page.service-services-products .service-list ul li a span.c {
+    z-index: 100;
+    position: absolute;
+    display: block;
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    border: solid 3px transparent;
+    -moz-transition: all ease-in 0.2s;
+    -webkit-transition: all ease-in 0.2s;
+    -ms-transition: all ease-in 0.5s;
+    transition: all ease-in 0.5s;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -moz-backface-visibility: hidden;
+    -moz-perspective: 1000;
+    -o-backface-visibility: hidden;
+    -o-perspective: 1000;
+    -ms-backface-visibility: hidden;
+    -ms-perspective: 1000;
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
+.page.service-services-products .service-list ul li a:hover span.c {
+    box-shadow: #fff 0 0 0px;
+}
+
+.page.service-services-products .service-list ul li a:hover span.c:nth-of-type(1) {
+    z-index: 100;
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.service-services-products .service-list ul li a:hover span.c:nth-of-type(2) {
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.service-services-products .service-list ul li a:hover span.c:nth-of-type(3) {
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.service-services-products .service-list ul li a:hover span.c:nth-of-type(4) {
+    transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    border-top: solid 3px rgba(255, 255, 255, 1);
+    border-right: solid 3px rgba(255, 255, 255, 1);
+}
+
+.page.service-services-products .service-list ul li a span.title {
+    font-family: "FuturaPTCond-ExtraBold", arial;
+    font-size: 18.5px;
+    text-transform: uppercase;
+    bottom: 40px;
+
+    display: block;
+    text-align: center;
+}
+
+.page.service-services-products .service-list ul li a:hover span.title {
+    -moz-transform: translate3d(0, -10px, 1px);
+    -ms-transform: translate3d(0, -10px, 1px);
+    -o-transform: translate3d(0, -10px, 1px);
+    -webkit-transform: translate3d(0, -10px, 1px);
+    transform: translate3d(0, -10px, 1px);
+}
+
+.page.service-bottom {
+    height: 350px;
+}
+
+.page.service-bottom .container {
+    top: 63px;
+    padding: 25px;
+    height: 50px;
+
+}
+
+.page.service-bottom .container .text {
+    height: 50px;
+}
+
+.page.service-bottom .container .text p {
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 24px;
+}

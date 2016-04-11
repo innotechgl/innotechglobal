@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <options>
+        <option>
+            <title>Menu</title>
+            <name>categorie_id</name>
+            <fieldType>advanced_select</fieldType>
+            <selectFrom>page=menu&amp;task=getAll</selectFrom>
+            <defaultValue>0</defaultValue>
+        </option>
+        <option>
+            <title>Title</title>
+            <name>title</name>
+            <fieldType>text</fieldType>
+            <defaultValue></defaultValue>
+        </option>
+        <option>
+            <title>Class prefix</title>
+            <name>class_prefix</name>
+            <fieldType>text</fieldType>
+            <defaultValue></defaultValue>
+        </option>
+        <option>
+            <title>View type</title>
+            <name>viewType</name>
+            <fieldType>select</fieldType>
+            <selectOption>view</selectOption>
+            <selectOption>viewHorizontal</selectOption>
+            <selectOption>sitemap</selectOption>
+            <selectOption>viewNavOnly</selectOption>
+            <defaultValue>view</defaultValue>
+        </option>
+    </options>
+</root>

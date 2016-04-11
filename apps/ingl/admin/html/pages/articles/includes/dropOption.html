@@ -1,0 +1,4 @@
+﻿<div class="form-group">
+    <label for="{{option.fieldName}}">{{option.name}}</label>
+    <select name="{{option.fieldName}}" id="{{option.fieldName}}" ng-model="articleForm.options[option.fieldName]" class="form-control" ng-options="option for option in option.fieldOptions.fieldOption" required></select>
+</div>

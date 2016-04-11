@@ -1,0 +1,73 @@
+﻿<div class="row">
+    <div class="col col-md-8">
+        <div class="articles">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h4>Widgets <small>List</small></h4>
+                        </div>
+                        <div class="col col-md-5">
+                            <input type="text" class="form-control" ng-model="search" placeholder="Search widgets..." popover-placement="bottom" popover-template="'pages/widgets/includes/searchResult.html'" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div ng-include="'pages/widgets/includes/commands.html'"></div>
+                    <table class="table small table-hover">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th ng-click="setOrderBy('no')"><a>No</a></th>
+                                <th ng-click="setOrderBy('id')"><a>ID</a></th>
+                                <th ng-click="setOrderBy('name')"><a>Name</a></th>
+                                <th ng-click="setOrderBy('native_name')"><a>Native name</a></th>
+                                <th ng-click="setOrderBy('type')"><a>Type</a></th>
+                                <th ng-click="setOrderBy('position')"><a>Position</a></th>
+                                <th ng-click="setOrderBy('active')"><a>Active</a></th>
+                                <th>Commands</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key,widget) in widgets | orderBy:orderedBy" ng-class="{'info':(widget.active==1 && $root.showColors==1)}">
+                                <td><input type="checkbox" value="{{widget.id}}" ng-model="multipleSelect[$index]" ng-init="widget.id" /></td>
+                                <td>{{widget.no}}</td>
+                                <td>{{widget.id}}</td>
+                                <td><a ng-href="#/pages/widgets/form/edit/{{widget.id}}">{{widget.name}}</a></td>
+                                <td>{{widget.native_name}}</td>
+                                <td>{{widget.type}}</td>
+                                <td>{{widget.position}}</td>
+                                <td>
+                                    <a ng-show="widget.active==1" ng-click="deactivate(widget.id);"><span class="glyphicon glyphicon-ok"></span></a>
+                                    <a ng-show="widget.active==0" ng-click="activate(widget.id);"><span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                                <td><a ng-href="#/pages/widgets/form/edit/{{widget.id}}"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
+                                <a ng-click="delete(widget.id)"><span class="glyphicon glyphicon-trash"></span>Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm" boundary-links="false"></pagination>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-trash"></span> Delete selected</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-ok"></span> Activate</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-remove"></span> Deactivate</button>
+                    </div><!-- button-group -->
+                </div><!-- .panel-footer -->
+            </div><!-- .panel -->
+        </div><!-- .articles -->
+    </div>
+    <div class="col col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5>Settings</h5>
+            </div>
+            <div class="panel-body">
+                
+            </div>
+        </div>
+    </div>
+</div>

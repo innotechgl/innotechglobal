@@ -1,0 +1,50 @@
+<RestClientRequest>
+    <option name="biscuits">
+        <list>
+            <Biscuit>
+                <option name="date" value="-1"/>
+                <option name="domain" value="cms"/>
+                <option name="name" value="PHPSESSID"/>
+                <option name="path" value="/"/>
+                <option name="value" value="cou3veu5t20s3qe7o98oklmfq1"/>
+            </Biscuit>
+        </list>
+    </option>
+    <option name="httpMethod" value="GET"/>
+    <option name="urlBase" value="http://cms"/>
+    <option name="urlPath" value="/rest/"/>
+    <option name="headers">
+        <list>
+            <KeyValuePair>
+                <option name="key" value="Accept"/>
+                <option name="value" value="*/*"/>
+            </KeyValuePair>
+            <KeyValuePair>
+                <option name="key" value="Cache-Control"/>
+                <option name="value" value="no-cache"/>
+            </KeyValuePair>
+        </list>
+    </option>
+    <option name="parameters">
+        <list>
+            <KeyValuePair>
+                <option name="key" value="page"/>
+                <option name="value" value="accommodations"/>
+            </KeyValuePair>
+            <KeyValuePair>
+                <option name="key" value="task"/>
+                <option name="value" value="getAccommodationList"/>
+            </KeyValuePair>
+            <KeyValuePair>
+                <option name="key" value="option"/>
+                <option name="value" value="accommodation"/>
+            </KeyValuePair>
+        </list>
+    </option>
+    <option name="parametersEnabled" value="true"/>
+    <option name="haveTextToSend" value="false"/>
+    <option name="haveFileToSend" value="false"/>
+    <option name="isFileUpload" value="false"/>
+    <option name="textToSend" value=""/>
+    <option name="filesToSend" value=""/>
+</RestClientRequest>
