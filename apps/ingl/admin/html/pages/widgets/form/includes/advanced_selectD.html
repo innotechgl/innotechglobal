@@ -1,0 +1,8 @@
+﻿<ul>
+    <li ng-repeat="cat in categorised" id="{{cat.id}}" class="checkbox">
+        <label>
+            <input type="checkbox" ng-model="m[option.name][(cat.id).toString()]" ng-click="clicked(m[option.name],cat.id)" /> {{cat.name}}
+        </label>
+        <div ng-include="'pages/widgets/form/includes/advanced_selectD.html'" onload="categorised = cat.children"></div>
+    </li>
+</ul>

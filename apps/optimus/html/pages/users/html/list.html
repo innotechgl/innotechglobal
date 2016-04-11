@@ -1,0 +1,147 @@
+<div class="row">
+
+  <div class="col-md-8">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+
+    <div>
+      <button type="button" class="btn blue-hoki">Add</button>
+        <button type="button" class="btn blue-hoki" href="" ng-click="showme= ! showme">Filter</button>
+        <div ng-show="showme">
+          <form>
+
+             <div class="checkbox">
+              <p>Filter:</p>
+    <label>
+      <input type="checkbox" ng-model="loged">
+      Loged in
+    </label>
+     <label>
+      <input type="checkbox" ng-model="createdFrom">
+      Created from
+    </label>
+     <label>
+      <input type="checkbox" ng-model="createdTo">
+      Created to
+    </label>
+     <button type="button" class="btn btn-danger" href="" ng-click="showme=false">hide</button>
+  </div>
+          </form>
+
+         </div>
+   </div>
+
+    <h1> List users </h1>
+
+
+  </div> <!-- panel-heading end -->
+
+  <div   class="panel-body">
+     <table class="table table-hover" >
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>loged in</th>
+        <th>created</th>
+        <th>member of group</th>
+        <th>logs</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="data in data track by $index">
+        <td>{{data.parent}}</td>
+        <td>{{data.username}}</td>
+        <td>{{data.loged}}</td>
+        <td>{{data.created}}</td>
+        <td>{{data.member}}</td>
+        <td><a>view log</a></td>
+      </tr>
+
+    </tbody>
+
+  </table>
+  <div> <nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">6</a></li>
+    <li><a href="#">7</a></li>
+    <li><a href="#">8</a></li>
+    <li><a href="#">9</a></li>
+    <li><a href="#">10</a></li>
+
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav></div>
+
+  </div>   <!-- panel-body end -->
+
+   <div class="panel-footer">
+
+        <button type="button" class="btn red">Deactive</button>
+        <button type="button" class="btn blue-hoki">Active</button>
+      <button type="button" class="btn red">Delete</button>
+
+   </div> <!-- panel-footer end -->
+
+       </div> <!-- panel USER end -->
+
+     </div><!-- col-md-8 end -->
+
+  <div class="col-md-4">
+
+<div class="panel panel-default">
+
+   <div class="panel-heading">
+
+<div class="row">
+ <div class="col-md-4"> <h1>Groups</h1> </div>
+</div><!-- row end -->
+
+<div class="row">
+ <div class="col-md-4"> <input type="text" value="search groups" class="" id="filter"> </div>
+</div><!-- row end -->
+
+  </div> <!-- panel-heading end -->
+
+
+   <div class="panel-body">
+<div class="checkbox">
+ <label><input type="checkbox" value=""><b>Group a</b></label>
+</div>
+     <div class="checkbox">
+  <label><input type="checkbox" value="">Group a1</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" value="">Group a2</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="" >Group a3</label>
+</div>
+
+
+
+  </div> <!-- panel-body end -->
+
+
+</div> <!-- panel GROUP end -->
+
+
+ </div> <!-- col-md-4 end -->
+
+</div><!-- row end -->

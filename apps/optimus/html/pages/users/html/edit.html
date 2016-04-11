@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-heading"> <h1> Edit my profile </h1> </div>
+
+  <div class="panel-body">
+
+<div class="row">
+
+  <div class="col-md-1"><img src="images/user.png" class="img-responsive" alt="User Picture"></img> </div>
+  <div class="col-md-2"> <button type="button" class="btn blue-hoki">Edit picture</button></div>
+
+</div> <!-- prvi row kraj -->
+
+  <form  class="form-group">
+
+  <div class="form-group"  >
+           <label for="pswrd"> Password :</label> <input type="password" value="{{data.password}}" class="form-control" id="pswrd"> </input>
+           <label for="pswrd"> Password : (again) </label><input type="password" value="{{data.password}}" class="form-control" id="pswrd"> </input>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+       <div  class="col-md-6">   <label  for="frstName" > First Name : </label> <input type="text" value="{{data.firstname}}" class="form-control" id="frstName"> </input>  </div>
+      <div  class="col-md-6">    <label  for="lstName">  Last Name : </label><input type="text" value="{{data.lastname}}"class="form-control" id="lstName"> </input>   </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+            <label  for="address" >Address : </label> <input  value="{{data.address}}" type="text" class="form-control" id="address"> </input>
+           <label  for="phone" >Phone : </label> <input  value="{{data.phone}}" type="text" class="form-control" id="phone"> </input>
+           <label  for="gender">  Gender : </label><input  value="{{data.gender}}" type="text" class="form-control" id="gender"> </input>
+  </div>
+
+
+  </form>
+
+
+ </div> <!-- panell body kraj -->
+
+   <div class="panel-footer">
+
+    <button type="button" class="btn blue-hoki" ng-click="ok()">Save</button>
+    <button type="button" class="btn red" ng-click="cancel()">Cancel</button>
+
+   </div>
+
+</div>

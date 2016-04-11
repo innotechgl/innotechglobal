@@ -1,0 +1,80 @@
+
+
+<div class="panel panel-default">
+  <div class="panel-heading"> <h1>New user registration </h1> </div>
+
+  <div class="panel-body">
+<div class="row">
+
+  <div class="col-md-1"><img src="images/user.png" class="img-responsive" alt="User Picture"></img> </div>
+  <div class="col-md-2"> <button type="button" class="btn blue-hoki">Add picture</button></div>
+
+</div> <!-- prvi row kraj -->
+
+
+  <form>
+ <div class="form-group">
+  	 	<label for="usr"> Username :</label> <input type="text" class="form-control" id="usr" value=""> </input>
+</div>
+	<div class="form-group">
+		  	 <label for="eMail"> E-Mail : </label> <input type="text" class="form-control" id="eMail"> </input>
+
+
+		  	 <label for="eMail"> E-Mail : (again)   </label><input type="text" class="form-control" id="eMail"> </input>
+
+</div>
+
+ 	<div class="form-group">
+			  	 <label for="pswrd"> Password :</label> <input type="password" class="form-control" id="pswrd"> </input>
+			  	 <label for="pswrd"> Password : (again) </label><input type="password" class="form-control" id="pswrd"> </input>
+	</div>
+
+	<div class="form-group">
+			  	 <label for="frstName"> First Name : </label> <input type="text" class="form-control" id="frstName"> </input>
+			  	 <label for="lstName">  Last Name : (again) </label><input type="text" class="form-control" id="lstName"> </input>
+	</div>
+
+
+
+  <div class="form-group checkbox">
+    <label for="Group"> Group :<br>
+
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox1" value="option1"> Group 1 <br> Standard
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox2" value="option2"> Group 2 <br> Admin
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox3" value="option3"> Group 3 <br> Moderator
+</label>
+  </label>
+  </div>
+
+
+<input  type="submit" class="btn green-haze" ng-click="addGroup()" value="+Add group">
+
+ </form>
+
+
+
+
+
+ </div> <!-- panell body kraj -->
+
+   <div class="panel-footer">
+
+		<button type="button" class="btn blue-hoki">Save</button>
+		<button type="button" class="btn red">Cancel</button>
+
+   </div>
+
+</div>
+
+<!--JS BTSTRP -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!--JS BTSTRP kraj -->
+</body>
+
+
+</html>

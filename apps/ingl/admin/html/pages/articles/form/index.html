@@ -1,0 +1,102 @@
+﻿<div>
+    <form name="formArticle" ng-submit="formArticle.$valid && save()">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Article <small>Add</small></h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col col-lg-8 col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <input type="hidden" ng-init="articleForm.id" value="{{articleForm.id}}" />
+                                <div class="form-group">
+                                    <label for="categorie_id" class="control-label">Category</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            {{categorySelected.name}}
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul ng-include="'pages/articles/includes/dropCategories.html'" class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector"></ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="control-label">Title</label>
+                                    <input type="text" class="form-control" id="name" ng-model="articleForm.title" required size="50" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="alias" class="control-label">Alias</label>
+                                    <input type="text" class="form-control" id="alias" ng-model="articleForm.alias" required size="50" ng-disabled="canEditAlias" />
+                                    <label for="autoAlias" class="control-label"><input id="autoAlias" type="checkbox" ng-model="canEditAlias" ng-true-value="true" ng-false-value="false" /> Automatic alias</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lang" class="control-label">Language</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            {{languageSelected.name}}  ({{languageSelected.short_name}})
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="categorySelector">
+                                            <li ng-repeat="(k,v) in languages">
+                                                <a ng-click="changedLanguage(v)">{{v.name}} ({{v.short_name}})</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="calendar" class="control-label">Date</label>
+                                    <input size="18" type="text" class="form-control" ng-model="articleForm.date" ng-required="true" name="date" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="description" class="control-label">Description</label>
+                                    <textarea class="form-control" id="description" ng-model="articleForm.description" maxlength="256"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="keywords" class="control-label">Keywords</label>
+                                    <input class="form-control" id="keywords" ng-model="articleForm.meta" />
+                                </div>
+
+                                <!-- <div multiple-text texts="articleForm.text"></div>-->
+                                <div class="form-group">
+                                    <label>Text</label>
+                                    <textarea ng-model="articleForm.text" class="form-control insert-tinymce" ui-tinymce="tinymceOptions"></textarea>
+                                    <hr />
+                                    <button type="button" class="btn btn-info btn-sm" aria-label="..." ng-click="showPhotos('tinymce')"><span class="glyphicon glyphicon-picture"></span> Insert image</button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text" class="control-label">Default image in list</label>
+                                    <div class="row">
+                                        <div class="col col-md-4"><a class="thumbnail"><img ng-src="{{articleForm.options.default_img_list}}" /></a></div>
+                                        <div class="col col-md-8">
+                                            <input type="text" class="form-control" ng-model="articleForm.options.default_img_list" />
+                                            <button type="button" class="btn btn-default" ng-click="showPhotos('img_list')"><span class="glyphicon glyphicon-picture"></span> Select image</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><h5>Settings</h5></div>
+                            <div class="panel-body">
+                                
+                                <div ng-include="includeElement(option)" ng-repeat="(k,option) in options" class="settings-element"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div><!-- .row -->
+            </div>
+
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col col-lg-12">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button ng-click="showMenus()" class="btn btn-default">Cancel</button>
+                    </div>
+                </div><!-- .row -->
+            </div>
+        </div>
+    </form>
+</div><!-- .article -->

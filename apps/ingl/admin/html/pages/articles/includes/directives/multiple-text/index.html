@@ -1,0 +1,18 @@
+﻿<div class="form-group">
+    <h3>Pages</h3>
+    <div ng-repeat="(k,v) in texts track by $index">
+        <h4>Page {{k+1}}/{{texts.length}}</h4>
+        <div class="row">
+            <div class="col col-md-11"><input type="text" class="form-control" ng-model="texts[k].title" placeholder="Title" /></div>
+            <div class="col col-md-1"><button type="button" ng-click="removeField(k)" class="btn btn-danger btn-xs pull-right" ng-disabled="(texts.length==1)"><span class="glyphicon glyphicon-remove"></span></button></div>
+        </div>
+        <hr />
+        <textarea ng-model="texts[k].text" class="form-control insert-tinymce" ui-tinymce="tinymceOptions"></textarea>
+        <hr />
+        <div role="group">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="addField(k)"><span class="glypicon glyphicon-plus"></span> Add text</button>
+            <button type="button" class="btn btn-info btn-sm" aria-label="..." ng-click="showPhotos('tinymce')"><span class="glyphicon glyphicon-picture"></span> Insert image</button>
+        </div>
+        <hr />
+    </div>
+</div><!-- .form-group -->

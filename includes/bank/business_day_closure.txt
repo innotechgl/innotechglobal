@@ -1,0 +1,7 @@
+== Business Day Closure in Crontab ==
+
+Edit and add this line to crontab:
+0 0 * * *  php /var/www/html/test-shop/bd.php > /dev/null 2>&1
+
+
+bd.php will execute every night at 00:00

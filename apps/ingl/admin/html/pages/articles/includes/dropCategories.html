@@ -1,0 +1,4 @@
+﻿    <li ng-repeat="cat in categoriesNested">
+        <a ng-click="changed(cat)">{{cat.name}}</a>
+        <ul ng-include="'pages/articles/includes/dropCategories.html'" onload="categoriesNested = cat.children"></ul>
+    </li>

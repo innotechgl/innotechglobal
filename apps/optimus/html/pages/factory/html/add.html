@@ -1,0 +1,94 @@
+
+  <div  class="container">
+        <div class="row">
+          <h2>Main Fields</h2>
+          <form>
+
+            <div class="form-group">
+               <label for="name">Name</label>
+               <input type="text" class="form-control" id="firstname" ng-model="formData.name">
+           </div><!--form-group-->
+
+          <div class="form-group">
+              <label for="state">State</label>
+              <select class="form-control" ng-model="formData.State_id">
+                <option id="1">Srbija</option>
+                <option id="2">Hrvatska</option>
+                <option id="3">Unknown</option>
+              </select>
+            </div> <!--form-group-->
+
+            <div class="form-group">
+                <label for="state">Place</label>
+                <select class="form-control" ng-model="formData.Place_id">
+                  <option id="1">Beograd</option>
+                  <option id="2">Zagreb</option>
+                  <option id="3">Novi Sad</option>
+                </select>
+              </div> <!--form-group-->
+
+              <div class="form-group">
+                 <label for="adress">Address</label>
+                 <input type="text" class="form-control" id="adress" ng-model="formData.adress">
+             </div><!--form-group-->
+
+
+              <div class="form-group">
+                 <label for="Email">E-Mail</label>
+                 <input type="text" class="form-control" id="Email" ng-model="formData.email">
+             </div><!--form-group-->
+
+             <div class="form-group">
+                <label for="Phone">Phone</label>
+                <input type="text" class="form-control" id="Phone" ng-model="formData.Phone">
+            </div><!--form-group-->
+
+            <div class="form-group">
+               <label for="Pib">PIB / OIB</label>
+               <input type="text" class="form-control" id="Pib" ng-model="formData.Pib">
+           </div><!--form-group-->
+
+           <div class="form-group">
+              <label for="MB">MB</label>
+              <input type="text" class="form-control" id="MB" ng-model="formData.MB">
+          </div><!--form-group-->
+
+        <hr class ="greyLine" style="border:solid 1px #ddd;">
+
+          <h3>Contact details (optional):</h3>
+
+          <div class="form-group">
+             <label for="name">Name</label>
+             <input type="text" class="form-control" id="name" ng-model="formData.name">
+         </div><!--form-group-->
+
+          <div class="form-group">
+             <label for="position">Position</label>
+             <input type="text" class="form-control" id="position" ng-model="formData.position">
+         </div><!--form-group-->
+
+          <div class="form-group">
+             <label for="fistname">First Name</label>
+             <input type="text" class="form-control" id="firstname" ng-model="formData.firstname">
+         </div><!--form-group-->
+
+         <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" id="lastname" ng-model="formData.lastname">
+        </div><!--form-group-->
+
+        <div class="form-group">
+           <label for="phone">Phone</label>
+           <input type="text" class="form-control" id="phone" ng-model="formData.lastname">
+       </div><!--form-group-->
+
+       <div class="form-group">
+          <label for="adress">Address</label>
+          <input type="text" class="form-control" id="firstname" ng-model="formData.adress">
+      </div><!--form-group-->
+
+      <button type="button" class="btn blue-hoki"> Submit </button>     <button type="button" class="btn red"> Cancel </button>
+
+      </form>
+  </div> <!-- .row -->
+</div><!-- .container -->

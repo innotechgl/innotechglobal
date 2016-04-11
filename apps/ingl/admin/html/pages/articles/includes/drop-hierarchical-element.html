@@ -1,0 +1,4 @@
+﻿<li ng-repeat="item in fieldValues[f.fieldName] | filter: { parent_id: vOpt.id }" class="radio">
+    <label> <input type="radio" ng-model="linkFields[f.fieldName]" value="{{item.id}}" name="f.fieldName" ng-click="changed(f)" /> {{item.title}}</label>
+    <ul ng-include="pages/menu/includes/drop-hierarchical-element.html"></ul>
+</li>

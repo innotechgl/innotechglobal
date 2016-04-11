@@ -1,0 +1,58 @@
+﻿<div>
+    <div map-lazy-load="http://maps.google.com/maps/api/js">
+        <map center="{{mapPosition.lat}}, {{mapPosition.lng}}" zoom="{{mapPosition.zoom}}" style="height:500px;">
+            <marker position="{{googleMap.lat}}, {{googleMap.lng}}" icon="{{googleMap.icon}}" draggable="true" on-drag="draged()"></marker>
+        </map>
+    </div>
+    <div>
+        <hr />
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Lat</label>
+                <input type="text" size="3" class="form-control" placeholder="lat" ng-model="googleMap.lat" />
+            </div>
+            <div class="form-group">
+                <label>Lng</label>
+                <input type="text" size="3" class="form-control" placeholder="lng" ng-model="googleMap.lng" />
+            </div>
+            <div class="form-group">
+                <label>Zoom</label>
+                <input type="text" size="3" class="form-control" placeholder="zoom" ng-model="mapPosition.zoom" ng-bind="googleMap.zoom" />
+            </div>
+        </div>
+        <hr />
+        <div class="form-inline">
+            <input type="text" class="form-control pull-left" ng-model="address" id="addr_finder" placeholder="Find address..." /><button type="button" class="btn btn-primary pull-left" ng-click="search()"><span class="glyphicon glyphicon-search"></span></button>
+            <span class="label label-success pull-left">{{result}}</span>
+            <div class="clearfix"></div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label for="use-map"><input type="checkbox" id="use-map" ng-model="googleMap.useMap" ng-init="false" /> Use map ({{useMap}})</label>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label for="google-maps-title">Google maps title</label>
+            <input type="text" class="form-control" ng-model="googleMap.title" ng-disabled="!googleMap.useTitle" />
+            <label for="use-custom-title"><input type="checkbox" ng-model="googleMap.useTitle" id="use-custom-title" ng-init="false" /> Use google maps custom title</label>
+
+            <label for="google-maps-description">Google maps description</label>
+            <textarea type="text" class="form-control" ng-model="googleMap.description" ng-disabled="!googleMap.useDescription"></textarea>
+            <label for="use-custom-description"><input type="checkbox" ng-model="googleMap.useDescription" id="use-custom-description" ng-init="false" /> Use google maps custom description</label>
+            <hr />
+            <label for="icon">
+                Gmap icon
+            </label>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="selected-map-icon" style="background-image:url('{{getIconPath(selectedIcon)}}')" ng-show="(selectedIcon!=='')"></span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector">
+                        <li ng-repeat="icon in icons track by $index" ng-click="selectIcon(icon)"><span class="gmap-icon-select" style="background-image:url('{{getIconPath(icon)}}')"></span></li>
+                    </ul>
+                </div>
+            
+        </div>
+    </div>
+</div>

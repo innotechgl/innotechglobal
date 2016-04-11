@@ -1,0 +1,101 @@
+﻿<div class="row">
+    <div class="col col-md-8">
+        <div class="articles">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h4>Articles <small>List</small></h4>
+                        </div>
+                        <div class="col col-md-5">
+                            <input type="text" class="form-control" ng-model="search" placeholder="Search articles..." popover-placement="bottom" popover-template="'pages/articles/includes/searchResult.html'" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div ng-include="'pages/articles/includes/commands.html'"></div>
+                    <div ng-hide="sorting">
+                        <ol class="breadcrumb">
+                            <li><a ng-click="selectCategory({id: 0, title: ''})"><span class=" glyphicon glyphicon-home"></span></a></li>
+                            <li ng-repeat="(k,v) in path"><a ng-click="selectCategory(v)">{{v.name}}</a></li>
+                            <li><span class="active">{{categorySelected.name}}</span></li>
+                        </ol>
+                        <table class="table small table-hover">
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th><a ng-click="setOrderBy('no')">No</a></th>
+                                    <th><a ng-click="setOrderBy('id')">ID</a></th>
+                                    <th><a ng-click="setOrderBy('title')">Title</a></th>
+                                    <th><a ng-click="setOrderBy('link')">Category</a></th>
+                                    <th><a ng-click="setOrderBy('alias')">Alias</a></th>
+                                    <th><a ng-click="setOrderBy('language')">Language</a></th>
+                                    <th><a ng-click="setOrderBy('active')">Active</a></th>
+                                    <th>Commands</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="(key,article) in articles" ng-class="{'info':(article.active == 1 && $root.showColors == 1)}">
+                                    <td><input type="checkbox" value="{{article.id}}" ng-model="multipleSelect[$index]" ng-init="article.id" /></td>
+                                    <td>{{article.no}}</td>
+                                    <td>{{article.id}}</td>
+                                    <td><a ng-href="#/pages/articles/form/edit/{{article.id}}">{{article.title}}</a></td>
+                                    <td><a ng-click="selectCategoryByID(article.categorie_id)">{{getCategorieName(article.categorie_id)}}</a></td>
+                                    <td>{{article.alias}}</td>
+                                    <td>{{article.language}}</td>
+                                    <td>
+                                        <a ng-show="article.active == 1" ng-click="deactivate(article.id);"><span class="glyphicon glyphicon-ok"></span></a>
+                                        <a ng-show="article.active == 0" ng-click="activate(article.id);"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                    <td>
+                                        <a ng-href="#/pages/articles/form/edit/{{article.id}}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a ng-click="delete(article.id)" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <a ng-click="createAlias(article.id)" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-fire"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm" boundary-links="false"></pagination>
+                        </div>
+                    </div>
+                    <div ng-show="sorting">
+                        <div class="form-group sortable-options">
+                            <ul ui:sortable ng:model="articles" class="list-group">
+                                <li ng-repeat="article in articles| orderBy: 'no'" class="list-group-item">
+                                    {{article.title}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-default" ng-click="saveSort()">Save sort</button>
+                        </div><!-- .btn-group -->
+                    </div><!-- .sorting -->
+                </div>
+                <div class="panel-footer">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-trash"></span> Delete selected</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-share-alt"></span> Move to category</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-ok"></span> Activate</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-remove"></span> Deactivate</button>
+                    </div><!-- button-group -->
+                </div><!-- .panel-footer -->
+            </div><!-- .panel -->
+        </div><!-- .articles -->
+    </div>
+    <div class="col col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col col-md-8">
+                        <h4>Categories <button type="button" class="btn btn-primary btn-xs" ng-click="addCategory()"><span class="glyphicon glyphicon-plus"></span> Add</button></h4>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div class="category-select" ng-include="'pages/articles/includes/categorySelect.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>

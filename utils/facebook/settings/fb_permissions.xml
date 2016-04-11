@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <perms>
+        <user>
+            <perm>
+                <name>
+                    About Me
+                </name>
+                <realName>
+                    user_about_me
+                </realName>
+                <decription>
+                    Provides access to the "About Me" section of the profile in the about property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user activities
+                </name>
+                <realName>
+                    user_activities
+                </realName>
+                <decription>
+                    Provides access to the user's list of activities as the activities connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user birthday
+                </name>
+                <realName>
+                    user_birthday
+                </realName>
+                <decription>
+                    Provides access to the birthday with year as the birthday property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user checkins
+                </name>
+                <realName>
+                    user_checkins
+                </realName>
+                <decription>
+                    Provides read access to the authorized user's check-ins or a friend's check-ins that the user can
+                    see.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user_education_history
+                </name>
+                <realName>
+                    friends_education_history
+                </realName>
+                <decription>
+                    Provides access to education history as the education property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user_events
+                </name>
+                <realName>
+                    user_events
+                </realName>
+                <decription>
+                    Provides access to the list of events the user is attending as the events connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user groups
+                </name>
+                <realName>
+                    user_groups
+                </realName>
+                <decription>
+                    Provides access to the list of groups the user is a member of as the groups connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user hometown
+                </name>
+                <realName>
+                    user_hometown
+                </realName>
+                <decription>
+                    Provides access to the user's hometown in the hometown property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user interests
+                </name>
+                <realName>
+                    user_interests
+                </realName>
+                <decription>
+                    Provides access to the user's list of interests as the interests connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user likes
+                </name>
+                <realName>
+                    user_likes
+                </realName>
+                <decription>
+                    Provides access to the list of all of the pages the user has liked as the likes connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user location
+                </name>
+                <realName>
+                    user_location
+                </realName>
+                <decription>
+                    Provides access to the user's current location as the location property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user notes
+                </name>
+                <realName>
+                    user_notes
+                </realName>
+                <decription>
+                    Provides access to the user's notes as the notes connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user interests
+                </name>
+                <realName>
+                    user_interests
+                </realName>
+                <decription>
+                    Provides access to the user's list of interests as the interests connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user online presence
+                </name>
+                <realName>
+                    user_online_presence
+                </realName>
+                <decription>
+                    Provides access to the user's online/offline presence
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user photos
+                </name>
+                <realName>
+                    user_photos
+                </realName>
+                <decription>
+                    Provides access to the photos the user has uploaded, and photos the user has been tagged in
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user questions
+                </name>
+                <realName>
+                    user_questions
+                </realName>
+                <decription>
+                    Provides access to the questions the user or friend has asked
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user relationships
+                </name>
+                <realName>
+                    user_relationships
+                </realName>
+                <decription>
+                    Provides access to the user's family and personal relationships and relationship status
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user relationships
+                </name>
+                <realName>
+                    user_relationships
+                </realName>
+                <decription>
+                    Provides access to the user's family and personal relationships and relationship status
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user relationship details
+                </name>
+                <realName>
+                    user_relationship_details
+                </realName>
+                <decription>
+                    Provides access to the user's relationship preferences
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user religion politics
+                </name>
+                <realName>
+                    user_religion_politics
+                </realName>
+                <decription>
+                    Provides access to the user's religious and political affiliations
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user status
+                </name>
+                <realName>
+                    user_status
+                </realName>
+                <decription>
+                    Provides access to the user's most recent status message
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user videos
+                </name>
+                <realName>
+                    user_videos
+                </realName>
+                <decription>
+                    Provides access to the videos the user has uploaded, and videos the user has been tagged in
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user website
+                </name>
+                <realName>
+                    user_website
+                </realName>
+                <decription>
+                    Provides access to the user's web site URL
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    user work history
+                </name>
+                <realName>
+                    user_work_history
+                </realName>
+                <decription>
+                    Provides access to work history as the work property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    email
+                </name>
+                <realName>
+                    email
+                </realName>
+                <decription>
+                    Provides access to the user's primary email address in the email property. Do not spam users. Your
+                    use of email must comply both with Facebook policies and with the CAN-SPAM Act.
+                </decription>
+            </perm>
+        </user>
+        <friends>
+            <perm>
+                <name>
+                    About Me
+                </name>
+                <realName>
+                    friends_about_me
+                </realName>
+                <decription>
+                    Provides access to the "About Me" section of the profile in the about property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends activities
+                </name>
+                <realName>
+                    friends_activities
+                </realName>
+                <decription>
+                    Provides access to the friends's list of activities as the activities connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends birthday
+                </name>
+                <realName>
+                    friends_birthday
+                </realName>
+                <decription>
+                    Provides access to the birthday with year as the birthday property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends checkins
+                </name>
+                <realName>
+                    friends_checkins
+                </realName>
+                <decription>
+                    Provides read access to the authorized friends's check-ins or a friend's check-ins that the friends
+                    can see.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends_education_history
+                </name>
+                <realName>
+                    friends_education_history
+                </realName>
+                <decription>
+                    Provides access to education history as the education property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends_events
+                </name>
+                <realName>
+                    friends_events
+                </realName>
+                <decription>
+                    Provides access to the list of events the friends is attending as the events connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends groups
+                </name>
+                <realName>
+                    friends_groups
+                </realName>
+                <decription>
+                    Provides access to the list of groups the friends is a member of as the groups connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends hometown
+                </name>
+                <realName>
+                    friends_hometown
+                </realName>
+                <decription>
+                    Provides access to the friends's hometown in the hometown property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends interests
+                </name>
+                <realName>
+                    friends_interests
+                </realName>
+                <decription>
+                    Provides access to the friends's list of interests as the interests connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends likes
+                </name>
+                <realName>
+                    friends_likes
+                </realName>
+                <decription>
+                    Provides access to the list of all of the pages the friends has liked as the likes connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends location
+                </name>
+                <realName>
+                    friends_location
+                </realName>
+                <decription>
+                    Provides access to the friends's current location as the location property
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends notes
+                </name>
+                <realName>
+                    friends_notes
+                </realName>
+                <decription>
+                    Provides access to the friends's notes as the notes connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends interests
+                </name>
+                <realName>
+                    friends_interests
+                </realName>
+                <decription>
+                    Provides access to the friends's list of interests as the interests connection
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends online presence
+                </name>
+                <realName>
+                    friends_online_presence
+                </realName>
+                <decription>
+                    Provides access to the friends's online/offline presence
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends photos
+                </name>
+                <realName>
+                    friends_photos
+                </realName>
+                <decription>
+                    Provides access to the photos the friends has uploaded, and photos the friends has been tagged in
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends questions
+                </name>
+                <realName>
+                    friends_questions
+                </realName>
+                <decription>
+                    Provides access to the questions the friends or friend has asked
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends relationships
+                </name>
+                <realName>
+                    friends_relationships
+                </realName>
+                <decription>
+                    Provides access to the friends's family and personal relationships and relationship status
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends relationships
+                </name>
+                <realName>
+                    friends_relationships
+                </realName>
+                <decription>
+                    Provides access to the friends's family and personal relationships and relationship status
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends relationship details
+                </name>
+                <realName>
+                    friends_relationship_details
+                </realName>
+                <decription>
+                    Provides access to the friends's relationship preferences
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends religion politics
+                </name>
+                <realName>
+                    friends_religion_politics
+                </realName>
+                <decription>
+                    Provides access to the friends's religious and political affiliations
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends status
+                </name>
+                <realName>
+                    friends_status
+                </realName>
+                <decription>
+                    Provides access to the friends's most recent status message
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends videos
+                </name>
+                <realName>
+                    friends_videos
+                </realName>
+                <decription>
+                    Provides access to the videos the friends has uploaded, and videos the friends has been tagged in
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends website
+                </name>
+                <realName>
+                    friends_website
+                </realName>
+                <decription>
+                    Provides access to the friends's web site URL
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    friends work history
+                </name>
+                <realName>
+                    friends_work_history
+                </realName>
+                <decription>
+                    Provides access to work history as the work property
+                </decription>
+            </perm>
+        </friends>
+        <extended>
+            <perm>
+                <name>
+                    read friendlists
+                </name>
+                <realName>
+                    read_friendlists
+                </realName>
+                <decription>
+                    Provides access to any friend lists the user created. All user's friends are provided as part of
+                    basic data, this extended permission grants access to the lists of friends a user has created, and
+                    should only be requested if your application utilizes lists of friends.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    read insights
+                </name>
+                <realName>
+                    read_insights
+                </realName>
+                <decription>
+                    Provides read access to the Insights data for pages, applications, and domains the user owns.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    read mailbox
+                </name>
+                <realName>
+                    read_mailbox
+                </realName>
+                <decription>
+                    Provides the ability to read from a user's Facebook Inbox.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    read requests
+                </name>
+                <realName>
+                    read_requests
+                </realName>
+                <decription>
+                    Provides read access to the user's friend requests
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    read stream
+                </name>
+                <realName>
+                    read_stream
+                </realName>
+                <decription>
+                    Provides access to all the posts in the user's News Feed and enables your application to perform
+                    searches against the user's News Feed
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    xmpp_login
+                </name>
+                <realName>
+                    xmpp_login
+                </realName>
+                <decription>
+                    Provides applications that integrate with Facebook Chat the ability to log in users.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    ads management
+                </name>
+                <realName>
+                    ads_management
+                </realName>
+                <decription>
+                    Provides the ability to manage ads and call the Facebook Ads API on behalf of a user.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    create event
+                </name>
+                <realName>
+                    create_event
+                </realName>
+                <decription>
+                    Enables your application to create and modify events on the user's behalf
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    manage friendlists
+                </name>
+                <realName>
+                    manage_friendlists
+                </realName>
+                <decription>
+                    Enables your app to create and edit the user's friend lists.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    manage notifications
+                </name>
+                <realName>
+                    manage_notifications
+                </realName>
+                <decription>
+                    Enables your app to read notifications and mark them as read. This permission will be required to
+                    all access to notifications after October 22, 2011.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    offline access
+                </name>
+                <realName>
+                    offline_access
+                </realName>
+                <decription>
+                    Enables your app to perform authorized requests on behalf of the user at any time. By default, most
+                    access tokens expire after a short time period to ensure applications only make requests on behalf
+                    of the user when the are actively using the application. This permission makes the access token
+                    returned by our OAuth endpoint long-lived.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    publish checkins
+                </name>
+                <realName>
+                    publish_checkins
+                </realName>
+                <decription>
+                    Enables your app to perform checkins on behalf of the user.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    publish stream
+                </name>
+                <realName>
+                    publish_stream
+                </realName>
+                <decription>
+                    Enables your app to post content, comments, and likes to a user's stream and to the streams of the
+                    user's friends. With this permission, you can publish content to a user's feed at any time, without
+                    requiring offline_access. However, please note that Facebook recommends a user-initiated sharing
+                    model.
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    rsvp event
+                </name>
+                <realName>
+                    rsvp_event
+                </realName>
+                <decription>
+                    Enables your application to RSVP to events on the user's behalf
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    sms
+                </name>
+                <realName>
+                    sms
+                </realName>
+                <decription>
+                    Enables your application to send messages to the user and respond to messages from the user via text
+                    message
+                </decription>
+            </perm>
+            <perm>
+                <name>
+                    publish actions
+                </name>
+                <realName>
+                    publish_actions
+                </realName>
+                <decription>
+                    Enables your application to publish user scores and achievements.
+                </decription>
+            </perm>
+        </extended>
+        <pages>
+            <perm>
+                <name>
+                    manage pages
+                </name>
+                <realName>
+                    manage_pages
+                </realName>
+                <decription>
+                    Enables your application to retrieve access_tokens for pages the user administrates. The access
+                    tokens can be queried using the "accounts" connection in the Graph API. This permission is only
+                    compatible with the Graph API.
+                </decription>
+            </perm>
+        </pages>
+    </perms>
+</root>

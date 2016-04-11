@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tasks>
+        <task>list</task>
+        <task>view</task>
+    </tasks>
+    <menu>
+        <type>
+            <name>view</name>
+            <field>
+                <name>categorie_id</name>
+                <get>/ajax/article_categories/json_list/</get>
+            </field>
+            <field>
+                <name>id</name>
+                <get>/ajax/articles/json_list/CATEGORIE_ID</get>
+            </field>
+        </type>
+    </menu>
+    <options>
+        <option>
+            <name>Google Map</name>
+            <fieldName>show_map</fieldName>
+            <defaultValue>0</defaultValue>
+            <type>boolean</type>
+        </option>
+        <option>
+            <name>Gallery</name>
+            <fieldName>show_gallery</fieldName>
+            <defaultValue>0</defaultValue>
+            <type>boolean</type>
+        </option>
+        <option>
+            <name>Default image in list</name>
+            <fieldName>default_img_list</fieldName>
+            <defaultValue>null</defaultValue>
+            <type>string</type>
+            <size>40</size>
+        </option>
+    </options>
+</root>

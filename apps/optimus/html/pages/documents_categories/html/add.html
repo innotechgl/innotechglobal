@@ -1,0 +1,32 @@
+<div class="container">
+<form>
+  <div class="form-group">
+      <label>Category select</label>
+      <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Parent_id :
+              <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+          </ul>
+      </div>
+  </div><!-- form-group -->
+
+  <div class="form-group">
+     <label for="docname">Name:</label>
+     <input type="text" class="form-control" id="docname" ng-model="formData.docname">
+ </div><!--form-group-->
+
+<div class="form-group">
+   <label for="description">Description:</label>
+   <input type="textarea" class="form-control" id="description" ng-model="formData.description">
+</div><!--form-group-->
+
+<div class="form-group">
+  <button type="button" class="btn blue-hoki"> Save </button>
+  </div><!--form-group-->
+</form>
+</div><!-- .container -->

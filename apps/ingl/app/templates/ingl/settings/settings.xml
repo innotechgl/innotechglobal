@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <positions>
+        <position name="Glavni logo" description="Glavni logo" available_in="home, articles, gallery">logo</position>
+        <position name="Lista proizvoda" description="Pozicija za pretragu" available_in="home, articles, gallery">products</position>
+        <position name="Menu" description="Glavni menu" available_in="home, articles, gallery">menu</position>
+        <position name="Home" description="Naslovna" available_in="home">home</position>
+        <position name="Team" description="Team on home page" available_in="home">team</position>
+        <position name="Portfolio" description="Portfolio" available_in="home">portfolio</position>
+        <position name="Home Bottom" description="Naslovna donji widgeti" available_in="home">home_bottom</position>
+        <position name="Unutrašnji menu" description="Meni na unutrašnjim stranicama pregleda članaka" available_in="article view">innermenu</position>
+        <position name="Sa strane" description="Prikaz članka sa strane" available_in="article view">aside</position>
+        <position name="Big banner" description="Veliki baner" available_in="all pages">big_banner</position>
+        <position name="footerMenu"  description="Menu dole" available_in="all pages">footermenu</position>
+    </positions>
+    <info>
+        <name>SUTIJA-WEB</name>
+    </info>
+</data>

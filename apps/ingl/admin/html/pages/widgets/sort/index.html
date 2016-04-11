@@ -1,0 +1,33 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Widgets <small>Add</small></h4>
+    </div>
+    <div class="panel-body">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{selectedPosition.name}} (<small>{{selectedPosition.description}}</small>)
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="categorySelector">
+                <li ng-repeat="position in positions">
+                    <a ng-click="selectPosition(position)">
+                        <strong>{{position.name}}</strong>
+                        <p>{{position.description}}</p>
+                        <small class="label-default label">{{position.position}}</small>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="form-group sortable-options">
+            <ul ui:sortable ng:model="selectedWidgets" class="list-group">
+                <li ng-repeat="widget in selectedWidgets" class="list-group-item">
+                    {{widget.name}}
+                </li>
+            </ul>
+        </div>
+        <div>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            <button class="btn btn-primary" ng-click="save();">Save</button>
+        </div>
+    </div><!-- .panel=-body -->
+</div>

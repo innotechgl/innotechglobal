@@ -1,0 +1,21 @@
+﻿<div class="photos-to-upload">
+    <div class="photo-to-upload" ng-repeat="(v,k) in photosForUpload track by $index">
+        <label>Select photo</label>
+        <input type="file" ng-model="fileToUpload" onchange="angular.element(this).scope().addToReadyForUpload(this)" multiple />
+        <!-- <img src="{{fileToUpload[0].file}}" /> -->
+    </div>
+    <div class="files-to-upload">
+        <div class="file-to-upload row" ng-repeat="(k,v) in fileToUpload" ng-class-even="even" ng-class-odd="odd">
+            <div class="col-md-6">
+                <div><strong><small>{{v.name | limitTo: 30 }}{{v.name.length < 30 ? '' : '...'}}</small></strong></div>
+                <div><small>{{v.size | bytes : 2}} {{v.type}}</small></div>
+            </div>
+            <div class="col-md-3">
+                <progressbar value="v.progress" ng-show="(v.progress >0)">{{v.progress}}%</progressbar>
+            </div>
+            <div class="col-md-2"><img src="{{previews[k]}}" width="100%" height="auto" /></div>
+            <div class="col-md-1"><button class="btn btn-default btn-xs" ng-hide="(v.progress >0)"><span class="glyphicon glyphicon-trash"></span></button></div>
+        </div>
+        <button type="button" class="btn btn-primary btn-xs" ng-click="uploadFiles()" ng-show="(fileToUpload.length > 0)"><span class="glyphicon glyphicon-upload"></span> Upload</button>
+    </div>
+</div>

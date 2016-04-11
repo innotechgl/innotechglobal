@@ -1,0 +1,6 @@
+﻿<div class="list-group">
+    <a ng-href="#pages/articles/form/edit/{{article.id}}" class="list-group-item" ng-repeat="article in allArticles | filter: search">
+        <strong>{{article.title}}</strong>
+        <small class="help-block">{{article.description}}</small>
+    </a>
+</div>

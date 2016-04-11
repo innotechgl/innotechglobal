@@ -1,0 +1,10 @@
+﻿<div class="form-group">
+    <label for="categorie_id" class="control-label">Category</label>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            {{categorySelected.name}}
+            <span class="caret"></span>
+        </button>
+        <ul ng-include="'pages/articles/includes/dropCategories.html'" class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector"></ul>
+    </div>
+</div>

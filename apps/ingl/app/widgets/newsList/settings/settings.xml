@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <options>
+        <option>
+            <title>Kategorija</title>
+            <name>categorie_id</name>
+            <fieldType>advanced_select</fieldType>
+            <selectFrom>page=articles&amp;task=getAllArticleCategories</selectFrom>
+            <defaultValue>0</defaultValue>
+        </option>
+      <option>
+        <title>Class prefix</title>
+        <name>class_prefix</name>
+        <defaultValue>widget</defaultValue>
+      </option>
+      <option>
+        <title>Title</title>
+        <name>title</name>
+        <defaultValue></defaultValue>
+      </option>
+      <option>
+        <title>Limit</title>
+        <name>limit</name>
+        <defaultValue></defaultValue>
+      </option>
+      <option>
+        <title>Meta filter</title>
+        <name>metaFilter</name>
+        <defaultValue></defaultValue>
+      </option>
+        <option>
+            <title>Picture size</title>
+            <name>thumbSize</name>
+            <defaultValue></defaultValue>
+        </option>
+        <option>
+            <title>Picture prefix</title>
+            <name>pic_prefix</name>
+            <defaultValue>thumb</defaultValue>
+        </option>
+        <option>
+            <title>Order by</title>
+            <name>orderBy</name>
+            <fieldType>select</fieldType>
+            <selectOption>date</selectOption>
+            <selectOption>created</selectOption>
+            <selectOption>no</selectOption>
+            <selectOption>id</selectOption>
+            <selectOption>title</selectOption>
+            <defaultValue>date</defaultValue>
+        </option>
+        <option>
+            <title>Order direction</title>
+            <name>orderDirection</name>
+            <fieldType>select</fieldType>
+            <selectOption>ASC</selectOption>
+            <selectOption>DESC</selectOption>
+            <defaultValue>DESC</defaultValue>
+        </option>
+        <option>
+            <title>Home only</title>
+            <name>home_only</name>
+            <fieldType>select</fieldType>
+            <selectOption>yes</selectOption>
+            <selectOption>no</selectOption>
+            <defaultValue>no</defaultValue>
+        </option>
+        <option>
+            <title>Jezik</title>
+            <name>language</name>
+            <fieldType>select</fieldType>
+            <selectOption>sr</selectOption>
+            <selectOption>en</selectOption>
+            <selectOption>all</selectOption>
+            <defaultValue>all</defaultValue>
+        </option>
+        <option>
+            <title>View type</title>
+            <name>viewType</name>
+            <fieldType>select</fieldType>
+            <selectOption>view</selectOption>
+            <selectOption>view-scroll</selectOption>
+            <selectOption>view-naslovna-bottom</selectOption>
+            <selectOption>view-changing</selectOption>
+            <selectOption>scroll-products</selectOption>
+            <selectOption>team-list</selectOption>
+            <selectOption>projects-list</selectOption>
+            <defaultValue>view</defaultValue>
+        </option>
+    </options>
+</root>

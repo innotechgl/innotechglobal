@@ -1,0 +1,24 @@
+﻿<div>
+    <div class="form-group">
+        <label>Task</label>
+        <select id="task" ng-model="task" ng-change="taskChanged(task)" class="form-control">
+            <option ng-repeat="(k,t) in tasksAndOptions.tasks.task" value="{{k}}">{{t.name}}</option>
+        </select>
+    </div>
+    <div ng-repeat="(k,t) in tasksAndOptions.tasks.task" ng-show="(task==k)">
+        <div class="form-group">
+            <label>View template</label>
+            <select class="form-control" ng-model="linkFields['view']">
+                <option ng-repeat="(k,optView) in tasksAndOptions.tasks.task[task].availableViews.view" value="{{optView}}">{{optView}}</option>
+            </select>
+        </div>
+        <div ng-repeat="(k,fl) in tasksAndOptions.tasks.task[task].fields">
+            <div ng-if="testArray(fl)">
+                <div ng-repeat="f in fl">
+                    <div ng-include="loadField(f.fieldType,f)" onload="loadFieldData(f, true)"></div>
+                </div>
+            </div>
+            <div ng-if="(!testArray(fl))" ng-include="loadField(fl.fieldType,fl)" ng-init="f=fl" onload="loadFieldData(fl, true)"></div>
+        </div>
+    </div>
+</div>

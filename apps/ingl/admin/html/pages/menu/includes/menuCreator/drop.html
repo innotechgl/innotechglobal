@@ -1,0 +1,8 @@
+﻿<div class="form-group">
+    <label for="{{f.fieldName}}">{{f.label[0]}}</label>
+    <select ng-model="linkFields[f.fieldName]" class="form-control" id="{{f.fieldName}}">
+        <option ng-repeat="(kOpt,vOpt) in fieldValues[f.fieldName]" value="{{vOpt.id}}">
+            {{vOpt.title}}
+        </option>
+    </select>
+</div>

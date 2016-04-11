@@ -1,0 +1,64 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Category <small>{{task}}</small></h3>
+</div>
+<div class="modal-body">
+   <form name="categoryForm">
+       <div class="form-group">
+           <label>Parent category</label>
+           <div class="dropdown">
+               <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   {{categorySelected.name}}
+                   <span class="caret"></span>
+               </button>
+               <ul ng-include="'pages/article_categories/includes/dropCategories.html'" class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector"></ul>
+           </div>
+       </div><!-- form-group -->
+
+       <div class="form-group">
+        <label>Title</label>
+        <input type="text" ng-model="categoryItem.name" class="form-control" />
+       </div><!-- .form-group -->
+       <div class="form-group">
+           <label>Alias</label>
+           <input type="text" ng-model="categoryItem.alias" class="form-control" ng-disabled="canEditAlias" />
+           <label for="autoAlias" class="control-label"><input id="autoAlias" type="checkbox" ng-model="canEditAlias" ng-true-value="true" ng-false-value="false" /> Automatic alias</label>
+       </div><!-- .form-group -->
+       <div class="form-group">
+           <label>Description</label>
+           <textarea ng-model="categoryItem.description" class="form-control"></textarea>
+       </div><!-- .form-group -->
+       <div class="form-group">
+           <button type="button" class="btn btn-primary" ng-model="categoryItem.active" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Active</button>
+       </div><!-- .form-group -->
+       <div class="form-group">
+           <label for="lang" class="control-label">Language</label>
+           <div class="dropdown">
+               <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   {{languageSelected.name}}  ({{languageSelected.short_name}})
+                   <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu" aria-labelledby="categorySelector">
+                   <li ng-repeat="(k,v) in languages">
+                       <a ng-click="selectLanguage(v)">{{v.name}} ({{v.short_name}})</a>
+                   </li>
+               </ul>
+           </div><!-- .dropdown -->
+       </div>
+       <div class="panel panel-default">
+           <div class="panel-heading"><h4>Settings</h4></div>
+           <div class="panel-body">
+               <div ng-repeat="(k,option) in options" class="settings-element">
+                   <div ng-switch on="option.fieldType">
+                       <div ng-switch-when="checkbox" opt-checkbox ng-model="categoryItem.options[option.name]" title="{{option.title}}" default="{{option.defaultValue}}"></div>
+                       <div ng-switch-when="drop" opt-drop ng-model="categoryItem.options[option.name]" title="{{option.title}}" default="{{option.defaultValue}}" drop-options="option.selectOption"></div>
+                   </div>
+               </div>
+           </div>
+       </div>
+</form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="save()">Save</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>
+

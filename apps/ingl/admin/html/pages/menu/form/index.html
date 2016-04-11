@@ -1,0 +1,109 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Menu <small>{{editorTask}}</small></h4>
+    </div>
+    <div class="panel-body">
+        <div>
+            <form name="formMenu" ng-submit="formMenu.$valid && save()">
+                <div class="row">
+                    <div class="col col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                                <div class="form-group" ng-hide="(editorTask=='edit')">
+                                    <div class="form-group">
+                                        <label for="parent_id" class="control-label">Parent menu</label>
+                                        <input type="text" class="form-control" disabled value="{{allMenus[findMenuByID(parentMenuID)].name}}" />
+                                        <input type="hidden" ng-model="menuForm.parent_id" ng-init="parentMenuID" value="{{parentMenuID}}" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" ng-show="(editorTask=='edit')">
+                                    <label>Parent menu</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            {{parentSelected.name}}
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul ng-include="'pages/menu/includes/dropCategories.html'" class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector"></ul>
+                                    </div>
+                                </div><!-- form-group -->
+
+                                <div class="form-group">
+                                    <label for="name" class="control-label">Name</label>
+                                    <input type="text" class="form-control" id="name" ng-model="menuForm.name" required size="50" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="alias" class="control-label">Alias</label>
+                                    <input type="text" class="form-control" id="alias" ng-model="menuForm.alias" required size="50" ng-disabled="canEditAlias" />
+                                    <label for="autoAlias" class="control-label"><input id="autoAlias" type="checkbox" ng-model="canEditAlias" ng-true-value="true" ng-false-value="false" /> Automatic alias</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="language" class="control-label">Language</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="categorySelector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            {{languageSelected.name}}
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu scrollable-menu" aria-labelledby="categorySelector">
+                                            <li ng-repeat="language in languages">
+                                                <a ng-click="selectLanguage(language)">{{language.name}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="active" class="control-label"><input type="checkbox" id="active" ng-model="menuForm.active" required ng-init="true" checked /> Active</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="no" class="control-label">No</label>
+                                    <input type="text" class="form-control" id="no" ng-model="menuForm.no"  size="3" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="link" class="control-label">Link</label>
+                                    <input type="text" class="form-control" id="link" ng-model="menuForm.link" required size="50" />
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h5>Link creator</h5>
+                                        <div ng-show="(!generatorVisible)">
+                                            <a class="btn btn-default btn-sm" ng-click="(generatorVisible=true)">Link wizard</a>
+                                        </div>
+                                        <div ng-show="(generatorVisible)">
+                                            <div class="form-group">
+                                                <label for="select_page">Select page</label>
+                                                <select id="select_page" ng-change="pageSelected()" ng-model="pageSelectedName" class="form-control">
+                                                    <option ng-repeat="(k,v) in pages" value="{{v.real_name}}">{{v.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div ng-include="pageSelectedLinkCreator()"></div>
+                                            <div class="btn-group-justified">
+                                                <a class="btn btn-info btn-sm" ng-click="generateLink()">Generate link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h5>Settings</h5>
+                                <div ng-include="includeElement(option)" ng-repeat="(k,option) in options"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .row -->
+                <div class="row">
+                    <div class="col col-lg-12">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button ng-click="showMenus()" class="btn btn-default">Cancel</button>
+                    </div>
+                </div><!-- .row -->
+            </form>
+
+        </div><!-- .menu -->
+        </div>
+</div>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <db>
+        <server>mysql</server>
+        <user>mvni2997_zssajam</user>
+        <pass>sajam</pass>
+        <port>3306</port>
+        <database>mvni2997_zssajam</database>
+    </db>
+    <general>
+        <site>zssajam.interaktivniizlog.com</site>
+        <server>/</server>
+        <locked>0</locked>
+        <securityAlarm>1</securityAlarm>
+        <adminTemplate>merkat</adminTemplate>
+        <template>zssajam</template>
+        <mobileTemplate>kyokushin_mobile</mobileTemplate>
+        <title>Železnice Srbije</title>
+        <description></description>
+        <keywords></keywords>
+        <robots>noindex,nofollow</robots>
+        <icon>media/icon.gif</icon>
+        <sef>true</sef>
+        <limit>20</limit>
+        <protectCode>hdwyy17698321hdsgfgt93e</protectCode>
+        <lang>lat</lang>
+    </general>
+    <log>
+        <allowed>0</allowed>
+        <allowed>1</allowed>
+    </log>
+    <adminPositions>
+        <position>home</position>
+        <position>right</position>
+        <position>menu</position>
+    </adminPositions>
+    <positions>
+        <position>menu</position>
+        <position>home</position>
+        <position>logo</position>
+        <position>left_menu</position>
+        <position>footer_left</position>
+        <position>footer_right</position>
+    </positions>
+    <mail>
+        <fromMail>webmaster@sutija-web.rs</fromMail>
+        <fromName>Webmaster</fromName>
+    </mail>
+    <scripts>
+        <js>includes/js/framework/mootools/mootools.js</js>
+        <js>includes/js/framework/mootools/mootools_more.js</js>
+        <js>includes/js/editors/tiny_mce/tiny_mce.js</js>
+    </scripts>
+    <user_groups>
+        <default>5</default>
+    </user_groups>
+</data>

@@ -1,0 +1,85 @@
+﻿<div class="row">
+    <div class="col col-md-8">
+        <div class="articles">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h4>Video gallery <small>List</small></h4>
+                        </div>
+                        <div class="col col-md-5">
+                            <input type="text" class="form-control" ng-model="search" placeholder="Search videos..." popover-placement="bottom" popover-template="'pages/videoGallery/includes/searchResult.html'" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div ng-include="'pages/videoGallery/includes/commands.html'"></div>
+                    <ol class="breadcrumb">
+                        <li><a ng-click="selectCategory({id:0,title:''})"><span class=" glyphicon glyphicon-home"></span></a></li>
+                        <li ng-repeat="(k,v) in path"><a ng-click="selectCategory(v)">{{v.name}}</a></li>
+                        <li><span class="active">{{categorySelected.name}}</span></li>
+                    </ol>
+                    <table class="table small table-hover">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th><a ng-click="setOrderBy('no')">No</a></th>
+                                <th><a ng-click="setOrderBy('id')">ID</a></th>
+                                <th><a>Thumb</a></th>
+                                <th><a ng-click="setOrderBy('title')">Title</a></th>
+                                <th><a ng-click="setOrderBy('link')">Category</a></th>
+                                <th><a ng-click="setOrderBy('language')">Language</a></th>
+                                <th><a ng-click="setOrderBy('active')">Active</a></th>
+                                <th>Commands</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key,video) in videos" ng-class="{'info':(video.active==1 && $root.showColors==1)}">
+                                <td><input type="checkbox" value="{{video.id}}" ng-model="multipleSelect[$index]" ng-init="video.id" /></td>
+                                <td>{{video.no}}</td>
+                                <td>{{video.id}}</td>
+                                <td><a href="{{video.link}}" target="_blank"><img src="{{video.thumb}}" /></a></td>
+                                <td><a ng-href="#/pages/videoGallery/form/edit/{{video.id}}">{{video.title}}</a></td>
+                                <td><a ng-click="selectCategoryByID(video.categorie_id)">{{getCategoryName(video.category_id)}}</a></td>
+                                <td>{{video.lang}}</td>
+                                <td>
+                                    <a ng-show="video.active==1" ng-click="deactivate(video.id);"><span class="glyphicon glyphicon-ok"></span></a>
+                                    <a ng-show="video.active==0" ng-click="activate(video.id);"><span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                                <td>
+                                    <a ng-href="#/pages/videoGallery/form/edit/{{video.id}}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a ng-click="delete(video.id)" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" class="pagination-sm" boundary-links="false"></pagination>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-trash"></span> Delete selected</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-share-alt"></span> Move to category</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-ok"></span> Activate</button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="multipleDelete();"><span class="glyphicon glyphicon-remove"></span> Deactivate</button>
+                    </div><!-- button-group -->
+                </div><!-- .panel-footer -->
+            </div><!-- .panel -->
+        </div><!-- .articles -->
+    </div>
+    <div class="col col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col col-md-8">
+                        <h4>Categories <button type="button" class="btn btn-primary btn-xs" ng-click="addCategory()"><span class="glyphicon glyphicon-plus"></span> Add</button></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div video-gallery-categories category-selected="categorySelected" categories="categorised" edit="edit(id)" delete="delete(id)"></div>
+            </div>
+        </div>
+    </div>
+</div>

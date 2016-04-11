@@ -1,0 +1,73 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Insert photo</h3>
+</div>
+<div class="modal-body">
+    <div class="photos">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading ">
+                        Categories
+                    </div>
+                    <div class="panel-body">
+                        {{nested_array_stingified}}
+                        <div class="category-select" ng-include="'includes/html/categorySelect.html'"></div>
+                    </div>
+                </div><!-- .panel -->
+            </div>
+            <div class="col-md-8" ng-click="isOpen = false">
+                <div class="panel panel-default">
+                   
+                    <div class="panel-body">
+                        <ol class="breadcrumb">
+                            <li><a ng-click="selectCategory({id:0,title:''})"><span class=" glyphicon glyphicon-home"></span></a></li>
+                            <li ng-repeat="(k,v) in path"><a ng-click="selectCategory(v)">{{v.name}}</a></li>
+                            <li><span class="active">{{categorySelected.name}}</span></li>
+                            <li>
+                                <button type="button" class="btn btn-xs btn-primary"
+                                        popover-template="'pages/articlePhotos/html/addsubcategory.html'"
+                                        popover-title="Title"
+                                        popover-toggle="isOpen"
+                                        popover-placement="bottom">
+                                    <span class="glyphicon glyphicon-plus"></span> Add subcategory
+                                </button>
+                            </li>
+                        </ol>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="addPhotoInput()">+ Dodaj fotografiju za upload</button>
+                            <div class="upload-photos" upload-photos photos-for-upload="photosForUpload" uploaded-photos="uploadedPhotos" upload-url="uploadURL"></div><!-- .upload-photos -->
+                        </div>
+                        <hr />
+                        <div class="photos row">
+
+                            <div class="photo col-md-4 col-xs-4" ng-repeat="(k,v) in selectedPhotos">
+                                <span class="image" style="background-image:url('{{getPhotoURL(v,'thumb_')}}')"></span>
+                                <span class="title" popover="{{v.name}}" popover-trigger="mouseenter">
+                                    <small>{{v.name | limitTo: 20 }} {{v.name.length < 20 ? '' : '...'}}</small>
+                                </span>
+
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-default btn-xs"
+                                            type="button"
+                                            popover-template="insertPopover.templateUrl"
+                                            popover-toggle="isOpen"
+                                            popover-placement="bottom"
+                                            ng-click="isOpen = !isOpen; $event.stopPropagation(); setPopoverImage(v.name)"
+                                            popover-title="{{insertPopover.title}}">
+                                        Insert
+                                    </button>
+                                    <button class="btn btn-default btn-xs" ng-click="deletePhoto(v.id)"> Delete</button>
+                                </div>
+
+                            </div>
+                        </div><!-- .photos -->
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div><!-- .photos -->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="close()">Cancel</button>
+</div>
+

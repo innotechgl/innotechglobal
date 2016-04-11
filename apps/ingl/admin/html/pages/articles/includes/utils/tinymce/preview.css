@@ -1,0 +1,17 @@
+﻿body {
+    width: 692px;
+    height: 470px;
+    overflow: hidden !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border-bottom: solid 1px red;
+    border-right:solid 1px red;
+    word-break: break-word;
+    padding-top: 10px;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}

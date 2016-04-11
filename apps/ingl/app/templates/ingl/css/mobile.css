@@ -1,0 +1,533 @@
+
+.container {
+    width: 300px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.mobile-select {
+    position: absolute;
+    right: 10px;
+    top: 17px;
+    height: 24px;
+    width: 30px;
+}
+
+.mobile-select span {
+    height: 4px;
+    display: block;
+    background-color: #fff;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+header #menu {
+    top: 56px;
+    left: 0px;
+    position: relative;
+    padding-top: 30px;
+    margin-left: 15px;
+}
+
+nav#menu > ul > li {
+    float: none;
+    width: 100%;
+    /* float: left; */
+}
+
+nav#menu a {
+    font-size: 13px;
+    line-height: 56px !important;
+}
+
+header .main-menu {
+    position: relative;
+    top: 0px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    z-index: 20000;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#657983+0,c33156+50,75154a+100&0.81+0,0.81+100 */
+    background: -moz-linear-gradient(-45deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(101, 121, 131, 0.81) 0%, rgba(195, 49, 86, 0.81) 50%, rgba(117, 21, 74, 0.81) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf657983', endColorstr='#cf75154a', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
+
+header .container {
+    width: 100%;
+}
+
+header .logo {
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+   left:10px;
+    top:30px;
+    width:130px;
+    height:40px;
+}
+
+.pages .page {
+    width: 100%;
+    height: 300px;
+}
+
+.pages .page .big-logo {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    background-image: url(../images/big-logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 110px;
+    height: 94px;
+    z-index: 100;
+}
+
+.pages .page.home .titles {
+    position: absolute;
+    width: 90px;
+    right: 30px;
+    bottom: 20%;
+    top: 40%;
+    left: 50%;
+}
+
+.pages .page.home .titles .title {
+    font-size: 28.9px;
+    line-height: 35px;
+}
+
+.pages .page.home .titles .title:hover {
+    font-size: 40px;
+}
+
+.pages .page.home .titles .title.active {
+    font-size: 45px;
+}
+
+.page.home.who-are-we .top {
+    height: 280px;
+    background-image: url(../images/who-we-are.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page.home.who-are-we .bottom {
+    height: 500px;
+
+    background-color: #fff;
+}
+
+.page.home.who-are-we .top .slogan {
+    font-size: 32px;
+}
+
+.page.home.who-are-we .top .slogan .top-slogan {
+    line-height: 22px;
+    font-size: 22px;
+}
+
+.page.home.who-are-we .top .slogan .bottom-slogan {
+    line-height: 50px;
+    font-size: 50px;
+    letter-spacing: -2px;
+}
+
+.page.home.who-are-we .top .slogan .small-slogan {
+    font-size: 20px;
+    display: block;
+    text-align: center;
+}
+
+.row.two-col .col {
+    width: 45%;
+    margin-left: 10%;
+}
+
+.row.two-col .col:first-of-type {
+    width: 100%;
+}
+
+.row.two-col .col:last-of-type {
+    visibility: hidden;
+    display: none;
+}
+
+.page.home.who-are-we button {
+    display: block;
+    background-color: #721448;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 100;
+    width: 300px;
+    top: 15px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+.page.home-services-and-products {
+    background-image: url(../images/abstract.jpg);
+    overflow: hidden;
+    height: 850px;
+}
+
+.page.home-services-and-products .container {
+    position: absolute;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.page.home-services-and-products h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    font-family: "FuturaPTCond-ExtraBold", arial;
+
+    left: 2.5%;
+}
+
+.page.home-services-and-products .service-list ul li {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+    margin-left: 60px;
+    list-style: none;
+    height: 179px;
+    line-height: 0px;
+}
+
+.page.home-services-and-products .service-list ul li a span.image-back {
+    display: block;
+    height: 100px;
+    background-color: rgba(108, 73, 89, .5);
+    margin-bottom: 36px;
+    border-radius: 50%;
+}
+
+.page.home-services-and-products .service-list ul li a span.image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    height: 55px;
+    width: 55px;
+    position: absolute;
+    z-index: 200;
+    transform: translate(-50%, -50%);
+    top: 35%;
+    left: 50%;
+}
+
+.page.home-services-and-products .service-list ul li a span.c {
+    z-index: 100;
+    position: absolute;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: solid 3px transparent;
+}
+
+.page.home-services-and-products .service-list ul li a span.title {
+    font-family: "FuturaPTCond-ExtraBold", arial;
+    font-size: 26px;
+    text-transform: uppercase;
+    bottom: 13px;
+}
+
+.page.home-meet-the-team {
+    height: auto;
+    width: auto;
+
+    padding-top: 18px;
+    padding-bottom: 400px;
+
+}
+
+.page.home-meet-the-team h2 {
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    color: #731349;
+    text-transform: uppercase;
+    font-size: 34px;
+    left: 28%;
+    right: 0%;
+    font-weight: 100;
+}
+
+.page.home-meet-the-team .team ul {
+    padding: 0;
+    margin: 0;
+    left: 2%;
+    right: 12%;
+
+}
+
+.page.home-meet-the-team .team ul li {
+
+    display: block;
+    width: 50%;
+    height: 110px;
+    background-color: rgba(0, 0, 0, .2);
+    margin: 0 auto;
+
+}
+
+.page.home-meet-the-team .team ul li a {
+    display: block;
+    width: 100%;
+    height: 110px;
+}
+
+.page.home-meet-the-team .team ul li:last-of-type:after {
+    content: " ";
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+
+.page.home-meet-the-team .team ul li a span.photo {
+    position: absolute;
+    width: 100%;
+    height: 110px;
+    background-image: url(../images/profiles/01.jpg);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: cover;
+}
+
+.page.home-meet-the-team .team ul li a span.name {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 82%;
+    background-color: rgba(94, 8, 57, 0.81);
+    color: #fff;
+    font-size: 10px;
+    padding: 4px;
+    opacity: 1;
+}
+
+.page.home-meet-the-team .team ul li a span.position {
+    position: absolute;
+    width: 100%;
+    left: 19px;
+    top: 46px;
+    color: #fff;
+    font-size: 16px;
+    display: none;
+    opacity: 1;
+}
+
+.page.home-meet-the-team .team ul li a.ognjen-grba span.photo {
+    background-image: url(../images/profiles/ognjen.jpg);
+}
+
+.page.home-portfolio {
+    height: 380px;
+}
+
+.page.home-portfolio button {
+    display: block;
+    background-color: #721448;
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 100;
+    width: 175px;
+    height: 30px;
+    left: 18%;
+    right: 0%;
+    margin-top: 25px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+.page.home-portfolio .container {
+    color: #fff;
+    font-size: 20px;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+}
+
+.page.home-portfolio h2 {
+    padding: 2px;
+    margin-bottom: 5px;
+    font-weight: 100;
+    left: 30%;
+}
+
+.page.home-portfolio .projects ul li {
+    float: left;
+    display: block;
+    width: 240px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, .2);
+    left: 5%;
+
+}
+
+.page.home-portfolio .projects ul li a {
+    display: block;
+    width: 240px;
+    height: 200px;
+}
+
+.page.home-portfolio .projects ul li:nth-of-type(2) {
+    display: none;
+}
+
+.page.home-portfolio .projects ul li:nth-of-type(3) {
+    display: none;
+}
+
+.page.home-portfolio .projects ul li:nth-of-type(4) {
+    display: none;
+}
+
+.page.home-portfolio .projects ul li a span.photo {
+    position: absolute;
+    width: 240px;
+    height: 200px;
+    background-image: url(../images/project1.jpg);
+    background-repeat: no-repeat;
+
+    background-size: cover;
+}
+
+.page.home-portfolio .projects ul li a span.project {
+    left: 30%;
+    top: 45%;
+    font-size: 12px;
+}
+
+.page.home-portfolio .projects ul li a span.projectname {
+    left: 25%;
+    top: 50%;
+    font-size: 22px;
+}
+
+.page.home-get-in-touch {
+    background-color: #657983;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    height: 1050px;
+}
+
+.page.home-get-in-touch .form-touch {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    letter-spacing: 0px;
+    width: 460px;
+    height: 380px;
+}
+
+.page.home-get-in-touch h2 {
+    font-size: 35px;
+    letter-spacing: 1px;
+}
+
+.page.home-get-in-touch .form-touch p {
+    width: 65%;
+}
+
+.page.home-get-in-touch .form-touch button {
+    left: 20%;
+}
+
+.page.home-get-in-touch h3 {
+    color: #fff;
+    font-size: 27px;
+    width: 260px;
+    padding-left: 3px;
+}
+
+.page.home-get-in-touch .form-work {
+    right: 10%;
+
+}
+
+.page.home-get-in-touch .form-work button {
+    left: 130px;
+}
+
+.page.home-get-in-touch .form-work textarea {
+    display: block;
+    color: #8a8989;
+    border: 10px;
+    background-color: #c2c2c2;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 70px;
+    padding-left: 7.5px;
+    padding-right: auto;
+    width: 437px;
+    height: 130px;
+    font-style: italic;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+    font-size: 14px;
+
+}
+
+.page.home-get-in-touch .form-work button {
+    display: block;
+    color: #ffffff;
+    background-color: #657983;
+    position: relative;
+    top: 23px;
+    padding: 2px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-color: #fff;
+    border: solid 1px;
+    font-size: 27px;
+    outline: 3px;
+    text-transform: uppercase;
+    font-family: 'FuturaPTCond-Medium', sans-serif;
+
+}
+
+.page.home-get-in-touch .map {
+    display: none;
+}
+
+.page.home-get-in-touch .row-address {
+    color: #ffffff;
+    margin-top: 35px;
+    font-weight: normal;
+    font-family: "GothamNarrow-Book", Helvetica, sans-serif;
+    font-size: 14px;
+
+    padding: 40px;
+    top: 100px;
+
+}
+
+.tablet-full {
+    display: block;
+    width: auto;
+    float: none;
+    clear: both;
+}
+
+.tablet-full .form-touch,
+.tablet-full .form-work {
+    float: left;
+    width: 20%;
+}
