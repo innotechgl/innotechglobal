@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: L502M
- * Date: 2/23/2016
- * Time: 4:22 PM
- */
-
 
 class infoAboutHotelModel extends page_class
 {
