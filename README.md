@@ -1,4 +1,0 @@
-# innotechglobal
-
-Innotech Global CMS 
-
