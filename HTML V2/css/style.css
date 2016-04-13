@@ -1,0 +1,171 @@
+li
+{
+	list-style-type: none;
+}
+.nav-menu
+{
+	height: 80px;
+	width: 100%;
+	background: #333333;
+	margin-bottom: 21px;
+	border: 4px solid #768591;
+
+
+
+}
+
+.nav-text
+{
+	float: right;
+	text-decoration: none;
+	font-size: 29px;
+	color: white;
+	margin-right: 5%;
+	padding-top: 7px!important;
+
+
+}
+.
+.nav-menu:last-child
+{
+	margin-bottom: 125px;
+}
+.nav-menu >a:hover
+{
+	background: none!important;
+}
+.nav-menu >a:link
+{
+	background: none!important;
+}
+.nav-menu >a:visited
+{
+	background: none!important;
+}
+.nav-img
+{
+	margin: 15px 15px;
+}
+.mainbaner
+{	height:180px;
+	margin: 10px 50px;
+	border-style:solid;
+	border-width: 0.7px;
+	}
+
+{
+	/*margin-bottom: 15px;*/
+	height: 150px;
+	width: 100%;
+	
+}
+.provera
+{
+	height: 20px;
+	background: black;
+}
+body
+{
+	background: #333333;
+	color: #fff;
+}
+body p{
+	font-size: 19px;
+}
+.list-group > li
+{
+	background: none!important;
+	list-style-type: none!important;
+	border: 0!important;
+
+}
+.img-border
+{
+	/*border: 4px solid #768591;*/
+	/*padding: 10px 10px;*/
+
+}
+.hr
+{
+	border: 0;
+    height: 1px;
+    background: #768591;
+    width: 100%;
+    margin-bottom: 0px; ;
+}
+
+#link_get_widget
+{
+	display: none!important;
+}
+
+#justify
+{
+	text-align: justify;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	padding-bottom: 10px;
+}
+.margin-top
+{
+	margin-top: 30px;
+}
+.aw-widget-current
+{
+	margin-top: 0px;
+    display: block;
+    height: 192px;
+    border:1px solid #647883;
+}
+
+.bg-su{
+	border:none!important;
+	background:#FCFDF0!important;
+	color:#fff!important;
+}
+
+.aw-widget-content{
+	border:none!important;
+	color:#fff!important;	
+}
+.nav-menu23
+{
+	height: 80px;
+	width: 100%;
+	/*background: #333333;*/
+	/*margin-bottom: 21px;*/
+	/*border: 4px solid #768591;*/
+
+
+
+
+}
+/*
+.nav-menu3
+{
+	-webkit-box-shadow: inset 13px 15px 136px -55px #ffffff;
+-moz-box-shadow: inset 13px 15px 136px -55px #ffffff;
+box-shadow: inset 13px 15px 136px -55px #ffffff;
+
+
+}*/
+.margina
+{
+	/*border-right: 1px solid white;*/
+	-webkit-box-shadow: inset -58px 58px 136px -103px #ffffff;
+-moz-box-shadow: inset -58px 58px 136px -103px #ffffff;
+box-shadow: inset -58px 58px 136px -103px #ffffff;
+background: #3d3b3b;
+	
+}
+#right-menu
+{
+	
+	-webkit-box-shadow: inset -58px 58px 136px -103px #ffffff;
+-moz-box-shadow: inset -58px 58px 136px -103px #ffffff;
+box-shadow: inset -58px 58px 136px -103px #ffffff;
+}
+#right-menu li
+{
+	border-bottom: 1px solid #768591;
+}
