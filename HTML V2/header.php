@@ -1,2 +1,2 @@
 
-  <div class="mainbaner"></div>
+  <div class="mainbaner"><img src="header.png" class="img-responsive"></div>
