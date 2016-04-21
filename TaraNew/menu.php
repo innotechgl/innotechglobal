@@ -3,7 +3,9 @@
 
 <div id="wrapper nav nav-pills nav-stacked">
 
-	<img src="logohotela.png" class="logohotela">
+
+	<img src="logo-red.png" class="logo-red">
+	
 	<ul class="menu" id="menu">
  
 		<li class="item1" id="oNama"><a href="#oNama">O NAMA</a>
@@ -22,8 +24,8 @@
 		</li>
 		<li class="item3" id="dogadjaji"><a href="#dogadjaji">DOGAĐAJI</a>
 			<ul>
-				<li class="subitem1" id="konferencije"><a href="#konferencije">Konferencije</a></li>
-				<li class="subitem2" id="ture"><a href="#ture">Ture</a></li>
+				<li class="subitem1" id="konferencije"><a href="#">Konferencije</a></li>
+				<li class="subitem2" id="ture"><a href="#">Ture</a></li>
 <!--				<li class="subitem3"><a href="#">Dani hotela</a></li>-->
 			</ul>
 		</li>
