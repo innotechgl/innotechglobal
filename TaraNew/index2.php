@@ -158,7 +158,7 @@
         </div>
 
         <div class="col-md-9" id="footer">
-            <p></p>
+            <?php include "footer.php"?>
         </div>
     </div>
     <!-- menu and weather -->
@@ -170,7 +170,9 @@
         ?>
         <?php include "weather.php";
         ?>
+        <div class="tara">
         <img src="images/taralogo.png" class="img-responsive taralogo">
+        </div>
     </div>
 
 </div>

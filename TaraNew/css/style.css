@@ -330,3 +330,16 @@ ul, ul ul {
     width: 100%;
     margin-top: 220px;
 }
+.tara {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+
+}
+.time {
+    margin-top:5px;
+}
+.time-text {
+    color: #CD5944;
+    margin-top:3px;
+}
