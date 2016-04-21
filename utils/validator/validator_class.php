@@ -18,6 +18,7 @@ class validator_class extends util_class
 
     public function  __construct()
     {
+        
     }
 
     public function validate_all($requested_validations = array(), $vars = array())
