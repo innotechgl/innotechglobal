@@ -20,7 +20,7 @@
 
         include "menu.php";
         ?>
-        <?php include "weather.php";
+        <?php include "weather2.php";
         ?>
         <div class="tara">
             <img src="images/taralogo.png" class="img-responsive taralogo">
@@ -65,7 +65,9 @@
     });
 
 </script>
-
+<?php
+ include "weather-script.php"
+?>
 </body>
 </head>
 </html>
