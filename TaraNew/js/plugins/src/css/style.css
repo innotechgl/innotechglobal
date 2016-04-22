@@ -1,28 +1,30 @@
 /* for presentation only */
 
 body {
-	font: 16px Arial, Helvetica, sans-serif;
-	margin: 0;
+    font: 16px Arial, Helvetica, sans-serif;
+    margin: 0;
 }
 
 .weather-wrapper {
-	background: #CD5944;
-	/*margin: 5% 0 5% 5%;*/
-	padding: 40px 5%;
-	float: center;
-	color: white;
-	width: 70%;
-	max-width: 400px;
+    background: #CD5944;
+    /*margin: 5% 0 5% 5%;*/
+    padding: 40px 5%;
+    float: right;
+    color: white;
+    width: 100%;
+    /*max-width: 400px;*/
+    margin-left: 0px !important;
+    text-align: center;
 }
 
 strong {
-	color: #D2663D;
+    color: #262626;
 }
 
 .capitalize {
-	text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 .hide {
-	display: none;
+    display: none;
 }
