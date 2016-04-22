@@ -153,8 +153,17 @@
 
         include "menu.php";
         ?>
-        <?php include "weather.php";
-        ?>
+
+        <div class="weather-wrapper ">
+            <img src="" class="weather-icon" alt="Weather Icon" />
+
+            <p><strong></strong>
+                <br /><span class="weather-place"></span></p>
+
+            <p><strong>Temperature</strong>
+                <br /><span class="weather-temperature"></span> </p>
+
+        </div>
         <div class="tara">
         <img src="images/taralogo.png" class="img-responsive taralogo">
         </div>
@@ -166,6 +175,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='src/js/lib/jquery.1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+</script>
+<script src="js/plugins/src/openWeather.js"></script>
+
 <script type="text/javascript">
     $(function () {
 
@@ -199,5 +216,38 @@
 
 </script>
 
+<script>
+
+    $(function() {
+
+        $('.weather-temperature').openWeather({
+            key: 'c9d49310f8023ee2617a7634de23c2aa',
+            city: 'Toronto, ON',
+            descriptionTarget: '.weather-description',
+            windSpeedTarget: '.weather-wind-speed',
+            minTemperatureTarget: '.weather-min-temperature',
+            maxTemperatureTarget: '.weather-max-temperature',
+            humidityTarget: '.weather-humidity',
+            sunriseTarget: '.weather-sunrise',
+            sunsetTarget: '.weather-sunset',
+            placeTarget: '.weather-place',
+            iconTarget: '.weather-icon',
+            customIcons: 'js/plugins/src/img/icons/weather/',
+            success: function() {
+
+                //show weather
+                $('.weather-wrapper').show();
+
+            },
+            error: function(message) {
+
+                console.log(message);
+
+            }
+        });
+
+    });
+
+</script>
 </body>
 </html>
