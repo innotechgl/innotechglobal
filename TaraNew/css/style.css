@@ -432,25 +432,34 @@ p {
 }
 
 .fm-content img {
-    height: 650px;
+    height: 580px;
+    max-height: 100%;
     width: 100%;
 }
 .top-baner {
-    height: 200px;
+    height: 255px;
     background-color: #262626;
-    box-shadow: 0px -10px 30px -10px #000000 inset;
+    box-shadow: 0px -10px 30px -10px #000000 inset!important;
     /*background: url("../images/test.jpg");*/
     background-size: 2000px 150px;
     background-repeat: no-repeat;
-}
+    -webkit-box-shadow:0px -10px 30px -10px #000000 inset;
+    -moz-box-shadow:0px -10px 30px -10px #000000 inset;
 
+}
+.top-baner img {
+    box-shadow: 0px -10px 30px -10px #000000 inset!important;
+    z-index: 100;
+
+}
 .top-content {
-    height: 398px;
+    height: 376px;
+    font-size: 5%;
 
 }
 
 .bottom-content {
-    height: 398px;
+    height: 375px;
     border-bottom: 2px solid #CD5944;
 
 }
@@ -459,17 +468,28 @@ p {
     width: 20%;
     background-color: #0F0F0F;
     float: left;
-    height: 398px;
+    height: 376px;
     color: white;
     /*border-bottom: 2px solid #CD5944;*/
     padding: 20px;
+    font-size: 5%;
+
+}
+.event-black p {
+
+    font-size: 16px;
 
 }
 
+.event-grey p {
+
+    font-size: 16px;
+
+}
 .event-grey {
     width: 20%;
     background-color: #262626;
-    height: 398px;
+    height: 375px;
     color: white;
     float: left;
     /*border-bottom: 2px solid #CD5944;*/
@@ -520,13 +540,18 @@ p {
 #cycler img {
     position: absolute;
     z-index: 1;
-    height: 200px;
+    height: 255px;
     width: 1440px;
+
+
 }
 
 #cycler img.active {
     z-index: 3;
-    height: 200px;
+    height: 255px;
     width: 1440px;
+
+
 }
+
 

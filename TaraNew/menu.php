@@ -8,12 +8,12 @@
 	
 	<ul class="menu" id="menu">
  
-		<li class="item1" id="oNama"><a href="#oNama">O NAMA</a>
-<!--			<ul>-->
-<!--				<li class="subitem1"><a href="#">Koncerti </a></li>-->
-<!--				<li class="subitem2"><a href="#">Dani hotela </a></li>-->
-<!--				<li class="subitem3"><a href="#">Konferencije </a></li>-->
-<!--			</ul>-->
+		<li class="item1" id="oHotelu"><a href="#oHotelu">O HOTELU</a>
+			<ul>
+				<li class="subitem1"><a href="#">O nama </a></li>
+				<li class="subitem2"><a href="#">Važni telefoni</a></li>
+				<li class="subitem3"><a href="#">Plan hotela </a></li>
+			</ul>
 		</li>
 		<li class="item2" id="uOkolini"><a href="#uOkolini">U OKOLINI</a>
 <!--			<ul>-->
