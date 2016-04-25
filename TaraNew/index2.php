@@ -5,68 +5,89 @@
     <?php include "html_header.php"?>
 
     <style type="text/css">
+        /*h1 {*/
+            /*font-family: "Futura PT Bold", Helvetica, sans-serif;*/
+            /*margin-bottom: 30px;*/
+        /*}*/
+
+        /*p {*/
+            /*font-family: "Futura PT Book", Helvetica, sans-serif;*/
+        /*}*/
+
+        /*.grid .row {*/
+            /*background-color: transparent;*/
+            /*border: 0;*/
+            /*height: 100px;*/
+            /*padding-right: 0;*/
+            /*background: transparent;*/
+
+        /*}*/
+
+        /*.grid .row .col-md-3 {*/
+            /*min-height: 255px;*/
+
+            /*padding-left: 0px !important;*/
+            /*padding-right: 0px !important;*/
+            /*background: transparent;*/
+
+        /*}*/
+
+        /*.grid .row .col-md-6 {*/
+            /*min-height: 300px;*/
+            /*background: transparent;*/
+
+        /*}*/
+
+        /*#containment {*/
+            /*min-height: 255px;*/
+            /*padding-left: 0px !important;*/
+            /*padding-right: 0px !important;*/
+            /*background: transparent;*/
+
+        /*}*/
+
+        /*.colmali {*/
+            /*min-height: 247px;*/
+            /*background: transparent;*/
+            /*padding-left: 0px !important;*/
+            /*padding-right: 0px !important*/
+        /*}*/
+
+        /*.margin-move-up {*/
+            /*margin-top: -45px;*/
+        /*}*/
+
+        /*.margin-move-up2 {*/
+            /*margin-top: -90px;*/
+        /*}*/
+
+        /*.margin-move-up3 {*/
+            /*margin-top: 65px;*/
+        /*}*/
+
+        /*.taralogo {*/
+            /*float: right;*/
+        /*}*/
         h1 {
             font-family: "Futura PT Bold", Helvetica, sans-serif;
             margin-bottom: 30px;
         }
-
-        p {
+        p
+        {
             font-family: "Futura PT Book", Helvetica, sans-serif;
         }
-
-        .grid .row {
-            background-color: transparent;
-            border: 0;
-            height: 100px;
-            padding-right: 0;
-            background: transparent;
-
-        }
-
-        .grid .row .col-md-3 {
-            min-height: 255px;
-
-            padding-left: 0px !important;
-            padding-right: 0px !important;
-            background: transparent;
-
-        }
-
-        .grid .row .col-md-6 {
-            min-height: 300px;
-            background: transparent;
-
-        }
-
-        #containment {
-            min-height: 255px;
-            padding-left: 0px !important;
-            padding-right: 0px !important;
-            background: transparent;
-
-        }
-
-        .colmali {
-            min-height: 247px;
-            background: transparent;
-            padding-left: 0px !important;
-            padding-right: 0px !important
-        }
-
-        .margin-move-up {
-            margin-top: -45px;
-        }
-
-        .margin-move-up2 {
-            margin-top: -90px;
-        }
-
-        .margin-move-up3 {
-            margin-top: 65px;
-        }
-
-        .taralogo {
+        .taralogo
+        {
             float: right;
+            margin-top: 20px;
+        }
+        .col-custom
+        {
+            height: 250px;
+            background: silver;
+            border: 2px solid #CD5944;
+            opacity: 0.7;
+
         }
     </style>
 </head>
@@ -74,72 +95,92 @@
 
 
 <div class="fluid-container">
-    <div class="col-md-9" id="containment">
+    <div class="col-md-9" >
 
-        <div class="grid">
-            <div class="row col-md-12">
-                <div class="tile tile-clouds col-md-3 col-xs-12">
-                    <a href="#">
-                        <h1>Hello</h1>
-                    </a>
-                </div>
+<!--        <div class="grid">-->
+<!--            <div class="row col-md-12">-->
+<!--                <div class="tile tile-clouds col-md-3 col-xs-12">-->
+<!--                    <a href="#">-->
+<!--                        <h1>Hello</h1>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="tile col-md-9 col-xs-12" id="containment">-->
+<!--                    <div class="col-md-12 colmali"> 12</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row col-md-12">-->
+<!--            </div>-->
+<!--            <div class="row col-md-12">-->
+<!--            </div>-->
+<!--            <div class="row col-md-12">-->
+<!--                <div class="tile col-md-9 col-xs-12 margin-move-up" id="containment">-->
+<!--                    <div class="tile-content">-->
+<!--                        <div class="tile-icon-large">-->
+<!--                            <img src="images/twittertile.png">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <span class="tile-label">Tile 1</span>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="tile col-md-3 col-xs-12 margin-move-up">-->
+<!--                    <div class="tile-content">-->
+<!--                        <div class="tile-icon-large">-->
+<!--                            <img src="images/twittertile.png">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <span class="tile-label">Tile 1</span>-->
+<!--                </div>-->
+<!---->
+<!--            </div>-->
+<!--            <div class="row col-md-12"></div>-->
+<!--            <div class="row col-md-12"></div>-->
+<!--            <div class="row col-md-12">-->
+<!--                <div class="tile col-md-3 col-xs-12 margin-move-up2">-->
+<!--                    <span class="tile-label">Tile 4</span>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="tile col-md-9 col-xs-12 margin-move-up2" id="containment">-->
+<!--                    <span class="tile-label">Tile 4</span>-->
+<!--                </div>-->
+<!---->
+<!--            </div>-->
+<!--            <div class="row col-md-12">-->
+<!--                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">-->
+<!--                    <span class="tile-label">Tile 4</span>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">-->
+<!--                    <span class="tile-label">Tile 4</span>-->
+<!--                </div>-->
+<!--                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">-->
+<!--                    <span class="tile-label">Tile 4</span>-->
+<!--                </div>-->
+<!--                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">-->
+<!--                    <span class="tile-label">Tile 4</span>-->
+<!--                </div>-->
+<!---->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="row">
+            <div class="col-md-3 col-custom">.col-md-3</div>
+            <div class="col-md-9 col-custom">.col-md-9</div>
+        </div>
 
-                <div class="tile col-md-9 col-xs-12" id="containment">
-                    <div class="col-md-12 colmali"> 12</div>
-                </div>
-            </div>
-            <div class="row col-md-12">
-            </div>
-            <div class="row col-md-12">
-            </div>
-            <div class="row col-md-12">
-                <div class="tile col-md-9 col-xs-12 margin-move-up" id="containment">
-                    <div class="tile-content">
-                        <div class="tile-icon-large">
-                            <img src="images/twittertile.png">
-                        </div>
-                    </div>
-                    <span class="tile-label">Tile 1</span>
-                </div>
+        <div class="row">
+            <div class="col-md-9 col-custom">.col-md-9</div>
+            <div class="col-md-3 col-custom">.col-md-3</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-custom">.col-md-3</div>
+            <div class="col-md-9 col-custom">.col-md-9</div>
+        </div>
 
-                <div class="tile col-md-3 col-xs-12 margin-move-up">
-                    <div class="tile-content">
-                        <div class="tile-icon-large">
-                            <img src="images/twittertile.png">
-                        </div>
-                    </div>
-                    <span class="tile-label">Tile 1</span>
-                </div>
-
-            </div>
-            <div class="row col-md-12"></div>
-            <div class="row col-md-12"></div>
-            <div class="row col-md-12">
-                <div class="tile col-md-3 col-xs-12 margin-move-up2">
-                    <span class="tile-label">Tile 4</span>
-                </div>
-
-                <div class="tile col-md-9 col-xs-12 margin-move-up2" id="containment">
-                    <span class="tile-label">Tile 4</span>
-                </div>
-
-            </div>
-            <div class="row col-md-12">
-                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">
-                    <span class="tile-label">Tile 4</span>
-                </div>
-
-                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">
-                    <span class="tile-label">Tile 4</span>
-                </div>
-                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">
-                    <span class="tile-label">Tile 4</span>
-                </div>
-                <div class="tile tile-alizarin col-md-3 col-xs-12 margin-move-up3">
-                    <span class="tile-label">Tile 4</span>
-                </div>
-
-            </div>
+        <div class="row">
+            <div class="col-md-3 col-custom">.col-md-3</div>
+            <div class="col-md-3 col-custom">.col-md-3</div>
+            <div class="col-md-3 col-custom">.col-md-3</div>
+            <div class="col-md-3 col-custom">.col-md-3</div>
         </div>
 
         <div class="col-md-9" id="footer">

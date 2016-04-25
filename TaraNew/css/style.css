@@ -327,7 +327,7 @@ ul, ul ul {
 }
 #footer {
     background-color: #0f0f0f;
-    height: 60px;
+    height: 80px;
     /*width: 100%;*/
     width: 1440px;
     /*margin-top: 220px;*/
@@ -347,5 +347,26 @@ ul, ul ul {
 }
 .time-text {
     color: #CD5944;
-    margin-top:3px;
+    margin-top:13px;
+}
+.custom-margin-photo-about-hotel-content
+{
+    margin-left: 4px;
+}
+h1 {
+    font-family: "Futura PT Bold", Helvetica, sans-serif;
+    margin-bottom: 30px;
+}
+
+p {
+    font-family: "Futura PT Book", Helvetica, sans-serif;
+}
+
+
+.col-custom {
+    height: 250px;
+    background: silver;
+    border: 2px solid #CD5944;
+    opacity: 0.7;
+
 }
