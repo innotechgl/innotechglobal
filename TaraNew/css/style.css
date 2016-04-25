@@ -398,7 +398,7 @@ p {
     height:150px;
     background-color: #262626;
     box-shadow: 0px -10px 30px -10px #000000 inset;
-    background: url("../images/test.jpg");
+    background: url("../images/test.png");
     background-size: 2000px 150px;
     background-repeat: no-repeat;
 }
