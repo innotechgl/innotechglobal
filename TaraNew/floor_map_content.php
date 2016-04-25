@@ -1,3 +1,9 @@
 <div class="row">
+    <div class="fm-main ">
 
-<img src="images/ground_floor.jpg" class="img-responsive"></div>
+        <div class="fm-content">
+            <h2>FLOOR PLAN</h2>
+            <img src="images/ground_floor.jpg" class="img-responsive">
+        </div>
+    </div>
+</div>
