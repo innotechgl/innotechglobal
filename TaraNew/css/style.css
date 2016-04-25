@@ -398,4 +398,32 @@ p {
     height:150px;
     background-color: #262626;
     box-shadow: 0px -10px 30px -10px #000000 inset;
+    background: url("../images/test.jpg");
+    background-size: 2000px 150px;
+    background-repeat: no-repeat;
+}
+.top-content {
+    height:423px;
+
+}
+.bottom-content {
+    height: 423px;
+
+}
+.event-black {
+    width:20%;
+    background-color: #0F0F0F;
+    float:left;
+    height: 423px;
+    color: white;
+    border-bottom: 2px solid #CD5944
+
+}
+.event-grey {
+    width:20%;
+    background-color: #262626;
+    height:423px;
+    color: white;
+    float:left;
+    border-bottom: 2px solid #CD5944;
 }
