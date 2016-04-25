@@ -372,11 +372,12 @@ p {
 }
 .ip-main {
     background-color: #262626 ;
-    height: 998px;
+    height: 848px;
     width: 100%;
     opacity: 1;
     border: 2px solid #CD5944;
     border-right: 0;
+    border-left: 0;
 
 
 }
@@ -392,4 +393,9 @@ p {
 }
 .ip-content h2 {
     margin-bottom: 50px;
+}
+.top-baner {
+    height:150px;
+    background-color: #262626;
+    box-shadow: 0px -10px 30px -10px #000000 inset;
 }
