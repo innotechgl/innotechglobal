@@ -1,5 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UFT-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -18,3 +19,8 @@
 <link rel="stylesheet" type="text/css" media="screen" href="js/plugins/src/css/style.css">
 <link rel="stylesheet" type="text/css" href="dist/css/metro-bootstrap.min.css">
 <link rel="stylesheet" href="styles/font-awesome.min.css">
+ <!-- Gallery slider -->
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+<link rel="stylesheet" type="text/css" href="css/custom.css" />
+<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>

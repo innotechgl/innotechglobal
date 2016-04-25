@@ -6,11 +6,11 @@
 <body>
 <div class="fluid-container">
     <div class="col-md-9" id="containment">
-            
+             <?php include "gallery_content.php";?>
 
 
         <div class="col-md-9" id="footer">
-            <?php include "footer.php"?>
+            <?php include "footer.php";?>
         </div>
     </div>
     <!-- menu and weather -->
@@ -36,6 +36,9 @@
 <?php include "menu_script.php" ?>
 <?php
 include "weather-script.php"
+?>
+<?php
+include "gallery_script.php"
 ?>
 </body>
 </head>
