@@ -3,36 +3,65 @@
         <div class="row event-content">
             <div class="top-content col-md-12">
                 <div class="event-black">
-                    1
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
                 </div>
                 <div class="event-grey">
-                    2
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
                 <div class="event-black">
-                    3
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
                 <div class="event-grey">
-                    4
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
                 <div class="event-black">
-                    5
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
             </div>
             <div class="bottom-content col-md-12">
                 <div class="event-grey">
-                    6
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
                 <div class="event-black">
-                    7
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
                 <div class="event-grey">
-                    8
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
                 <div class="event-black">
-                    9
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
                 <div class="event-grey">
-                    10
+                    <img src="images/test2.jpg">
+                    <h3>EVENT 1</h3>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+
                 </div>
             </div>
         </div>

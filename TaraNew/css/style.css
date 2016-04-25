@@ -388,7 +388,7 @@ p {
     background-color: #0d1217;
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 40px;
 
 }
 .ip-content h2 {
@@ -416,7 +416,41 @@ p {
     float:left;
     height: 423px;
     color: white;
-    border-bottom: 2px solid #CD5944
+    border-bottom: 2px solid #CD5944;
+    padding:20px;
+
+}
+.event-black img{
+    width:100%;
+    height:150px;
+
+
+}
+.event-grey img{
+    width:100%;
+    height:150px;
+
+
+}
+.event-black h3{
+    color: #CD5944;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.event-grey h3{
+    color: #CD5944;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+.event-black a{
+    color: #CD5944;
+
+}
+.event-grey a{
+    color: #CD5944;
 
 }
 .event-grey {
@@ -426,4 +460,5 @@ p {
     color: white;
     float:left;
     border-bottom: 2px solid #CD5944;
+    padding:20px;
 }
