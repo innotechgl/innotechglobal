@@ -370,3 +370,26 @@ p {
     opacity: 0.7;
 
 }
+.ip-main {
+    background-color: #262626 ;
+    height: 998px;
+    width: 100%;
+    opacity: 1;
+    border: 2px solid #CD5944;
+    border-right: 0;
+
+
+}
+.ip-content {
+    color: #DCCCED;
+    margin: 100px 200px;
+    border-top: 2px solid #CD5944;
+    background-color: #0d1217;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+}
+.ip-content h2 {
+    margin-bottom: 50px;
+}
