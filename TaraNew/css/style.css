@@ -334,6 +334,7 @@ ul, ul ul {
     bottom: 0;
     left:0;
     position: fixed;
+    border-top: 2px solid #CD5944;
 
 }
 .tara {
@@ -378,6 +379,7 @@ p {
     border: 2px solid #CD5944;
     border-right: 0;
     border-left: 0;
+    border-bottom: 0;
 
 
 }
@@ -408,6 +410,7 @@ p {
 }
 .bottom-content {
     height: 423px;
+    border-bottom: 2px solid #CD5944;
 
 }
 .event-black {
@@ -416,9 +419,18 @@ p {
     float:left;
     height: 423px;
     color: white;
-    border-bottom: 2px solid #CD5944;
+    /*border-bottom: 2px solid #CD5944;*/
     padding:20px;
 
+}
+.event-grey {
+    width:20%;
+    background-color: #262626;
+    height:423px;
+    color: white;
+    float:left;
+    /*border-bottom: 2px solid #CD5944;*/
+    padding:20px;
 }
 .event-black img{
     width:100%;
@@ -453,12 +465,4 @@ p {
     color: #CD5944;
 
 }
-.event-grey {
-    width:20%;
-    background-color: #262626;
-    height:423px;
-    color: white;
-    float:left;
-    border-bottom: 2px solid #CD5944;
-    padding:20px;
-}
+
