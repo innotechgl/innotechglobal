@@ -6,6 +6,9 @@
 <body>
 <div class="fluid-container">
     <div class="col-md-9" id="containment">
+        
+                     <?php include "top_baner.php";?>
+
              <?php include "gallery_content.php";?>
 
 

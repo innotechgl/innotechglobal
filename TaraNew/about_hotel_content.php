@@ -29,13 +29,13 @@
 <p>Minimalistički dizajn enterijera u kome preovlađuju prirodni materijali i pastelni tonovi, omogućavaju ugodan boravak svakom gostu. Odabirom komadnog
 	nameštaja B design-a, zaokružena je ideja postavljanja B Hotels standarda koji će naši gosti prepoznati i nadamo se preporučiti.</p>
 <div class=" margin-top">
-	<a href="about_hotel_gallery.php"><img src="fairmont1.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-	<a href="about_hotel_gallery.php"><img src="fairmont2.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-	<a href="about_hotel_gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-	<a href="about_hotel_gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont1.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont2.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
 
-	<a href="about_hotel_gallery.php"><img src="fairmont1.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-	<a href="about_hotel_gallery.php"><img src="fairmont2.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-	<a href="about_hotel_gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-	<a href="about_hotel_gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont1.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont2.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+	<a href="gallery.php"><img src="fairmont3.jpg" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
 </div>

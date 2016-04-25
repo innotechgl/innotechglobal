@@ -6,11 +6,12 @@
 <body>
 <div class="fluid-container">
     <div class="col-md-9" id="containment">
+                     <?php include "top_baner.php";?>
 
         <?php include "about_hotel_content.php" ?>
 
         <div class="col-md-9" id="footer">
-            <?php include "footer.php"?>
+            <?php include "footer.php";?>
         </div>
     </div>
     <!-- menu and weather -->
