@@ -21,6 +21,10 @@
                 magnis dis parturient montes, nascetur ridiculus mus. Duis tincidunt elit eu auctor tincidunt. Cras
                 egestas nunc quis neque iaculis, ac porttitor odio varius. Aliquam erat volutpat. Etiam at eros vitae
                 dolor tincidunt bibendum. Donec laoreet ultrices neque ac mattis. </p>
+            <div class="es-logo-right"><img src="images/esqr.png"></div>
+
+            <div class="es-logo-left"><img src="images/eslogo.png"></div>
         </div>
+
     </div>
 </div>

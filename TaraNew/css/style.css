@@ -452,7 +452,7 @@ p {
     text-align: justify;
 }
 
-.es-content img {
+.wrap {
     border-top: 2px solid #CD5944;
     height: 200px;
     width: 200px;
@@ -460,13 +460,16 @@ p {
     margin-bottom: 5px;
 
 }
+
 .es-heading {
     height: 40px;
 
 }
+
 .es-heading h2 {
     color: #CD5944;
 }
+
 .es-linija {
     border: 0;
     height: 1px;
@@ -474,11 +477,30 @@ p {
     background: #CD5944;
 
 }
+
+.es-logo-right img{
+    float: right;
+    height: 100px;
+    width: 100px;
+    border-left: 2px solid #CD5944;
+    padding-left: 10px;
+}
+
+.es-logo-left img{
+    float: right;
+    height: 100px;
+    width: 100px;
+    padding-right: 10px;
+
+}
+
 img.wrap {
     float: left;
 }
+
 .es-button {
-    background: #CD5944; border: none;
+    background: #CD5944;
+    border: none;
     color: #0F0F0F;
     padding: 15px 20px;
     text-align: center;
@@ -488,7 +510,6 @@ img.wrap {
     cursor: pointer;
     font-family: "Futura PT Book";
     float: right;
-
 
 }
 
