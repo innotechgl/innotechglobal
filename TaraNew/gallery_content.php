@@ -40,8 +40,8 @@
                 </div>
 
                 <div id="nav-options" class="nav-options">
-                    <!-- <span id="navPlay">Play</span>
-                    <span id="navPause">Pause</span> -->
+<!--                  <span id="navPlay">Play</span>-->
+<!--                    <span id="navPause">Pause</span>-->
                 </div>
 
             </div><!-- /wrapper -->

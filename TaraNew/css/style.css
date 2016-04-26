@@ -322,6 +322,8 @@ ul, ul ul {
 .logo-red {
     margin-bottom: 20px;
     margin-left: 100px;
+    margin-top:5px;
+
 
 }
 
@@ -402,6 +404,11 @@ p {
     margin-bottom: 50px;
     color: #CD5944;
 }
+.ip-content h1 {
+    margin-bottom: 30px;
+    color: #CD5944;
+}
+
 
 .fm-main {
     background-color: #262626;

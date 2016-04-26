@@ -3,13 +3,14 @@
 <head>
     <title>PHP file</title>
     <?php include "html_header.php" ?>
+</head>
 <body>
 <div class="fluid-container">
     <div class="col-md-9" id="containment">
         
                      <?php include "top_baner.php";?>
 
-             <?php include "gallery_content.php";?>
+             <?php// include "gallery_content.php";?>
 
 
         <div class="col-md-9" id="footer">
@@ -44,5 +45,5 @@ include "weather-script.php"
 include "gallery_script.php"
 ?>
 </body>
-</head>
+
 </html>
