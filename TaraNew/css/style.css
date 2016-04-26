@@ -322,8 +322,7 @@ ul, ul ul {
 .logo-red {
     margin-bottom: 20px;
     margin-left: 100px;
-    margin-top:5px;
-
+    margin-top: 5px;
 
 }
 
@@ -404,11 +403,11 @@ p {
     margin-bottom: 50px;
     color: #CD5944;
 }
+
 .ip-content h1 {
     margin-bottom: 30px;
     color: #CD5944;
 }
-
 
 .fm-main {
     background-color: #262626;
@@ -443,22 +442,74 @@ p {
     max-height: 100%;
     width: 100%;
 }
+
+.es-content {
+    color: #DCCCED;
+    margin: 50px 200px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    float: left;
+    text-align: justify;
+}
+
+.es-content img {
+    border-top: 2px solid #CD5944;
+    height: 200px;
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+
+}
+.es-heading {
+    height: 40px;
+
+}
+.es-heading h2 {
+    color: #CD5944;
+}
+.es-linija {
+    border: 0;
+    height: 1px;
+
+    background: #CD5944;
+
+}
+img.wrap {
+    float: left;
+}
+.es-button {
+    background: #CD5944; border: none;
+    color: #0F0F0F;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 22px;
+    margin-right: 0;
+    cursor: pointer;
+    font-family: "Futura PT Book";
+    float: right;
+
+
+}
+
 .top-baner {
     height: 255px;
     background-color: #262626;
-    box-shadow: 0px -10px 30px -10px #000000 inset!important;
+    box-shadow: 0px -10px 30px -10px #000000 inset !important;
     /*background: url("../images/test.jpg");*/
     background-size: 2000px 150px;
     background-repeat: no-repeat;
-    -webkit-box-shadow:0px -10px 30px -10px #000000 inset;
-    -moz-box-shadow:0px -10px 30px -10px #000000 inset;
+    -webkit-box-shadow: 0px -10px 30px -10px #000000 inset;
+    -moz-box-shadow: 0px -10px 30px -10px #000000 inset;
 
 }
+
 .top-baner img {
-    box-shadow: 0px -10px 30px -10px #000000 inset!important;
+    box-shadow: 0px -10px 30px -10px #000000 inset !important;
     z-index: 100;
 
 }
+
 .top-content {
     height: 376px;
     font-size: 5%;
@@ -482,6 +533,7 @@ p {
     font-size: 5%;
 
 }
+
 .event-black p {
 
     font-size: 16px;
@@ -493,6 +545,7 @@ p {
     font-size: 16px;
 
 }
+
 .event-grey {
     width: 20%;
     background-color: #262626;
@@ -550,14 +603,12 @@ p {
     height: 255px;
     width: 1440px;
 
-
 }
 
 #cycler img.active {
     z-index: 3;
     height: 255px;
     width: 1440px;
-
 
 }
 
