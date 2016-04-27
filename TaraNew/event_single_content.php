@@ -3,7 +3,7 @@
         <div class="es-content">
 
             <div class="es-heading">
-                <img class="wrap" src="images/1.jpg" >
+                <img class="wrap" src="images/1.png" >
                 <button class="es-button">NAZAD</button>
                 <h2>EVENT 1</h2>
                 <div class="button-only">
