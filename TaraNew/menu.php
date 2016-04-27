@@ -6,9 +6,9 @@
 
 	<img src="images/logo-red.png" class="logo-red">
 	
-	<ul class="menu" id="menu">
+	<ul class="right-menu-ul" id="right-menu-ul">
  
-		<li class="item1" id="oHotelu"><a href="#oHotelu">O HOELU</a>
+		<li class="item1" id="oHotelu"><a href="#oHotelu">O HOTELU</a>
 			<ul>
 				<li class="subitem1"><a href="#">O nama </a></li>
 				<li class="subitem2"><a href="#">Važni telefoni</a></li>

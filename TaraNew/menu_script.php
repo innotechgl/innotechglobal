@@ -1,8 +1,8 @@
 <script type="text/javascript">
 $(function () {
 
-var menu_ul = $('.menu > li > ul'),
-menu_a = $('.menu > li > a');
+var menu_ul = $('.right-menu-ul > li > ul'),
+menu_a = $('.right-menu-ul > li > a');
 
 menu_ul.hide();
 
@@ -23,8 +23,8 @@ $(this).next().stop(true, true).slideUp('normal');
 <script type="text/javascript">
 
     $(function () {
-        $('#menu li a').click(function () {
-            $('#menu li').removeClass();
+        $('#right-menu-ul li a').click(function () {
+            $('#right-menu-ul li').removeClass();
             $($(this).attr('href')).addClass('active');
         });
     });

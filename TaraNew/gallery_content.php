@@ -7,27 +7,27 @@
 
                 <ul id="sb-slider" class="sb-slider">
                     <li>
-                        <img src="images/1.jpg" alt="image1"/>
+                        <img src="images/1.png" alt="image1"/>
                         
                     </li>
                     <li>
-                        <img src="images/2.jpg" alt="image2"/>
+                        <img src="images/2.png" alt="image2"/>
                         
                     </li>
                     <li>
-                        <img src="images/3.jpg" alt="image1"/>
+                        <img src="images/3.png" alt="image1"/>
                         
                     <li>
-                        <img src="images/4.jpg" alt="image1"/>
+                        <img src="images/4.png" alt="image1"/>
                     
                     <li>
-                        <img src="images/5.jpg" alt="image1"/>
+                        <img src="images/5.png" alt="image1"/>
                     <li>
-                        <img src="images/6.jpg" alt="image1"/>
+                        <img src="images/6.png" alt="image1"/>
                         
                     </li>
                     <li>
-                    <img src="images/7.jpg" alt="image1"/>
+                    <img src="images/7.png" alt="image1"/>
                     
                     </li>
                 </ul>
