@@ -14,12 +14,12 @@
     text-decoration: none;
     display: inline-block;
     font-size: 22px;
-    font-weight: bold;
+    /*font-weight: bold;*/
     margin: 4px 2px;
     cursor: pointer;
     float: right;
     font-family: "Futura PT Book";
-    text-transform: uppercase;" onclick="history.back()"> Povratak</button>
+    text-transform: uppercase;" onclick="history.back()"> NAZAD</button>
              <?php include "gallery_content.php";?>
 
 
