@@ -8,7 +8,7 @@
     <div class="col-md-9" id="containment">
         <?php include "top_baner.php";?>
         <button style="background: #CD5944; border: none;
-    color: white;
+    color: black;
     padding: 15px 20px;
     text-align: center;
     text-decoration: none;

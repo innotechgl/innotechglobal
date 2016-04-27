@@ -4,7 +4,7 @@
 <div id="wrapper nav nav-pills nav-stacked">
 
 
-	<img src="images/logo-red.png" class="logo-red">
+<a href="#"	><img src="images/logo-red.png" class="logo-red"></a>
 	
 	<ul class="right-menu-ul" id="right-menu-ul">
  
