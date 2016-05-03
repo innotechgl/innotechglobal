@@ -50,6 +50,7 @@
         /*********************
          ***** MOUSEWHEEL *****
          *********************/
+         /*
         $(document).on("mousewheel DOMMouseScroll", function(e) {
             if (!scrolling) {
                 if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
@@ -58,7 +59,7 @@
                     navigateDown();
                 }
             }
-        });
+        });*/
 
         /**************************
          ***** RIGHT NAVIGATION ****

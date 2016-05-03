@@ -20,15 +20,16 @@ $(this).next().stop(true, true).slideUp('normal');
 
 });
 </script>
-<script type="text/javascript">
 
+<script type="text/javascript">
+/*
     $(function () {
         $('#right-menu-ul li a').click(function () {
             $('#right-menu-ul li').removeClass();
             $($(this).attr('href')).addClass('active');
         });
     });
-
+*/
 </script>
 <script>
     function cycleImages(){

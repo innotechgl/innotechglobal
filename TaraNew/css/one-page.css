@@ -9,10 +9,10 @@
 
 .inner,
 .nav-panel ul .nav-btn:after {
-    content: "";
+    /*content: "";
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 50%;*/
 }
 
 
@@ -141,8 +141,30 @@
     transform: scale(1);
 }
 
+.wrapper.active-page5 {
+    -webkit-transform: translateY(-400%);
+    -ms-transform: translateY(-400%);
+    transform: translateY(-400%);
+}
+
+.wrapper.active-page5 .page.page5 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.wrapper.active-page6 {
+    -webkit-transform: translateY(-500%);
+    -ms-transform: translateY(-500%);
+    transform: translateY(-500%);
+}
+
+.wrapper.active-page6 .page.page6 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
 .nav-panel {
-    position: fixed;
+   /* position: fixed;
     top: 50%;
     right: 1em;
     -webkit-transform: translateY(-50%);
@@ -151,20 +173,20 @@
     z-index: 1000;
     -webkit-transition: opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.57, 1.2, 0.68, 2.6);
     transition: opacity 0.5s, transform 0.5s cubic-bezier(0.57, 1.2, 0.68, 2.6);
-    will-change: transform, opacity;
+    will-change: transform, opacity;*/
 }
 
 .nav-panel.invisible {
-    opacity: 0;
+   /* opacity: 0;
     -webkit-transform: translateY(-50%) scale(0.5);
     -ms-transform: translateY(-50%) scale(0.5);
-    transform: translateY(-50%) scale(0.5);
+    transform: translateY(-50%) scale(0.5);*/
 }
 
 .nav-panel ul { list-style-type: none; }
 
 .nav-panel ul .nav-btn {
-    position: relative;
+   /* position: relative;
     overflow: hidden;
     width: 1em;
     height: 1em;
@@ -174,11 +196,11 @@
     cursor: pointer;
     -webkit-transition: border-color, -webkit-transform 0.3s;
     transition: border-color, transform 0.3s;
-    will-change: border-color, transform;
+    will-change: border-color, transform;*/
 }
 
 .nav-panel ul .nav-btn:after {
-    width: 100%;
+  /*  width: 100%;
     height: 100%;
     border-radius: 50%;
     -webkit-transform: translateX(-50%) translateY(-50%) scale(0.3);
@@ -188,25 +210,25 @@
     opacity: 0;
     -webkit-transition: -webkit-transform, opacity 0.3s;
     transition: transform, opacity 0.3s;
-    will-change: transform, opacity;
+    will-change: transform, opacity;*/
 }
 
 .nav-panel ul .nav-btn.active:after,
 .nav-panel ul .nav-btn:hover:after {
-    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.7);
+  /*  -webkit-transform: translateX(-50%) translateY(-50%) scale(0.7);
     -ms-transform: translateX(-50%) translateY(-50%) scale(0.7);
     transform: translateX(-50%) translateY(-50%) scale(0.7);
-    opacity: 1;
+    opacity: 1;*/
 }
 
 .nav-panel ul .nav-btn:hover {
-    border-color: yellow;
+   /* border-color: yellow;
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
-    transform: scale(1.2);
+    transform: scale(1.2);*/
 }
 
-.nav-panel ul .nav-btn:hover:after { background-color: yellow; }
+.nav-panel ul .nav-btn:hover:after { /*background-color: yellow; */}
 
 .nav-panel .scroll-btn {
     position: absolute;

@@ -13,13 +13,13 @@
 			<p>Minimalistički dizajn enterijera u kome preovlađuju prirodni materijali i pastelni tonovi, omogućavaju ugodan boravak svakom gostu. Odabirom komadnog
 				nameštaja B design-a, zaokružena je ideja postavljanja B Hotels standarda koji će naši gosti prepoznati i nadamo se preporučiti.</p>
 			<div class=" margin-top">
-				<a href="gallery.php"><img src="images/1.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-				<a href="gallery.php"><img src="images/2.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-				<a href="gallery.php"><img src="images/3.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-				<a href="gallery.php"><img src="images/4.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+				<a href="#" data-target="5" class="nav-btn nav-page5"><img src="images/1.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+				<a href="#" data-target="5" class="nav-btn nav-page5"><img src="images/2.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+				<a href="#" data-target="5" class="nav-btn nav-page5"><img src="images/3.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+				<a href="#" data-target="5" class="nav-btn nav-page5"><img src="images/4.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
 
-				<a href="gallery.php"><img src="images/5.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
-				<a href="gallery.php"><img src="images/6.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+				<a href="#" data-target="5" class="nav-btn nav-page5"><img src="images/5.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
+				<a href="#" data-target="5" class="nav-btn nav-page5"><img src="images/6.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre" height="150px" width="150px"></a>
 			</div>
 		</div>
 	</div>

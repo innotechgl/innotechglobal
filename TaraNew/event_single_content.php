@@ -4,8 +4,9 @@
 
             <div class="es-heading">
                 <img class="wrap" src="images/1.png">
-                <button class="es-button" onclick="history.back()">NAZAD</button>
-                <h2>EVENT 1</h2>
+ <ul>
+                 <li data-target="1" class="nav-btn nav-page1">   <button class="es-button">NAZAD</button></li>
+</ul>                <h2>EVENT 1</h2>
                 <div class="button-only">
                 </div>
             </div>

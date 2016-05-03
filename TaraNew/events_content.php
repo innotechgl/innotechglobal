@@ -5,30 +5,35 @@
                 <div class="event-black">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
                 </div>
                 <div class="event-grey">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
                 <div class="event-black">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
                 <div class="event-grey">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
                 <div class="event-black">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
             </div>
@@ -36,31 +41,36 @@
                 <div class="event-grey">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6"Read more...</a></p>
 
                 </div>
                 <div class="event-black">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
                 <div class="event-grey">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
                 <div class="event-black">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
                 <div class="event-grey">
                     <img src="images/test2.jpg">
                     <h3>EVENT 1</h3>
-                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis <a href="">Read more...</a></p>
+                    <p>EVENT 1 opis opis opis opis opis opis opis opis opis opis opis opis opis opis opis 
+                        <a href="#" data-target="6" class="nav-btn nav-page6">Read more...</a></p>
 
                 </div>
             </div>

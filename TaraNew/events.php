@@ -12,7 +12,7 @@
         
 
         <div class="col-md-9" id="footer">
-            <?php include "footer.php"?>
+            <?php include "footer.php";?>
         </div>
     </div>
     <!-- menu and weather -->
