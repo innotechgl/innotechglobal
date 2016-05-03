@@ -5,9 +5,9 @@
 
 
 <a href="#"	><img src="images/logo-red.png" class="logo-red"></a>
-	
+
 	<ul class="right-menu-ul" id="right-menu-ul">
- 
+
 		<li class="item1" id="oHotelu"><a href="#oHotelu">O HOTELU</a>
 			<ul>
 				<li class="subitem1"><a href="#">O nama </a></li>
