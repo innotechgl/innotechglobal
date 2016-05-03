@@ -20,8 +20,10 @@
 <link rel="stylesheet" type="text/css" href="dist/css/metro-bootstrap.min.css">
 <link rel="stylesheet" href="styles/font-awesome.min.css">
  <!-- Gallery slider -->
-<!--<link rel="stylesheet" type="text/css" href="css/demo.css" />-->
-<!--<link rel="stylesheet" type="text/css" href="css/slicebox.css" />-->
-<!--<link rel="stylesheet" type="text/css" href="css/custom.css" />-->
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+<link rel="stylesheet" type="text/css" href="css/custom.css" />
+<!-- skripte galerije -->
+<script type="text/javascript" src="js/jquery.slicebox.js"></script>
 <!-- Jedan od css-ova treba izmeniti da bi radilo sa one page stilom-->
 <script type="text/javascript" src="js/modernizr.custom.46884.js"></script>

@@ -68,7 +68,7 @@ a {
 body {
     background: url("../images/bg.png");
     color: #fff;
-     background-repeat: no-repeat, no-repeat;
+    background-repeat: no-repeat, no-repeat;
     overflow-y: hidden;
     overflow-x: hidden;
 

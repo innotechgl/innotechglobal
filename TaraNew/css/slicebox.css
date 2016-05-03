@@ -13,7 +13,7 @@
 	padding: 0;
 	display: none;
 }
-
+/*
 .sb-slider li > a {
 	outline: none;
 }
@@ -21,7 +21,7 @@
 .sb-slider li > a img {
 	border: none;
 }
-
+*/
 .sb-slider img {
 	max-width: 100%;
 	display: block;

@@ -42,7 +42,7 @@
 
 							} );
 
-							$( '#navPlay' ).ready(function() {
+							/*$( '#navPlay' ).ready(function() {
 								
 								slicebox.play();
 								return false;
@@ -54,7 +54,7 @@
 								slicebox.pause();
 								return false;
 
-							} );
+							} );*/
 
 						};
 

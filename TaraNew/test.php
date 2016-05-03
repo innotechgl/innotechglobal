@@ -262,6 +262,8 @@
 
             </div>
             <div class="page page2">
+                    <button class="es-button"onclick="history.back()"> NAZAD</button>
+
                 <?php include "gallery_content.php"?>
             </div>
             <div class="page page3">
@@ -432,6 +434,7 @@ include "weather-script.php"
     })();
 
 </script>
+            <?php include "gallery_script.php";?>
 
 </body>
 </html>

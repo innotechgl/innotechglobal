@@ -3,9 +3,9 @@
     <div class="ip-content">
         <div class="row">
 
-            <div class="wrapper">
-
-                <ul id="sb-slider" class="sb-slider">
+            <div class="wrapper-gallery">
+ 
+              <ul id="sb-slider" class="sb-slider">
                     <li>
                         <img src="images/1.png" alt="image1"/>
                         
@@ -13,7 +13,7 @@
                     <li>
                         <img src="images/2.png" alt="image2"/>
                         
-                    </li>
+                    </li> 
                     <li>
                         <img src="images/3.png" alt="image1"/>
                         
@@ -29,8 +29,9 @@
                     <li>
                     <img src="images/7.png" alt="image1"/>
                     
-                    </li>
+                    </li> 
                 </ul>
+
 
                 <div id="shadow" class="shadow"></div>
 
