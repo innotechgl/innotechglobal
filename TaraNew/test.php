@@ -60,7 +60,7 @@
                 <li><img src="images/flags/english_flag.gif" alt="flag" width="60px" height="50px"/></li>
                 <li><img src="images/flags/serbian_flag.gif" alt="flag" width="60px" height="50px"/></li>
                 <li><img src="images/flags/turkish_flag.png" alt="flag" width="60px" height="50px"/></li>
-                <img src="images/taralogo.png" class="img-responsive taralogo">
+                <li><img src="images/taralogo.png" class="img-responsive taralogo"></li>
 
             </ul>
         </div>
