@@ -129,10 +129,3 @@
 
 </script>
 
-<script type="text/javascript">
-
-$('ul li a').click(function(){
-    $('li a').removeClass("fcurrent");
-    $(this).addClass("fcurrent");
-});
-</script>
