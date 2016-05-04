@@ -1,4 +1,4 @@
-﻿
+
 <div id="wrapper nav nav-pills nav-stacked ">
 
 
@@ -6,10 +6,10 @@
 
     <ul class="right-menu-ul" id="right-menu-ul">
 
-        <li class="item1" id="oHotelu"><a href="#oHotelu">O HOTELU</a>
+        <li class="item1" id="oHotelu"><a href="#">O HOTELU</a>
             <ul>
-                <li data-target="1" class="nav-btn nav-page1"><a href="#oNama">O nama </a></li>
-                <li data-target="2" class="nav-btn nav-page2"><a href="#ip-phones">Važni telefoni</a></li>
+                <li data-target="1" class="nav-btn nav-page1"><a href="#">O nama </a></li>
+                <li data-target="5" class="nav-btn nav-page5"><a href="#">Važni telefoni</a></li>
                 <li data-target="3" class="nav-btn nav-page3"><a href="#">Plan hotela </a></li>
             </ul>
         </li>

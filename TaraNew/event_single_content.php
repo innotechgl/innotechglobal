@@ -5,7 +5,7 @@
             <div class="es-heading">
                 <img class="wrap" src="images/1.png">
  <ul>
-                 <li data-target="1" class="nav-btn nav-page1">   <button class="es-button">NAZAD</button></li>
+                 <li data-target="4" class="nav-btn nav-page4">   <button class="es-button">NAZAD</button></li>
 </ul>                <h2>EVENT 1</h2>
                 <div class="button-only">
                 </div>

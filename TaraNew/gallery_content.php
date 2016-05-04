@@ -1,7 +1,9 @@
+
+
 <div class="row" >
 <div class="ip-main ">
     <ul>
-                 <li data-target="6" class="nav-btn nav-page6">   <button class="es-button">NAZAD</button></li>
+                 <li data-target="1" class="nav-btn nav-page1">   <button class="es-button">NAZAD</button></li>
 </ul>
     <div class="ip-content">
 
