@@ -431,6 +431,10 @@ p {
     text-align: center;
     /*padding-top: 20px;*/
     padding-bottom: 0;
+    border: 2px solid #CD5944;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0;
 
 }
 
