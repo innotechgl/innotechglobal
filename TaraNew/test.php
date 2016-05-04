@@ -56,7 +56,16 @@
 
         <?php include "weather2.php"; ?>
         <div class="tara">
-            <img src="images/taralogo.png" class="img-responsive taralogo">
+            <ul>
+                <li><img src="images/flags/english_flag.gif" alt="flag" width="50px" height="50px"/></li>
+                <li><img src="images/flags/france_flag.gif" alt="flag" width="50px" height="50px"/></li>
+                <li><img src="images/flags/german_flag.jpg" alt="flag" width="50px" height="50px"/></li>
+                <li><img src="images/flags/serbian_flag.gif" alt="flag" width="50px" height="50px"/></li>
+                <li><img src="images/flags/spain_flag.gif" alt="flag" width="50px" height="50px"/></li>
+                <li><img src="images/flags/turkish_flag.png" alt="flag" width="50px" height="50px"/></li>
+                            <img src="images/taralogo.png" class="img-responsive taralogo">
+
+            </ul>
         </div>
     </div>
 

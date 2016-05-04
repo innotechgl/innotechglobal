@@ -343,12 +343,24 @@ ul, ul ul {
 }
 
 .tara {
-    bottom: 15px;
+    bottom: 0px;
     position: fixed;
     right: 20px;
 
 }
-
+.tara ul li
+{
+    text-decoration: none;
+    float: left;
+    margin-left: 2px;
+    display: inline;
+    list-style: none;
+    border: none;
+}
+.tara ul img
+{
+    margin-left: 5px;
+}
 .time {
     margin-top: 5px;
 }
