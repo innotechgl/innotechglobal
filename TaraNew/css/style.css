@@ -1,5 +1,6 @@
 li {
     list-style-type: none;
+    text-decoration-line: none;
 }
 
 a {
@@ -162,7 +163,7 @@ body p {
 
 }
 
-#right-menu li {
+#right-menu ul >li {
     border-bottom: 1px solid #CD5944;
 }
 
@@ -171,7 +172,7 @@ body p {
 }
 
 .nav > li > a:focus {
-    background-color: none !important;
+    background-color: none!important;
 }
 
 .right-menu-ul li a {
@@ -234,7 +235,7 @@ ul, ul ul {
 /*background-color: #CD5944 ;*/
 
 /*}*/
-.right-menu-ul ul li a {
+.right-menu-ul ul > li a {
     text-align: right;
     padding-right: 30px;
     background: #333333;
@@ -351,11 +352,12 @@ ul, ul ul {
 .tara ul li
 {
     text-decoration: none;
-    float: left;
+    float: left!important;
     margin-left: 2px;
     display: inline;
-    list-style: none;
+    list-style-type: none;
     border: none;
+    border: 0!important;
 }
 .tara ul img
 {
