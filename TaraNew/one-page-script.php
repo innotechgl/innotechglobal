@@ -4,7 +4,7 @@
             pages = $(".page").length,
             scrolling = false,
             currentPage = 1,
-            $navPanel = $(".nav-panel"),
+            $navPanel = $("#nav-panel"),
             $scrollBtn = $(".scroll-btn"),
             $navBtn = $(".nav-btn");
 
@@ -127,4 +127,12 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
+</script>
+
+<script type="text/javascript">
+
+$('ul li a').click(function(){
+    $('li a').removeClass("fcurrent");
+    $(this).addClass("fcurrent");
+});
 </script>

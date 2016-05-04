@@ -227,7 +227,11 @@
     -ms-transform: scale(1.2);
     transform: scale(1.2);*/
 }
+/*
+#nav-panel ul > .active  > li > a {
+    background-color: #CD5944;
 
+}*/
 .nav-panel ul .nav-btn:hover:after { /*background-color: yellow; */}
 
 .nav-panel .scroll-btn {
@@ -244,6 +248,7 @@
     transform-origin: 50% 50%;
     -webkit-transition: border-color 0.3s;
     transition: border-color 0.3s;
+
 }
 
 .nav-panel .scroll-btn.up {
@@ -261,3 +266,7 @@
 }
 
 .nav-panel .scroll-btn:hover { border-color: yellow; }
+.fcurrent
+{
+    background: #CD5944!important;
+}

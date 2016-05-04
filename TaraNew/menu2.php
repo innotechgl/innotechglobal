@@ -1,45 +1,46 @@
 
-<div id="wrapper nav nav-pills nav-stacked ">
+<div id="wrapper nav nav-pills nav-stacked nav-panel">
 
 
 <a href="#" ><img src="images/logo-red.png" class="logo-red"></a>
 
     <ul class="right-menu-ul" id="right-menu-ul">
 
-        <li class="item1" id="oHotelu"><a href="#">O HOTELU</a>
-            <ul>
-                <li data-target="1" class="nav-btn nav-page1"><a href="#">O nama </a></li>
-                <li data-target="5" class="nav-btn nav-page5"><a href="#">Važni telefoni</a></li>
-                <li data-target="3" class="nav-btn nav-page3"><a href="#">Plan hotela </a></li>
+        <li class="item1" ><a href="#" id="id-color-right-menu">O HOTELU</a>
+            <ul class="sub-list">
+                <li ><a href="#" id="id-color-right-menu" data-target="1" class="nav-btn nav-page1">O nama </a></li>
+                <li ><a href="#" id="id-color-right-menu" data-target="3" class="nav-btn nav-page3">Važni telefoni</a></li>
+                <li ><a href="#" id="id-color-right-menu" data-target="4" class="nav-btn nav-page4">Plan hotela </a></li>
             </ul>
         </li>
-        <li class="item2" id="uOkolini"><a href="#uOkolini">U OKOLINI</a>
-<!--            <ul>-->
-<!--                <li class="subitem1"><a href="#">INFORMACIJE</a></li>-->
-<!--                <li class="subitem2"><a href="#">Dani hotela</a></li>-->
-<!--                <li class="subitem3"><a href="#">Dani hotela</a></li>-->
-<!--            </ul>-->
+        <li class="item2"><a href="#" id="id-color-right-menu">U OKOLINI</a>
+            <ul class="sub-list">
+                <li class="" ><a href="#" id="id-color-right-menu">INFORMACIJE</a></li>
+                <li class="" ><a href="#" id="id-color-right-menu">Dani hotela</a></li>
+                <li class="" ><a href="#" id="id-color-right-menu">Dani hotela</a></li>
+           </ul>
         </li>
-        <li class="item3" id="dogadjaji"><a href="#dogadjaji">DOGAĐAJI</a>
-            <ul>
-                <li data-target="4" class="nav-btn nav-page4" id="konferencije"><a href="#">Konferencije</a></li>
-                <li class="subitem2" id="ture"><a href="#">Ture</a></li>
-<!--                <li class="subitem3"><a href="#">Dani hotela</a></li>-->
+
+        <li class="item3" ><a href="#" id="id-color-right-menu">DOGAĐAJI</a>
+            <ul class="sub-list">
+                <li ><a href="#" id="id-color-right-menu" data-target="5" class="nav-btn nav-page5">Konferencije</a></li>
+                <li class="" id="ture"><a href="#" id="id-color-right-menu">Ture</a></li>
+                <li class="" ><a href="#" id="id-color-right-menu">Dani hotela</a></li>
             </ul>
         </li>
-        <li class="item4" id="usluge"><a href="#usluge">USLUGE</a>
-<!--            <ul>-->
-<!--                <li class="subitem1"><a href="#">Cute Kittens</a></li>-->
-<!--                <li class="subitem2"><a href="#">Dani hotela</a></li>-->
-<!--                <li class="subitem3"><a href="#">Dani hotela</a></li>-->
-<!--            </ul>-->
+        <li class="item4"><a href="#" id="id-color-right-menu">USLUGE</a>
+            <ul class="sub-list">
+                <li class="" ><a href="#" id="id-color-right-menu">Cute Kittens</a></li>
+                <li class="" ><a href="#" id="id-color-right-menu">Dani hotela</a></li>
+                <li class="" ><a href="#" id="id-color-right-menu">Dani hotela</a></li>
+            </ul>
         </li>
-        <li class="item5" id="rezervacije"><a href="#rezervacije">REZERVACIJE</a>
-<!--            <ul>-->
-<!--                <li class="subitem1"><a href="#">Cute Kittens</a></li>-->
-<!--                <li class="subitem2"><a href="#">Konferencije</a></li>-->
-<!--                <li class="subitem3"><a href="#">Konferencije</a></li>-->
-<!--            </ul>-->
+        <li class="item5" id="rezervacije"><a href="#" id="id-color-right-menu">REZERVACIJE</a>
+            <ul class="sub-list"f>
+                <li class="" ><a href="#" id="id-color-right-menu">Cute Kittens</a></li>
+                <li class="" ><a href="#" id="id-color-right-menu">Konferencije</a></li>
+                <li class="" ><a href="#" id="id-color-right-menu">Konferencije</a></li>
+            </ul>
         </li>
     </ul>
 

@@ -28,14 +28,14 @@
 
             </div>
             <div class="page page3">
-                <?php include "floor_map_content.php"; ?>
+                <?php include "important_phones_content.php"; ?>
             </div>
             <div class="page page4">
-                <?php include "events_content.php"; ?>
+                <?php include "floor_map_content.php"; ?>
             </div>
 
             <div class="page page5">
-                <?php include "important_phones_content.php"; ?>
+                <?php include "events_content.php"; ?>
             </div>
             <div class="page page6">
                 <?php include "event_single_content.php"; ?>
@@ -74,7 +74,28 @@ include "weather-script.php"
 <?php include "gallery_script.php"; ?>
 
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+<script>
+    var time = new Date().getTime();
+    $(document.body).bind("mousemove keypress", function(e) {
+        time = new Date().getTime();
+    });
 
+    function refresh() {
+        if(new Date().getTime() - time >= 120000)
+            window.location.reload(true);
+        else
+            setTimeout(refresh, 1000);
+    }
+
+    setTimeout(refresh, 10000);
+</script>
+<script>
+/*
+$("#id-color-right-menu").click(function (e) {
+$(this).addClass("class-color-right-menu").siblings().removeClass("class-color-right-menu");
+});*/
+
+</script>
 
 </body>
 </html>
