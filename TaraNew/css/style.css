@@ -301,7 +301,7 @@ ul, ul ul {
     position: absolute;
     right: 1em;
     top: 50%;
-/ background: #fff;
+    background: #fff;
     border: 1px solid #d0d0d3;
     line-height: 1em;
     height: 1em;
@@ -358,10 +358,16 @@ ul, ul ul {
     list-style-type: none;
     border: none;
     border: 0!important;
+    margin-top: -4px;
 }
 .tara ul img
 {
     margin-left: 5px;
+}
+.taralogo
+{
+    margin-bottom:20px;
+ 
 }
 .time {
     margin-top: 5px;
@@ -653,4 +659,28 @@ img.wrap {
     height: 255px;
     width: 1440px;
 
+}
+.gallery-button-back
+{
+    background: #CD5944;
+    border: none;
+    color: #0F0F0F;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 22px;
+    margin-right: 53px;
+    cursor: pointer;
+    font-family: "Futura PT Book";
+    float: right;
+}
+.language-icon
+{
+    height: 50px!important;
+    width: 60px!important;
+}
+.nav-btn img
+{
+    width: 150px;
+    height: 150px;
 }

@@ -2,7 +2,7 @@
     <div class="ip-main ">
         <ul>
             <li data-target="1" class="nav-btn nav-page1">
-                <button class="es-button">NAZAD</button>
+                <button class="gallery-button-back">NAZAD</button>
             </li>
         </ul>
         <div class="ip-content">

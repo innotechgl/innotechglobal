@@ -1,0 +1,158 @@
+/*responsive */
+
+@media screen and (max-width: 1366px) {
+    .logo-red {
+        margin-left: 34px;
+    }
+    .right-menu-ul > li > a
+    {
+    	height: 52px;
+    	font-size: 20px;
+    	padding: 0 0;
+    	padding-right: 28px;
+    }
+    .right-menu-ul ul > li a
+    {
+    	font-size: 15px;
+    }
+    .weather-wrapper
+    {
+     padding: 0 0!important;
+     height: 205px;
+
+    }
+    /*.tara > ul img
+    {
+    	margin-top: -30px;
+    	width: 40px;
+    	height: 30px;
+    }*/
+    .taralogo
+    {
+    	float: right;
+         width: 70px;
+
+    }
+    #cycler img.active
+    {
+    	width: 1025px;
+    }
+    #cycler img
+    {
+    	width: 1025px;
+    }
+    #footer
+    {
+    	width:1025px;
+    }
+    
+    .ip-main
+    {
+		width: 1025px;
+    }
+    body p
+    {
+		font-size: 17px;
+    }
+    .ip-content
+    {
+		width: 90%;
+		margin: 10px 49px;
+		padding-top: 5px;
+    }
+    .wrapper-gallery
+    {
+    	width: 640px!important;
+    	margin: 0 160px!important;
+    	padding: 10px 50px!important;
+    }
+    
+    .sb-slider img
+    {
+    	max-width: 480px;
+    }
+    .ip-content h2 
+    {
+    	margin-bottom: 10px;
+    }
+    .ip-content > p
+    {
+    	font-size: 16px;
+    	margin-bottom: 8px!important;
+    }
+    .fm-content
+    {
+    	width: 890px;
+    	margin: 10px 49px;
+
+    }
+    .fm-content img
+    {
+    	height: 350px;
+    	width: 625px;
+    	margin: 0 auto;
+    }
+    .event-black img 
+    {
+    	width: 75%;
+    	height: 29%;
+    	margin-left: 19px;
+	}
+	.event-black h3
+	{    
+		font-size: 17px;
+		margin-top: 5px; 
+     	margin-bottom: 5px; 
+	} 
+	.event-black p 
+	{
+    	font-size: 12px;
+	}
+
+	.event-grey img 
+    {
+    	width: 75%;
+    	height: 29%;
+    	margin-left: 19px;
+	}
+	.event-grey h3
+	{	
+		font-size: 17px;
+		margin-top: 5px; 
+     	margin-bottom: 5px; 
+	} 
+	.event-grey p 
+	{
+    	font-size: 12px;
+	}
+	.top-content
+	{
+		height: 220px;
+	}
+	es-content
+	{
+		margin: 10px 49px;
+	}
+	.es-logo-right img
+	{
+		height: 80px;
+    	width: 85px;
+	}
+	.es-logo-left img
+	{
+		height: 80px;
+    	width: 85px;
+	}
+    .language-icon
+    {
+        width: 30px!important;
+        height: 30px!important;
+
+    }
+    .nav-btn img
+    {
+        width: 100px;
+        height: 100px;
+    }
+
+}
