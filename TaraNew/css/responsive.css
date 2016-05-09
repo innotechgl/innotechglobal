@@ -129,7 +129,7 @@
 	{
 		height: 220px;
 	}
-	es-content
+	.es-content
 	{
 		margin: 10px 49px;
 	}
@@ -137,11 +137,13 @@
 	{
 		height: 80px;
     	width: 85px;
+            padding-bottom: 10px;
 	}
 	.es-logo-left img
 	{
 		height: 80px;
     	width: 85px;
+        padding-bottom: 10px;
 	}
     .language-icon
     {
