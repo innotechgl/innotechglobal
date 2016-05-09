@@ -28,7 +28,7 @@
                 <li class="" ><a href="#">Dani hotela</a></li>
             </ul>
         </li>
-        <li class="item4"><a href="#">USLUGE</a>
+        <li class="item4"><a href="#" data-target="7" class="nav-btn nav-page7">USLUGE </a>
            <!-- <ul>
                 <li class="" ><a href="#">Cute Kittens</a></li>
                 <li class="" ><a href="#">Dani hotela</a></li>

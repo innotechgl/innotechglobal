@@ -13,13 +13,13 @@
 			<p>Minimalistički dizajn enterijera u kome preovlađuju prirodni materijali i pastelni tonovi, omogućavaju ugodan boravak svakom gostu. Odabirom komadnog
 				nameštaja B design-a, zaokružena je ideja postavljanja B Hotels standarda koji će naši gosti prepoznati i nadamo se preporučiti.</p>
 			<div class=" margin-top">
-				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/1.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre"></a>
-				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/2.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre"></a>
-				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/3.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre"></a>
-				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/4.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre"></a>
+				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/1.png" class="img-thumbnail" alt="B Hotels"></a>
+				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/2.png" class="img-thumbnail" alt="B Hotels"></a>
+				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/3.png" class="img-thumbnail" alt="B Hotels"></a>
+				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/4.png" class="img-thumbnail" alt="B Hotels"></a>
 
-				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/5.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre"></a>
-				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/6.png" class="img-thumbnail custom-margin-photo-about-hotel-content" alt="Cinque Terre"></a>
+				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/5.png" class="img-thumbnail" alt="B Hotels"></a>
+				<a href="#" data-target="2" class="nav-btn nav-page2"><img src="images/6.png" class="img-thumbnail" alt="B Hotels"></a>
 			</div>
 		</div>
 	</div>

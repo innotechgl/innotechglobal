@@ -40,6 +40,16 @@
             <div class="page page6">
                 <?php include "event_single_content.php"; ?>
             </div>
+            <div class="page page7">
+                <?php include "services_content.php"; ?>
+            </div>
+            <!-- RESERVATION form treba da bude zadnji div zbog skrola -->
+            <div class="page page8">
+                <?php include "form_content.php"; ?>
+            </div>
+            <div class="page page9">
+                <?php include "form_content.php"; ?>
+            </div>
         </div>
 
 
