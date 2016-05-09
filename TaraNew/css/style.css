@@ -67,8 +67,8 @@ a {
 /*}*/
 
 body {
-    /*background: url("../images/bg.png");*/
-    background-color: #262626!important;
+    background: url("../images/bg.png");
+   /* background-color: #262626!important;*/
     color: #fff;
     /*background-repeat: no-repeat, no-repeat;*/
     overflow-y: hidden;
