@@ -93,13 +93,11 @@ include "weather-script.php"
 <?php include "gallery_script.php"; ?>
 
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-
+<!-- Forma fade in -->
 <script>
-/*
-$("#id-color-right-menu").click(function (e) {
-$(this).addClass("class-color-right-menu").siblings().removeClass("class-color-right-menu");
-});*/
-
+            $( ".btn-book" ).click(function() {
+                $('.form-tnx').fadeIn(3300).removeClass('hidden');
+            });
 </script>
 
 </body>

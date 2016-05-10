@@ -770,8 +770,8 @@ img.wrap {
 {
     width: 100%;
     height: 250px;
-    background: linear-gradient(#000, #262626); /* Standard syntax */
-    border-radius: 10px;
+    background: linear-gradient(#000, #262626);
+    border-radius: 7px;
     position: absolute;
     margin-top: 50%;
 }

@@ -98,7 +98,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
-    <button type="submit" class="btn-book"> <a href="#" data-target="10" class="nav-btn nav-page10">Rezerviši</a></button>
+    <button type="submit" class="btn-book"> <a href="#" data-target="10" class="nav-btn nav-page10" onclick="tnx()">Rezerviši</a></button>
   </div>
 </div>
 
