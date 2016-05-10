@@ -197,6 +197,17 @@
     -ms-transform: scale(1);
     transform: scale(1);
 }
+.wrapper.active-page10 {
+    -webkit-transform: translateY(-900%);
+    -ms-transform: translateY(-900%);
+    transform: translateY(-900%);
+}
+
+.wrapper.active-page10 .page.page10 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
 .nav-panel {
    /* position: fixed;
     top: 50%;

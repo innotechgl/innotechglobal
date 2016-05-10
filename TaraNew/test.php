@@ -50,6 +50,9 @@
             <div class="page page9">
                 <?php include "form_content.php"; ?>
             </div>
+            <div class="page page10">
+                <?php include "form_res_thanks.php"; ?>
+            </div>
         </div>
 
 
