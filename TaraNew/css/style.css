@@ -248,7 +248,7 @@ ul, ul ul {
     text-indent: 2.75em;
     display: block;
     position: relative;
-    font-size: 0.923em;
+    /*font-size: 0.923em;*/
     font-weight: 400;
     font-size: 19px;
     color: white;
@@ -347,9 +347,10 @@ ul, ul ul {
 }
 
 .tara {
-    bottom: 0px;
+    bottom: 33px;
     position: fixed;
-    right: 20px;
+    right: 130px;
+    float: left;
 
 }
 .tara ul li
@@ -369,7 +370,10 @@ ul, ul ul {
 }
 .taralogo
 {
-    margin-bottom:20px;
+    bottom: 20px;
+    float: right;
+    position: fixed;
+    right: 10px;
  
 }
 .time {
@@ -403,14 +407,14 @@ p {
 }
 
 .ip-main {
-    background-color: #262626;
     height: 848px;
     width: 100%;
     opacity: 1;
-    border: 2px solid #262626;
+    /*border: 2px solid #262626;*/
     border-right: 0;
     border-left: 0;
     border-bottom: 0;
+
 
 }
 
@@ -418,10 +422,13 @@ p {
     color: #DCCCED;
     margin: 50px 200px;
     border-top: 2px solid #CD5944;
-    background-color: #0d1217;
+    background-color: #262626;
     text-align: center;
     padding-top: 20px;
     padding-bottom: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 }
 
@@ -436,21 +443,21 @@ p {
 }
 
 .fm-main {
-    background-color: #262626;
+    /*background-color: #262626;*/
     height: 848px;
     width: 100%;
     opacity: 1;
-    border: 2px solid #CD5944;
     border-right: 0;
     border-left: 0;
     border-bottom: 0;
+    padding-top: 5px;
 
 }
 
 .fm-content {
     color: #DCCCED;
     margin: 50px 200px;
-    background-color: #0d1217;
+    background-color: #262626;
     text-align: center;
     /*padding-top: 20px;*/
     padding-bottom: 0;
@@ -475,10 +482,10 @@ p {
 .es-content {
     color: #DCCCED;
     margin: 50px 200px;
-    padding-top: 20px;
-    padding-bottom: 40px;
     float: left;
     text-align: justify;
+    background: #262626;
+    padding: 30px 50px;
 }
 
 .wrap {
@@ -548,7 +555,7 @@ img.wrap {
     box-shadow: 0px -10px 30px -10px #000000 inset !important;
     /*background: url("../images/test.jpg");*/
     background-size: 2000px 150px;
-    background-repeat: no-repeat;
+   /* background-repeat: no-repeat;*/
     -webkit-box-shadow: 0px -10px 30px -10px #000000 inset;
     -moz-box-shadow: 0px -10px 30px -10px #000000 inset;
     /*border-bottom: 2px solid #CD5944!important;*/
@@ -731,7 +738,7 @@ img.wrap {
     color: #262626;
     font-weight: bolder;
     background: #CD5944;
-    padding: 2px 10px;
+    /*padding: 2px 10px;*/
     font-size: 22px;
     padding: 5px 10px;
     float: right;

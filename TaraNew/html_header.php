@@ -27,5 +27,4 @@
 <link rel="stylesheet" type="text/css" href="css/custom.css" />
 <!-- skripte galerije -->
 <script type="text/javascript" src="js/jquery.slicebox.js"></script>
-<!-- Jedan od css-ova treba izmeniti da bi radilo sa one page stilom-->
 <script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
