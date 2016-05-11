@@ -53,7 +53,9 @@
             <div class="page page10">
                 <?php include "about_belgrade_content.php"; ?>
             </div>
-
+            <div class="page page11">
+                <?php include "znamenitosti_content.php"; ?>
+            </div>
         </div>
 
 

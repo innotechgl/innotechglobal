@@ -167,11 +167,11 @@ body p {
 }
 
 .nav > li > a:hover {
-    background-color: none !important;
+    background-color: transparent !important;
 }
 
 .nav > li > a:focus {
-    background-color: none!important;
+    background-color: transparent!important;
 }
 
 .right-menu-ul li a {
@@ -422,15 +422,16 @@ p {
     color: #DCCCED;
     margin: 50px 200px;
     border-top: 2px solid #CD5944;
-    background-color: #262626;
+    /*background-color: #262626;*/
     text-align: center;
     padding-top: 20px;
     padding-bottom: 40px;
     padding-left: 5px;
     padding-right: 5px;
+    background: linear-gradient(to bottom, #262626 60%,transparent 100%);
 }
 
-}
+
 
 .ip-content h2 {
     margin-bottom: 50px;
@@ -509,7 +510,6 @@ p {
 .es-linija {
     border: 0;
     height: 1px;
-
     background: #CD5944;
 
 }
@@ -570,7 +570,6 @@ img.wrap {
 .top-content {
     height: 376px;
     font-size: 5%;
-
 }
 
 .bottom-content {
@@ -794,4 +793,41 @@ img.wrap {
     margin-top: 30px;
     color: #fff;
     font-size: 23px;
+}
+.event-grey-znamenitosti {
+    width: 20%;
+    background-color: #262626;
+    height: 187px;
+    color: white;
+    float: left;
+    /*border-bottom: 2px solid #CD5944;*/
+    padding: 10px;
+}
+.event-black-znamenitosti {
+    width: 20%;
+    background-color: #0F0F0F;
+    float: left;
+    height: 187px;
+    color: white;
+    padding: 10px;
+}
+.top-content-znamenitosti {
+    height: 187px;
+}
+
+.bottom-content-znamenitosti {
+    height: 187px;
+}
+.top-content-znamenitosti h3, .top-content-znamenitosti p, .bottom-content-znamenitosti h3, .bottom-content-znamenitosti p{
+    text-align: center;
+    margin: 0!important;
+}
+
+
+.top-content-znamenitosti img, .bottom-content-znamenitosti img
+{
+    width: 70%;
+    height: 120px;
+    margin: 0 auto;
+
 }

@@ -208,6 +208,17 @@
     -ms-transform: scale(1);
     transform: scale(1);
 }
+.wrapper.active-page11 {
+    -webkit-transform: translateY(-1000%);
+    -ms-transform: translateY(-1000%);
+    transform: translateY(-1000%);
+}
+
+.wrapper.active-page11 .page.page11 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
 .nav-panel {
    /* position: fixed;
     top: 50%;
