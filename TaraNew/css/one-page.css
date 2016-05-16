@@ -163,6 +163,73 @@
     -ms-transform: scale(1);
     transform: scale(1);
 }
+.wrapper.active-page7 {
+    -webkit-transform: translateY(-600%);
+    -ms-transform: translateY(-600%);
+    transform: translateY(-600%);
+}
+
+.wrapper.active-page7 .page.page7 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.wrapper.active-page8 {
+    -webkit-transform: translateY(-700%);
+    -ms-transform: translateY(-700%);
+    transform: translateY(-700%);
+}
+
+.wrapper.active-page8 .page.page8 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.wrapper.active-page9 {
+    -webkit-transform: translateY(-800%);
+    -ms-transform: translateY(-800%);
+    transform: translateY(-800%);
+}
+
+.wrapper.active-page9 .page.page9 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.wrapper.active-page10 {
+    -webkit-transform: translateY(-900%);
+    -ms-transform: translateY(-900%);
+    transform: translateY(-900%);
+}
+
+.wrapper.active-page10 .page.page10 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.wrapper.active-page11 {
+    -webkit-transform: translateY(-1000%);
+    -ms-transform: translateY(-1000%);
+    transform: translateY(-1000%);
+}
+
+.wrapper.active-page11 .page.page11 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.wrapper.active-page12 {
+    -webkit-transform: translateY(-1100%);
+    -ms-transform: translateY(-1100%);
+    transform: translateY(-1100%);
+}
+
+.wrapper.active-page12 .page.page12 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
 .nav-panel {
    /* position: fixed;
     top: 50%;

@@ -13,12 +13,11 @@
                 <li ><a href="#" data-target="4" class="nav-btn nav-page4">Plan hotela </a></li>
             </ul>
         </li>
-        <li class="item2"><a href="#">U OKOLINI</a>
-           <!-- <ul>
-                <li class="" ><a href="#">INFORMACIJE</a></li>
-                <li class="" ><a href="#">Dani hotela</a></li>
-                <li class="" ><a href="#">Dani hotela</a></li>
-           </ul> -->
+        <li class="item2"><a href="#" data-target="10" class="nav-btn nav-page10">U OKOLINI</a>
+            <ul>
+                <li class="" ><a href="#" data-target="12" class="nav-btn nav-page12">Parkovi i rekreacija </a></li>
+                <li class="" ><a href="#" data-target="11" class="nav-btn nav-page11">Znamenitosti</a></li>
+            </ul>
         </li>
 
         <li class="item3" ><a href="#">DOGAĐAJI</a>
@@ -28,11 +27,11 @@
                 <li class="" ><a href="#">Dani hotela</a></li>
             </ul>
         </li>
-        <li class="item4"><a href="#">USLUGE</a>
+        <li class="item4"><a href="#" data-target="7" class="nav-btn nav-page7">USLUGE </a>
            <!-- <ul>
-                <li class="" ><a href="#">Cute Kittens</a></li>
-                <li class="" ><a href="#">Dani hotela</a></li>
-                <li class="" ><a href="#">Dani hotela</a></li>
+                <li class="" ><a href="#">Centar grada </a></li>
+                <li class="" ><a href="#">Zemun</a></li>
+                <li class="" ><a href="#"> Ostalo </a></li>
             </ul> -->
         </li>
         <li class="item5" id="rezervacije"><a href="#">REZERVACIJE</a>

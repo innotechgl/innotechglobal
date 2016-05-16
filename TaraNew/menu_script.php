@@ -51,8 +51,8 @@
 <script type="text/javascript">
     //script for menu color on ul li a
 
-    $('ul li a').click(function () {
-        $('li a').removeClass("fcurrent");
+    $('ul li').click(function () {
+        $('li').removeClass("fcurrent");
         $(this).addClass("fcurrent");
     });
 </script>
