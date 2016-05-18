@@ -8,7 +8,7 @@
 
         <li class="item1" ><a href="#">O HOTELU</a>
             <ul>
-                <li ><a href="#" data-target="1" class="nav-btn nav-page1">O nama </a></li>
+                <li ><a href="#" data-target="13" class="nav-btn nav-page13">O nama </a></li>
                 <li ><a href="#" data-target="3" class="nav-btn nav-page3">Važni telefoni</a></li>
                 <li ><a href="#" data-target="4" class="nav-btn nav-page4">Plan hotela </a></li>
             </ul>

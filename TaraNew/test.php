@@ -17,48 +17,73 @@
 <div class="fluid-container">
     <div class="col-md-9" id="containment">
 
-        <?php include "top_baner.php" ?>
         <div class="wrapper active-page1">
             <div class="page page1">
-                <?php include "about_hotel_content.php"; ?>
+                <?php include "baners_content.php"; ?>
 
             </div>
             <div class="page page2">
+                <?php include "top_baner.php" ?>
 
                 <?php include "gallery_content.php"; ?>
 
             </div>
             <div class="page page3">
+                <?php include "top_baner.php" ?>
+
                 <?php include "important_phones_content.php"; ?>
             </div>
             <div class="page page4">
+                <?php include "top_baner.php" ?>
+
                 <?php include "floor_map_content.php"; ?>
             </div>
 
             <div class="page page5">
+                <?php include "top_baner.php" ?>
+
                 <?php include "events_content.php"; ?>
             </div>
             <div class="page page6">
+                <?php include "top_baner.php" ?>
+
                 <?php include "event_single_content.php"; ?>
             </div>
             <div class="page page7">
+                <?php include "top_baner.php" ?>
+
                 <?php include "services_content.php"; ?>
             </div>
             <!-- RESERVATION form treba da bude zadnji div zbog skrola -->
             <div class="page page8">
+                <?php include "top_baner.php" ?>
+
                 <?php include "form_content.php"; ?>
             </div>
             <div class="page page9">
+                <?php include "top_baner.php" ?>
+
                 <?php include "form_res_thanks.php"; ?>
             </div>
             <div class="page page10">
+                <?php include "top_baner.php" ?>
+
                 <?php include "about_belgrade_content.php"; ?>
             </div>
             <div class="page page11">
+                <?php include "top_baner.php" ?>
+
                 <?php include "znamenitosti_content.php"; ?>
             </div>
             <div class="page page12">
+                <?php include "top_baner.php" ?>
+
                 <?php include "park_and_recreation_content.php"; ?>
+            </div>
+            <div class="page page13">
+                <?php include "top_baner.php" ?>
+
+                <?php include "about_hotel_content.php"; ?>
             </div>
         </div>
 
@@ -101,7 +126,11 @@
 -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<!-- ============== SLIDER JS =========== -->
+<script type="text/javascript" src="js/cubeslider-min.js"></script>
 <?php include "menu_script.php" ?>
+<?php include "baner_slider_qj.php" ?>
+
 <?php
 include "weather-script.php"
 ?>

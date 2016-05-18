@@ -66,9 +66,8 @@ a {
 /*background: black;*/
 /*}*/
 
-body {
-    /*background: url("../images/bg.png");*/
-   /* background-color: #262626!important;*/
+body{
+    background: url("../images/lobibgd.png");
     color: #fff;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -222,6 +221,8 @@ ul, ul ul {
 #containment
 {
     background: url("../images/bg.png");
+    /*padding: 0 0!important;
+    margin: 0 0!important;*/
 
 }
 /*#menu > .active > ul>li>a{*/
@@ -401,9 +402,9 @@ p {
 
 .col-custom {
     height: 250px;
-    background: silver;
-    border: 2px solid #CD5944;
-    opacity: 0.7;
+    background: #000000;
+    border: 2px solid #000000;
+    /*opacity: 0.7;*/
 
 }
 

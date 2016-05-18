@@ -230,6 +230,17 @@
     -ms-transform: scale(1);
     transform: scale(1);
 }
+.wrapper.active-page13 {
+    -webkit-transform: translateY(-1200%);
+    -ms-transform: translateY(-1200%);
+    transform: translateY(-1200%);
+}
+
+.wrapper.active-page13 .page.page13 {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
 .nav-panel {
    /* position: fixed;
     top: 50%;
